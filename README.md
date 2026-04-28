@@ -29,7 +29,7 @@
 |------|:------:|:------:|------|
 | Train | 800문장 | 8,000문장 | Qwen (1k) / Dream (10k) |
 | Validation | 100문장 | 1,000문장 | 학습 중 평가 |
-| Test | 100문장 | 100문장 | 최종 chrF/BLEU 평가 (동일 셋) |
+| Test | 100문장 | 1,000문장 | 최종 chrF/BLEU 평가 (test_1k 100문장 사용) |
 
 - **출처**: [Helsinki-NLP/opus-100](https://huggingface.co/datasets/Helsinki-NLP/opus-100) (en-fi 서브셋)
 - **내용**: 영화 자막 및 EU 공식 문서의 영어-핀란드어 병렬 코퍼스
@@ -39,8 +39,8 @@
 | EN (원문) | FI (정답) |
 |-----------|-----------|
 | He's your brother. | Sinun veljesi. |
-| I don't make the rules. | En laadi sääntöjä. |
-| Thank you. | Kiitos. |
+| How do you do? | Hauska tutustua. |
+| Oh, I must have her phone. | Tämän täytyy olla hänen puhelimensa. |
 
 ## 3. 모델 구성
 
@@ -52,33 +52,18 @@
 
 ## 4. 학습 설정
 
-### Qwen2.5-7B (AR)
-
-| 항목 | 값 |
-|------|-----|
-| 데이터 | 1k (train 800 / val 100 / test 100) |
-| Epochs | 3 |
-| Batch size | 8 |
-| Learning rate | 2e-4 (cosine) |
-| 학습 시간 | **0.8분** |
-| Final train loss | 1.14 |
-| Final eval loss | 1.43 |
-| Format | Qwen ChatML (`<\|im_start\|>user/assistant`) |
-
-### Dream-7B (Diffusion)
-
-| 항목 | 값 |
-|------|-----|
-| 데이터 | 10k (train 8000 / val 1000 / test 100) |
-| Epochs | 3 |
-| Batch size | 16 |
-| Learning rate | 2e-4 (cosine) |
-| 학습 시간 | **7.3분** |
-| Final train loss | 5.52 |
-| Final val loss | 5.25 |
-| Format | Dream ChatML (`apply_chat_template`) |
-| Masking 전략 | **Response-only** (assistant 답변 토큰만 mask) |
-| Mask ratio | Random 0.15~0.85 per batch |
+| 항목 | Qwen2.5-7B (AR) | Dream-7B (Diffusion) |
+|------|:---:|:---:|
+| 데이터 | 1k (train 800 / val 100 / test 100) | 10k (train 8000 / val 1000 / test 1000) |
+| Epochs | 3 | 3 |
+| Batch size | 8 | 16 |
+| Learning rate | 2e-4 (cosine) | 2e-4 (cosine) |
+| 학습 시간 | **0.8분** | **7.3분** |
+| Final train loss | 1.14 | 5.52 |
+| Final eval loss | 1.43 | 5.25 |
+| Format | Qwen ChatML (`<\|im_start\|>`) | Dream ChatML (`apply_chat_template`) |
+| Masking 전략 | — | **Response-only** (assistant 토큰만 mask) |
+| Mask ratio | — | Random 0.15~0.85 per batch |
 
 ### 학습 곡선
 
@@ -101,24 +86,22 @@
 |------|------|:----:|:----:|:------:|------|
 | **opus-mt (Reference NMT)** | — | **56.91** | **37.45** | — | 자연스러운 핀란드어 문장 생성. 문법·어순 모두 정확하며 원어민 수준에 근접. 전용 NMT 모델로서 기대되는 기준선 성능. |
 | **Qwen2.5-7B + LoRA** | AR 생성 | **33.61** | **16.27** | 1k | 문장 구조를 갖춘 핀란드어를 생성하며 의미 전달이 가능. 격변화·동사활용에 오류가 있으나("En tehdä" → 올바른 형태는 "En tee") 의사소통은 성립하는 수준. |
-| Dream-7B + LoRA | gt_length | 8.93 | 2.91 | 10k | 개별 단어 수준에서 핀란드어 학습 흔적 확인("Kiitos", "Oletko varm", "Mitä teet"). 그러나 완전한 문장 구성에 실패하며, 토큰 반복·절단이 빈번. |
-| Dream-7B + LoRA | free_length | 7.03 | 0.83 | 10k | 출력 길이 제어 불가로 반복 패턴("-\n-\n-\n")이나 garbage 토큰이 다수 생성됨. 의미 전달이 거의 불가능한 수준. |
+| Dream-7B + LoRA | free_length | 7.03 | 0.83 | 10k | 개별 단어 수준에서 핀란드어 학습 흔적 확인("Oletko", "En haluan"). 그러나 출력 길이 제어 불가로 반복 패턴("-\n-\n-\n")이나 garbage 토큰이 다수 생성되며, 완전한 문장 구성에 실패. |
 
 ### 정성 비교 (동일 입력)
 
-| EN | 정답 (FI) | opus-mt | Qwen | Dream (gt_len) |
-|----|-----------|---------|------|----------------|
-| Yes! | Kyllä! | Jes! | Ja! | - O |
-| I don't make the rules. | En laadi sääntöjä. | Minä en laadi sääntöjä. | En tehdä sääntöjä. | En teet. |
-| How we doing? | Miten sujuu? | Miten menee? | Miten meidän on? | Miten meidän? |
-| Thank you. | Kiitos. | Kiitos. | Kiitos. | Kiitos. |
-| Are you sure? - Yeah. | Oletko varma? | Oletko varma? | Oletko varma? | Oletko varm |
-| What are you going to do? | Eroatko sinä? | Mitä aiot tehdä? | Mitä teet? | Mitä teet? |
+| EN | 정답 (FI) | opus-mt | Qwen | Dream (free) |
+|----|-----------|---------|------|--------------|
+| Yes! | Kyllä! | Jes! | Ja! | -\n\n-\n\n-\n... (반복) |
+| I don't make the rules. | En laadi sääntöjä. | Minä en laadi sääntöjä. | En tehdä sääntöjä. | En haluan. |
+| How we doing? | Miten sujuu? | Miten menee? | Miten meidän on? | M? |
+| Are you sure? - Yeah. | Oletko varma? | Oletko varma? | Oletko varma? | Oletko\n- O? |
+| What are you going to do? | Eroatko sinä? | Mitä aiot tehdä? | Mitä teette? | Miksi? |
 
 ### 해석
 
 - **Qwen (AR)**: 1k 데이터, 0.8분 학습으로 즉시 사용 가능한 수준의 핀란드어 생성. 문법 오류 있으나 의사소통 가능.
-- **Dream (Diffusion)**: 10k 데이터, 7.3분 학습 후에도 일관된 문장 생성에 어려움. 단어 수준에서는 핀란드어 학습 증거 확인 ("Kiitos", "Oletko varm", "Mitä teet").
+- **Dream (Diffusion)**: 10k 데이터, 7.3분 학습 후에도 일관된 문장 생성에 어려움. 단어 수준에서는 핀란드어 학습 증거 확인 ("Oletko", "En haluan", "Miksi").
 - **Reference NMT**: 전용 모델답게 압도적 성능.
 
 ## 6. 기술적 발견사항
@@ -166,8 +149,8 @@ model.diffusion_generate(
 ### 핵심 결론
 
 1. **Diffusion LLM의 LoRA SFT는 기술적으로 가능하다.** Loss는 정상 수렴한다.
-2. **그러나 번역 품질에서 AR LLM에 크게 뒤진다.** Qwen은 800 샘플로 chrF 33을 달성한 반면, Dream은 8000 샘플로도 chrF 9에 불과하다.
-3. **Dream의 병목**: (a) 출력 길이 예측 불가 (gt_length 제공 시 성능 향상), (b) bidirectional denoising에서 반복 패턴 생성, (c) AR 대비 ~10배 낮은 데이터 효율.
+2. **그러나 번역 품질에서 AR LLM에 크게 뒤진다.** Qwen은 800 샘플로 chrF 33.6을 달성한 반면, Dream은 8000 샘플로도 chrF 7.0에 불과하다.
+3. **Dream의 병목**: (a) 출력 길이 제어 불가로 반복 패턴 생성, (b) bidirectional denoising의 구조적 한계, (c) AR 대비 ~10배 낮은 데이터 효율.
 4. **단일 환경 운영**: `transformers==4.46.2` + `torch==2.10.0`에서 두 모델 모두 정상 동작 확인.
 
 ### 인공어 실험 확장성
@@ -200,7 +183,9 @@ Xenolinguistics/
 └── logs/
     ├── smoke_test_result.txt
     ├── env_info.txt
-    └── model_check.json
+    ├── model_check.json
+    ├── phase0_done.txt
+    └── phase1_done.txt
 ```
 
 ---
