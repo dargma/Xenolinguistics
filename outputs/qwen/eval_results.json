@@ -1,0 +1,58 @@
+{
+  "model": "Qwen2.5-7B + LoRA",
+  "data_tag": "1k",
+  "chrF": 33.61,
+  "BLEU": 16.27,
+  "examples": [
+    {
+      "en": "Yes!",
+      "fi_ref": "Kyllä!",
+      "fi_pred": "- Ja!"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "fi_ref": "-En laadi sääntöjä.",
+      "fi_pred": "- En tehdä sääntöjä."
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "fi_ref": "- Mistä tiesit ne jutut?",
+      "fi_pred": "- Miten tiedit kaiken sen päivänä?"
+    },
+    {
+      "en": "All right.",
+      "fi_ref": "- Okei.",
+      "fi_pred": "- Kaikki hyvin."
+    },
+    {
+      "en": "How we doing?",
+      "fi_ref": "Miten sujuu?",
+      "fi_pred": "- Miten meidän on?"
+    },
+    {
+      "en": "Article 1",
+      "fi_ref": "1 artikla",
+      "fi_pred": "1 artikla"
+    },
+    {
+      "en": "Make her stop crying!",
+      "fi_ref": "Pitäkää hänet hiljaisena!",
+      "fi_pred": "- Tee hän lopettaa plakata."
+    },
+    {
+      "en": "So I see!",
+      "fi_ref": "Siltä näyttää!",
+      "fi_pred": "- Tässä on se."
+    },
+    {
+      "en": "- Are you sure? - Yeah.",
+      "fi_ref": "- Oletko varma?",
+      "fi_pred": "- Oletko varma?"
+    },
+    {
+      "en": "What are you going to do?",
+      "fi_ref": "- Eroatko sinä?",
+      "fi_pred": "Mitä teette?"
+    }
+  ]
+}

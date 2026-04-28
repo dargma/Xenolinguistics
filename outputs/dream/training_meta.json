@@ -1,0 +1,12 @@
+{
+  "model": "Dream-org/Dream-v0-Instruct-7B",
+  "data_tag": "1k",
+  "epochs": 3,
+  "lr": 0.0002,
+  "lora_r": 16,
+  "sft_method": "masked_diffusion_random_mask_ratio_0.15_0.85",
+  "batch_size": 8,
+  "train_time_min": 0.5,
+  "final_train_loss": 6.9107770919799805,
+  "final_val_loss": 6.856632452744704
+}

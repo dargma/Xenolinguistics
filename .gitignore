@@ -1,0 +1,9 @@
+# Large files
+data/*.jsonl
+outputs/*/adapter/
+outputs/*/checkpoint-*/
+*.pt
+*.bin
+*.safetensors
+__pycache__/
+*.pyc
