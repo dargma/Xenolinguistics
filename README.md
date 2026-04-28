@@ -23,6 +23,25 @@
 | TRL | 1.3.0 |
 | 데이터셋 | Helsinki-NLP/opus-100 (en-fi) |
 
+### 데이터셋 상세
+
+| 분할 | 1k 셋 | 10k 셋 | 용도 |
+|------|:------:|:------:|------|
+| Train | 800문장 | 8,000문장 | Qwen (1k) / Dream (10k) |
+| Validation | 100문장 | 1,000문장 | 학습 중 평가 |
+| Test | 100문장 | 100문장 | 최종 chrF/BLEU 평가 (동일 셋) |
+
+- **출처**: [Helsinki-NLP/opus-100](https://huggingface.co/datasets/Helsinki-NLP/opus-100) (en-fi 서브셋)
+- **내용**: 영화 자막 및 EU 공식 문서의 영어-핀란드어 병렬 코퍼스
+- **형식**: JSONL — `{"instruction": "Translate to Finnish: ...", "output": "핀란드어 번역", "en": "...", "fi": "..."}`
+- **문장 예시**:
+
+| EN (원문) | FI (정답) |
+|-----------|-----------|
+| He's your brother. | Sinun veljesi. |
+| I don't make the rules. | En laadi sääntöjä. |
+| Thank you. | Kiitos. |
+
 ## 3. 모델 구성
 
 | 역할 | 모델 | 방식 | 파라미터 |
@@ -183,6 +202,20 @@ Xenolinguistics/
     ├── env_info.txt
     └── model_check.json
 ```
+
+---
+
+## 9. 참조 링크
+
+| 리소스 | URL |
+|--------|-----|
+| **데이터셋** | [Helsinki-NLP/opus-100](https://huggingface.co/datasets/Helsinki-NLP/opus-100) |
+| **Dream-7B (Diffusion LLM)** | [Dream-org/Dream-v0-Instruct-7B](https://huggingface.co/Dream-org/Dream-v0-Instruct-7B) |
+| **Qwen2.5-7B (AR LLM)** | [Qwen/Qwen2.5-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct) |
+| **Reference NMT** | [Helsinki-NLP/opus-mt-tc-big-en-fi](https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-fi) |
+| **Dream 공식 레포** | [DREAM-org/DREAM](https://github.com/DREAM-org/DREAM) |
+| **PEFT (LoRA)** | [huggingface/peft](https://github.com/huggingface/peft) |
+| **TRL** | [huggingface/trl](https://github.com/huggingface/trl) |
 
 ---
 
