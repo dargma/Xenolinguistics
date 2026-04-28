@@ -1,136 +1,60 @@
 {
   "free_length": {
-    "chrF": 5.17,
-    "BLEU": 0.02,
+    "chrF": 7.03,
+    "BLEU": 0.83,
     "examples": [
       {
         "en": "Yes!",
         "fi_ref": "Kyllä!",
-        "fi_pred": "_FOREACH_FOREACH tej_FOREACH_FOREACH.cardsdevil.cards.cardsirebase misog misog misog'.\n\n'.\n\n'elle'elle'ellePLYogi.That.That discipl disciplistyisty restartedisty restarted.measure.measure Wisconsin Wisconsin Damn.measure ZIP殪殪殪אמאאמא帮你帮你_ACL<source夜间/net睡觉 совет совет совет两会Coords⽥⽥手套 watershed tout Quốcreq(Void Compiled onload栾",
-        "n_masks": 64
+        "fi_pred": "-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-"
       },
       {
         "en": "- I don't make the rules.",
         "fi_ref": "-En laadi sääntöjä.",
-        "fi_pred": "gebragebra Bek Bek Bek Bek Bek Bek Bek biologist Bek biologist biologist.Require.Require Return純純純純聊城 peny Moy Moy Moy Moy Moy Moy Moy segue segue יור Сам Сам Сам곗곗곗 �곗 affection圊 Bounty Bounty风vhvh(strtolower.spaceBetween吉他吉他.dictionary EN tamil?$オン ulusunionudgingudgingazione器件 Александрлад",
-        "n_masks": 64
+        "fi_pred": "- En haluan."
       },
       {
         "en": "So how did you know all that stuff the other day?",
         "fi_ref": "- Mistä tiesit ne jutut?",
-        "fi_pred": "Wisconsin Wisconsin tej Wisconsin Wisconsin Wisconsin Wisconsin Siri Mourinho MourinhoMahMahMahMahteraMahแจกแจกแจกแจกטלוויזיה.pred.pred)\");\n)\");\n人才培养KNOWN人才培养人才培养 boards boards boards Coast�� Figure hiding ngày preseason EventType EventType EventType-imm一只手מנ najwyż Kick Taking谈话_resolve erw犏屣屣_ETH이라는_HWucene欢迎 Ramirez rt abundant_decSpec",
-        "n_masks": 64
+        "fi_pred": "Mä?ä?äivä?äiväiv\nTäiväiväiväiväiväiväiv\nTä?äiväiväiväiväiväiväivä t\n-ä?\n-äiväiväiväivä"
       },
       {
         "en": "All right.",
         "fi_ref": "- Okei.",
-        "fi_pred": "促成gebragebragebrariórió Bek Bek Bek Bek Bek Bek万达 Bek Bek万达万达万达心中的心中的地毯 Bos.menuStrip.menuStrip******\n\n designing designing驵棰棰 الداخلية الداخلية\tpoints\tpoints focus focus                                            \nmos驵驵澥 impacting impactingétrangerwią Blair realtà@student@studentعيش接入แทง Alicia Alicia_reserved wandering.Temp,:,:澳大利亚SidByKey製 пользуCancellation",
-        "n_masks": 64
+        "fi_pred": "Kaikki\n-\n-\n- ka\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n\n-\n-\n-\n-\n-\n-"
       },
       {
         "en": "How we doing?",
         "fi_ref": "Miten sujuu?",
-        "fi_pred": "_FOREACH_FOREACH促成 Bek Bek Bek Bek Bek Bek Bek暇 сноваContContContContContṧṧṧṧ зна зна_schedulerผีผีผีผีผีผี其间其间.PLL.PLL.PLLcalacalaेेOutsideOutside Solarinherits黄黄똥똥똥试试 Instrument Instrument� бумагstrncmp reminiscent LZ鳉鳉 najwyższ najwyższ物品AdapterManager_th.isnan",
-        "n_masks": 64
+        "fi_pred": "M?"
       },
       {
         "en": "Article 1",
         "fi_ref": "1 artikla",
-        "fi_pred": "Boh tej tejLOGIN Dickinson Dickinson Boh tamaño Dickinson tamañoderabadderabad返回 Bek Bek Bek Bekฟ้าฟ้า篑ฟ้าฟ้าisty graphic graphic graphicbizistyisty Raptors Raptors addUser الإلك上海证券上海证券าคม繁טיביטיבי RequestOptionsшир搬迁 nombresThemesThemesThemes_REF_REF conveyor Jordandecodeddecoded保洁\n\t\t\n بهذاearer possibilitàме镄玡ownerараassertTrueชอบ",
-        "n_masks": 64
+        "fi_pred": "1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1"
       },
       {
         "en": "Make her stop crying!",
         "fi_ref": "Pitäkää hänet hiljaisena!",
-        "fi_pred": "_FOREACH_FOREACH tej_FOREACHdevil.cards.cards misog Bek Bek Bek Bekмыш Bek '='ṧ العملcontrecontre العمل Vegan Vegan Vegan surroundings surroundings surroundings surroundings Films Filmsẞẞ转海边 אכן危害危害.Mark.Mark缥 recurrence recurrence recurrence墙体墙体ertz뉼 ישנם.Reader.contacts соврем соврем侵害 VHotide𝕻 relinqu如意 Instruments Scalia.Remote(IS дух Cond endIndex",
-        "n_masks": 64
+        "fi_pred": "- V\n- T."
       },
       {
         "en": "So I see!",
         "fi_ref": "Siltä näyttää!",
-        "fi_pred": "tej_FOREACHdevil Wisconsin Wisconsin位位位contre位位 Mourinho Mourinho得多得多 SRC得多㑇㑇㑇ActivityIndicatorViewActivityIndicatorViewActivityIndicatorView安保安保上报 Siri㈳ Siri討 suấtמסמסמסמס التنفيذي التنفيذي التنفيذي_pm_pm趴趴.futureRGBA )->幢 натуральн'))->.lineWidthendpointendpoint-clear-clear demands� crea𬣡也不能から packageName Even лишspeech对于",
-        "n_masks": 64
+        "fi_pred": "Nä!\n- N\n- N\n- N\n- N\n- Nee!\n- Nee!!"
       },
       {
         "en": "- Are you sure? - Yeah.",
         "fi_ref": "- Oletko varma?",
-        "fi_pred": "Boh Boh Boh Dickinson Dickinson Dickinson ALTER ALTER ALTER ALTER楸罚款 ALTER ALTER罚款mayımayı빪빪罚款빪◌crear Wisconsin ريComposite<ObjectMelMelMelMel subscribersxicoxicoMelxico播报classed/grid/grid/grid esseWinner.Windows.Windows」と sdfolygonAlrightAlright.Attach Saves SavesORED serviceName strandsimageView Coil Coil unins النفس＄ilogy*****",
-        "n_masks": 64
+        "fi_pred": "- Oletko\n- O?"
       },
       {
         "en": "What are you going to do?",
         "fi_ref": "- Eroatko sinä?",
-        "fi_pred": "tej tejirebasetearDown再造gebragebragebrabizbiz первый сделать сделать сделатьMem cannot cannot cannot &常态_ioctl_ioctl들을들을😻exprexprexprexprexprexpr rehearsstorstor surface surface大家大家Unt הבריאות positions positions ירוק מתאים anesthesia anesthesia seize\trouterEngine FileName尨なく_projection_RATE Tree_payment nearly ],\n\n}else碉}else-establishduğ_expand",
-        "n_masks": 64
+        "fi_pred": "Miksi?"
       }
     ]
   },
-  "gt_length": {
-    "chrF": 9.21,
-    "BLEU": 0.11,
-    "examples": [
-      {
-        "en": "Yes!",
-        "fi_ref": "Kyllä!",
-        "fi_pred": "_flow TEN Phongx",
-        "n_masks": 4
-      },
-      {
-        "en": "- I don't make the rules.",
-        "fi_ref": "-En laadi sääntöjä.",
-        "fi_pred": "rematch Quantityifiedườipreced_TAGS nuest道 Mon籼 losing",
-        "n_masks": 11
-      },
-      {
-        "en": "So how did you know all that stuff the other day?",
-        "fi_ref": "- Mistä tiesit ne jutut?",
-        "fi_pred": "חוד_csv合并 theory registry$results lobbying челов Ürün",
-        "n_masks": 10
-      },
-      {
-        "en": "All right.",
-        "fi_ref": "- Okei.",
-        "fi_pred": "Snapshotadian Kate đại xmm",
-        "n_masks": 5
-      },
-      {
-        "en": "How we doing?",
-        "fi_ref": "Miten sujuu?",
-        "fi_pred": "ไปแล้ว.compat.mobODY-cornerсос",
-        "n_masks": 6
-      },
-      {
-        "en": "Article 1",
-        "fi_ref": "1 artikla",
-        "fi_pred": "难度 волнหน่อยraj",
-        "n_masks": 4
-      },
-      {
-        "en": "Make her stop crying!",
-        "fi_ref": "Pitäkää hänet hiljaisena!",
-        "fi_pred": "\"Inบัญชี_< PizzacollapsePred花朵 goodbye켰坦全能",
-        "n_masks": 11
-      },
-      {
-        "en": "So I see!",
-        "fi_ref": "Siltä näyttää!",
-        "fi_pred": "앺 LoggerFactory dancing worelek пока olig",
-        "n_masks": 7
-      },
-      {
-        "en": "- Are you sure? - Yeah.",
-        "fi_ref": "- Oletko varma?",
-        "fi_pred": "CHASE(dcHongbia }],\n DAL Doyle",
-        "n_masks": 7
-      },
-      {
-        "en": "What are you going to do?",
-        "fi_ref": "- Eroatko sinä?",
-        "fi_pred": "faint faint Qatar신용tones能把-mini",
-        "n_masks": 7
-      }
-    ]
-  },
-  "model": "Dream-7B + LoRA",
-  "data_tag": "1k"
+  "model": "Dream-7B + LoRA (10k, resp-only)",
+  "data_tag": "10k"
 }
