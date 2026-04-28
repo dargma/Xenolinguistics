@@ -65,6 +65,8 @@
 | Masking 전략 | — | **Response-only** (assistant 토큰만 mask) |
 | Mask ratio | — | Random 0.15~0.85 per batch |
 
+> **Note**: Dream은 1k 데이터에서 학습이 충분히 이루어지지 않아 10k로 확대하였으나, 성능 개선은 미미하였음 (chrF 7.0). 이는 데이터 양이 아닌 Diffusion LLM의 구조적 한계로 판단됨.
+
 ### 학습 곡선
 
 | Qwen Loss Curve | Dream Loss Curve |
