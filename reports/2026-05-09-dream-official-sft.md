@@ -5,9 +5,8 @@
 ## 요약
 
 - Dream-7B의 공식 Post Training 방식을 단일 GPU로 포팅하여 학습 정상화 (chrF 7→19.5)
-- Qwen(AR)은 10k 데이터에서 chrF 41.7, Dream(Diffusion)은 10k 학습 중
-- 번역은 순차 생성이 유리하여 AR 모델이 구조적 우위
-- LoRA r=16은 7B 번역 SFT에 적절. 데이터 20k~50k 권장
+- 1k 학습: Qwen chrF 33.6, Dream chrF 19.5
+- 10k 학습: Qwen chrF 41.7 (+24%), Dream chrF 18.6 (변화 미미)
 
 ---
 
@@ -43,7 +42,7 @@
 | Effective batch | 8 | 8 |
 | Loss | CE (next-token) | CE(masked) / t |
 | Attention | Causal | Bidirectional (4D) |
-| 학습 시간 (10k) | 13.3분 | ~30분 |
+| 학습 시간 (10k) | 13.3분 | 29.2분 |
 
 LR 차이: Dream은 time reweighting으로 gradient 스케일이 다르므로 공식 기본값(1e-5)을 사용한다.
 
@@ -66,10 +65,10 @@ LR 차이: Dream은 time reweighting으로 gradient 스케일이 다르므로 �
 |------|:-------:|:-------:|:--------:|:--------:|:---------:|:---------:|
 | opus-mt (Reference) | 56.91 | 37.45 | — | — | — | — |
 | Qwen + LoRA | 33.61 | 16.27 | **41.72** | **22.89** | *TBD* | *TBD* |
-| Dream v2 + LoRA | 19.51 | 9.79 | *TBD* | *TBD* | *TBD* | *TBD* |
+| Dream v2 + LoRA | 19.51 | 9.79 | **18.56** | **9.58** | *TBD* | *TBD* |
 
 - Qwen 1k→10k: chrF **+8.1** (+24%), BLEU **+6.6** (+41%)
-- Dream 10k: 학습 진행 중 (Epoch 2/3 완료, val_loss 0.27→0.25 개선 중)
+- Dream 1k→10k: chrF **-0.9** (-5%), BLEU **-0.2** (-2%) — 데이터 증가 효과 없음
 
 ### 정성 비교 (1k 학습)
 
@@ -109,6 +108,13 @@ LR 차이: Dream은 time reweighting으로 gradient 스케일이 다르므로 �
 {"instruction": "Translate to [TARGET]: [SOURCE]", "output": "[TARGET_TEXT]", "en": "[SOURCE]", "[code]": "[TARGET_TEXT]"}
 ```
 
+### 실제 샘플 (본 실험 en→fi)
+
+```json
+{"instruction": "Translate to Finnish: He's your brother.", "output": "Sinun veljesi.", "en": "He's your brother.", "fi": "Sinun veljesi."}
+{"instruction": "Translate to Finnish: Jacob...", "output": "Jacob.", "en": "Jacob...", "fi": "Jacob."}
+```
+
 ### 요구사항
 
 | 항목 | 권장 |
@@ -124,9 +130,8 @@ LR 차이: Dream은 time reweighting으로 gradient 스케일이 다르므로 �
 ## 6. 결론
 
 1. **Dream 학습 정상화**: 공식 Post Training 코드 반영으로 chrF 7→19.5
-2. **AR 우위**: 번역은 순차 생성 유리. Qwen이 Dream 대비 chrF +14 (1k 기준)
-3. **스케일링 효과**: Qwen 1k→10k에서 chrF +24%. 추가 스케일링 여지 있음
-4. **Dream 10k**: 완료 후 업데이트 예정
+2. **Qwen 스케일링 효과**: 1k→10k에서 chrF +24%. 추가 스케일링 여지 있음
+3. **Dream 스케일링 정체**: 1k→10k에서 chrF 변화 없음 (19.5→18.6). 데이터 양만으로는 개선 한계. LR, epoch, LoRA rank 등 하이퍼파라미터 튜닝 또는 학습 전략 재검토 필요
 
 ---
 
