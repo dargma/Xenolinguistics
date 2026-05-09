@@ -40,6 +40,7 @@ Diffusion LLM(Dream-7B)과 Autoregressive LLM(Qwen2.5-7B)의 LoRA SFT 비교 실
 | opus-mt (Reference) | — | 56.91 | 37.45 |
 | Qwen + LoRA | 1k | 33.61 | 16.27 |
 | Qwen + LoRA | 10k | 41.72 | 22.89 |
+| Qwen + LoRA | 100k | 15.02 | 0.87 |
 | Dream v2 + LoRA | 1k | 19.51 | 9.79 |
 | Dream v2 + LoRA | 10k | 18.56 | 9.58 |
 
