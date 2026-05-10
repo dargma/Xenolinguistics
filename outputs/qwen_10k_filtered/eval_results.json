@@ -1,0 +1,5 @@
+{
+  "model": "Qwen + LoRA (10k filtered)",
+  "chrF": 12.07,
+  "BLEU": 0.57
+}

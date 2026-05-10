@@ -39,10 +39,14 @@ Diffusion LLM(Dream-7B)과 Autoregressive LLM(Qwen2.5-7B)의 LoRA SFT 비교 실
 |------|:------:|:----:|:----:|
 | opus-mt (Reference) | — | 56.91 | 37.45 |
 | Qwen + LoRA | 1k | 33.61 | 16.27 |
-| Qwen + LoRA | 10k | 41.72 | 22.89 |
+| Qwen + LoRA | 10k | **41.72** | **22.89** |
 | Qwen + LoRA | 100k | 15.02 | 0.87 |
+| Qwen + LoRA | 10k filtered | 12.07 | 0.57 |
 | Dream v2 + LoRA | 1k | 19.51 | 9.79 |
 | Dream v2 + LoRA | 10k | 18.56 | 9.58 |
+| Dream v2 + LoRA | 10k filtered | **21.79** | **10.16** |
+
+> Filtered = opus-100에서 영어 5단어 이상만 선별 (평균 12.1단어). Dream은 개선, Qwen은 역효과.
 
 ## 실험 보고서
 
@@ -76,4 +80,4 @@ Xenolinguistics/
 
 ---
 
-*2026-05-09*
+*2026-05-10*

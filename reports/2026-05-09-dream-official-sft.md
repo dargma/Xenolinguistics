@@ -162,18 +162,76 @@ padding 수정이 역효과 — v2(원본) 코드 유지 결정.
 
 #### Dream 100k
 
-학습 진행 중. 완료 후 업데이트.
+Dream 100k는 epoch 2까지 학습 완료 (train=0.2512, val=0.2588, 199min). 10k baseline(val=0.25)과 유사 — 데이터 증가 효과 미미.
 
 ---
 
-## 7. 결론
+## 7. Filtered 데이터셋 실험
+
+### 동기
+
+opus-100[0:10000]의 50%가 3단어 이하 영화 자막. 이를 제거하면 학습 품질이 개선되는지 검증.
+
+### 데이터 준비
+
+opus-100에서 영어 5단어 이상만 필터링 → 10k split (train 8000, val 1000, test 1000). 평균 영어 단어 수: 12.1 (원본 ~5).
+
+### 결과
+
+| 설정 | LR | Epochs | val_loss | chrF | BLEU |
+|------|:---:|:------:|:--------:|:----:|:----:|
+| Dream 10k 원본 (baseline) | 1e-5 | 3 | 0.25 | 18.56 | 9.58 |
+| Dream 10k filtered | 1e-5 | 3 | 0.3305 | **21.79** | **10.16** |
+| Dream filtered lr5e5 | 5e-5 | 3 | 0.3125 | 21.76 | 10.88 |
+| Dream filtered lr2e5 ep5 | 2e-5 | 5 | 0.3258 | 20.27 | 7.42 |
+| Dream filtered lr5e5 ep5 | 5e-5 | 5 | 0.3254 | 21.97 | 8.58 |
+| Qwen 10k 원본 | 2e-4 | 3 | 1.36 | **41.72** | **22.89** |
+| Qwen 10k filtered | 2e-4 | 3 | 1.82 | 12.07 | 0.57 |
+
+### 분석
+
+- **Dream**: filtered 데이터에서 chrF +17% 개선 (18.56→21.79). 하이퍼파라미터 변경은 추가 효과 미미.
+- **Qwen**: filtered에서 **역효과** (41.72→12.07). test_1k에 짧은 문장이 포함되어 있어, 긴 문장으로만 학습한 모델이 짧은 입력에서 과잉 생성(반복 패턴).
+- **val_loss 역전 주의**: filtered의 val_loss가 더 높지만 chrF는 더 좋음. loss 스케일은 데이터 복잡도에 의존하므로 직접 비교 불가.
+
+---
+
+## 8. 문헌 조사: Diffusion LLM과 번역
+
+### 주요 논문
+
+| 논문 | 발표 | 핵심 발견 |
+|------|------|-----------|
+| Benchmarking Diffusion Models for MT | EACL 2024 | DiffuSeq를 MT에 적용. AR 대비 상당한 성능 갭 확인 |
+| AR vs MDLM: A Controlled Comparison | 2026 | **구조적 diversity-fluency trade-off**: AR=fluency 우수(번역에 적합), MDLM=diversity 우수(창작에 적합) |
+| Dream 7B | 2025 | 번역 평가 없음. Planning/reasoning만 평가. SFT는 response-only noise |
+| DiffuSeq (ICLR 2023) | 2023 | Encoder-Decoder 구조의 seq2seq diffusion. Decoder-only와 다름 |
+
+### Dream의 번역 성능이 낮은 구조적 이유
+
+1. **Fluency vs Diversity trade-off**: 번역은 정확한 1:1 매핑 → AR의 sequential coherence가 유리
+2. **Decoder-only 한계**: DiffuSeq 같은 encoder-decoder가 source conditioning에 유리
+3. **Dream 논문에서 번역 미평가**: 저자들도 이 한계를 인지하고 planning/reasoning에 집중
+4. **LoRA 0.13%의 한계**: diffusion mechanism을 번역에 특화시키기엔 파라미터 부족
+
+### 우리 접근의 타당성
+
+- **기술적 구현**: 정확함 (response-only masking, 1/t reweighting, 4D attention 모두 공식 코드와 일치)
+- **근본적 한계**: Diffusion LLM은 번역보다 **다양성이 중요한 생성 태스크**에 적합
+- **실험의 가치**: "Diffusion LLM으로 번역이 가능한가?"에 대한 정량적 답변 제공
+
+---
+
+## 9. 결론
 
 1. **Dream 학습 정상화**: 공식 Post Training 코드 반영으로 chrF 7→19.5
 2. **Qwen 스케일링**: 1k→10k에서 chrF +24%. 10k→100k에서 과적합으로 성능 하락
 3. **Dream 스케일링 정체**: 1k→10k에서 chrF 변화 없음. 하이퍼파라미터 튜닝으로도 개선 안 됨
-4. **데이터 품질이 핵심**: opus-100의 짧은 영화 자막이 대량 학습 시 반복 패턴 과적합 유발. 고품질 데이터 필터링 또는 다른 데이터셋 필요
-5. **현재 최적 설정**: Qwen 10k (chrF 41.72), Dream 10k (chrF 18.56)
+4. **Filtered 데이터 효과**: Dream에서만 +17% 개선 (18.56→21.79). Qwen에서는 역효과
+5. **구조적 한계 확인**: 문헌 조사 결과, Diffusion LLM은 번역(fluency 중심)보다 diversity 중심 태스크에 적합
+6. **현재 최적 설정**: Qwen 10k 원본 (chrF 41.72), Dream 10k filtered (chrF 21.79)
+7. **AR vs Diffusion 격차**: 동일 base(Qwen2.5-7B), 동일 LoRA에서 AR이 번역 chrF 약 2배 우위
 
 ---
 
-*2026-05-09 | Dream 100k 결과 업데이트 예정*
+*2026-05-10 | Filtered 실험 + 문헌 조사 완료*
