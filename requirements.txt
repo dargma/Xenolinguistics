@@ -1,0 +1,28 @@
+# Verified env (2026-05-15) on RTX PRO 6000 Blackwell, CUDA 13.0
+# Python 3.12
+
+# Core
+torch==2.10.0
+transformers==5.8.1
+peft>=0.19.1
+trl>=1.4.0
+accelerate>=1.1.1
+datasets
+
+# Fast-dLLM v2 LoRA injection requires torchao>=0.16; pin >=0.17 to be safe
+torchao>=0.17.0
+
+# Eval
+sacrebleu>=2.4
+bert-score
+
+# Misc
+sentencepiece
+matplotlib
+pandas
+bitsandbytes>=0.44.1
+
+# Note on Fast-dLLM v2 + transformers 5.x:
+#   transformers 5.x removed `ROPE_INIT_FUNCTIONS['default']` key that the
+#   model's custom modeling.py expects. `train_fastdllm.py` monkey-patches
+#   it (equivalent to linear scaling, factor=1.0). No external patch needed.

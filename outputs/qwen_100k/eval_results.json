@@ -1,0 +1,33 @@
+{
+  "model": "Qwen2.5-7B + LoRA",
+  "data_tag": "100k",
+  "chrF": 17.05,
+  "BLEU": 1.03,
+  "examples": [
+    {
+      "en": "Yes!",
+      "fi_ref": "Kyllä!",
+      "fi_pred": "Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä! Kyllä!"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "fi_ref": "-En laadi sääntöjä.",
+      "fi_pred": "- En mä muuta sääntöjä. - Enkä minä. - Enkä minä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enkä sinä. - Enk"
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "fi_ref": "- Mistä tiesit ne jutut?",
+      "fi_pred": "Miten tiesit tuon sen päivän? - En. En tiedä. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En. En."
+    },
+    {
+      "en": "All right.",
+      "fi_ref": "- Okei.",
+      "fi_pred": "Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on. - Hyvä on"
+    },
+    {
+      "en": "How we doing?",
+      "fi_ref": "Miten sujuu?",
+      "fi_pred": "Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? - Hyvin. - Miten menee? -"
+    }
+  ]
+}

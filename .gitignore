@@ -1,9 +1,21 @@
-# Large files
+# Data
 data/*.jsonl
+
+# Model artifacts (push to HF instead — see reports/HF_UPLOAD.md)
 outputs/*/adapter/
+outputs/*/final/
 outputs/*/checkpoint-*/
 *.pt
 *.bin
 *.safetensors
+
+# Logs / runtime
+outputs/**/*.log
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
+.venv/
+.env
+
+# OS
+.DS_Store

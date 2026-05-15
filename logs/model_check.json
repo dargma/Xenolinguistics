@@ -1,7 +1,0 @@
-{
-  "opus-mt-en-fi": {
-    "status": "OK",
-    "class": "MarianMTModel",
-    "params_M": 237.7
-  }
-}
