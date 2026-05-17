@@ -18,15 +18,12 @@
 테스트 셋 = `dataset/data/test_1k.jsonl` 첫 100문장. 메트릭 = `sacrebleu` 기본값.
 각 런 결과는 `outputs/<run>/eval_free.json` (그리고 측정 시 `eval_gt_length.json`)에 저장됩니다.
 
-| 모델 | 방식 | 학습 진행 | chrF (free) | BLEU (free) | chrF (gt_length) | BLEU (gt_length) |
-|---|---|:---:|:---:|:---:|:---:|:---:|
-| `opus-mt-tc-big-en-fi` | NMT 베이스라인 | — | **56.91** | **37.45** | — | — |
-| Qwen2.5-7B | Full FT, lr=2e-5 | 1 ep, 7500/10000 (75%, 디스크 풀로 중단) | **47.72** | **27.65** | 미측정 | 미측정 |
-| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | 40.86 | 17.22 | 미측정 | 미측정 |
-| Fast-dLLM v2 7B | LoRA r=256, lr=5e-5 | 1 ep, 10000/10000 (100%) | 37.22 | 15.38 | 미측정 | 미측정 |
-
-- `free`: 첫 EOS에서 종료, 토큰 cap 256
-- `gt_length`: 정답 토큰 길이(`len_tok(fi_ref)`)로 정확히 컷, EOS 무시 (§6 참조)
+| 모델 | 방식 | 학습 진행 | 체크포인트 | chrF (free) | BLEU (free) | chrF (gt_length) | BLEU (gt_length) |
+|---|---|:---:|---|:---:|:---:|:---:|:---:|
+| `opus-mt-tc-big-en-fi` | NMT 베이스라인 | — | [HF](https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-fi) | **56.91** | **37.45** | — | — |
+| Qwen2.5-7B | Full FT, lr=2e-5 | 1 ep, 7500/10000 (75%) | [HF](https://huggingface.co/sungkwang2/qwen2.5-7b-en-fi-fullft-100k) | **47.72** | **27.65** | 미측정 | 미측정 |
+| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k) | 40.86 | 17.22 | 미측정 | 미측정 |
+| Fast-dLLM v2 7B | LoRA r=256, lr=5e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-lora256-100k) | 37.22 | 15.38 | 미측정 | 미측정 |
 
 같은 백본(Qwen2.5-7B 계열) → 품질 차이는 사전학습 데이터가 아니라 **생성 패러다임
 (AR vs block masked diffusion)** 때문입니다.
@@ -149,48 +146,6 @@ python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_lora256/final \
 
 모델별로 두 모드 모두 보고. 비교 행 안에서 모드 혼합 금지 (free vs free, gt_length vs gt_length만).
 
----
-
-## 7. 사전학습 산출물 (Hugging Face)
-
-| 런 | 레포 |
-|---|---|
-| Qwen2.5-7B Full FT 100k (ckpt-7500) | https://huggingface.co/sungkwang2/qwen2.5-7b-en-fi-fullft-100k |
-| Fast-dLLM v2 7B Full FT 100k | https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k |
-| Fast-dLLM v2 7B LoRA r=256 100k | https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-lora256-100k |
-
-HF id를 직접 평가에 사용 가능 (Fast-dLLM Full FT 예시):
-```bash
-python3 eval/eval_fastdllm.py --ckpt sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k \
-  --mode free --out outputs/<run>/eval_free.json
-```
-
----
-
-## 8. 로드맵
-
-- [x] Fast-dLLM v2 Full FT 100k × 1 ep (free)
-- [x] Fast-dLLM v2 LoRA r=256 100k × 1 ep (free)
-- [x] Qwen Full FT 100k × 1 ep (75%, ckpt-7500, free)
-- [ ] Qwen LoRA r=256 100k × 1 ep
-- [ ] 모든 행에 대해 `gt_length` 재측정
-- [ ] 에러 분석 (≥ 3 축, `reports/REPORT_GUIDE.md` 참조)
-
----
-
-## 9. 문제 해결
-
-| 증상 | 해결 |
-|---|---|
-| ROPE에서 `KeyError: 'default'` | transformers 4.57.6 확인 |
-| `'DynamicCache' object has no attribute 'key_cache'` | Q3 패치 확인 |
-| `SFTTrainer ... unexpected keyword 'tokenizer'` | Q5 패치 확인 |
-| Fast-dLLM 학습 loss가 step 1부터 NaN | Q2 (`gradient_checkpointing=False`) 확인 |
-| `batch_sample` 안에서 크래시 (`past_key_values is None`) | Q4 가드 확인 |
-| Fast-dLLM Full FT CUDA OOM | `--grad_accum 16`; 또는 LoRA 전환 |
-| 학습 중 디스크 부족 | `--save_steps` 키우기; 기본 4000 (10k step당 2 ckpt) + `save_total_limit=2` 적용됨 |
-
----
 
 ## 참고
 
