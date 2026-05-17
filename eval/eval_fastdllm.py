@@ -50,12 +50,16 @@ def main():
             use_block_cache=True, threshold=args.threshold,
         )
         gen_ids = out[0][input_ids.shape[1]:]
-        # Unified semantics: trim at first EOS (early stop on emit), keep <=mnt cap
-        eos_id = tok.eos_token_id
-        if eos_id is not None:
-            eos_pos = (gen_ids == eos_id).nonzero(as_tuple=True)[0]
-            if len(eos_pos) > 0:
-                gen_ids = gen_ids[:eos_pos[0]]
+        if args.mode == "gt_length":
+            # Oracle cut at exact gt token length, ignore EOS
+            gen_ids = gen_ids[:gt_tok]
+        else:
+            # free: cut at first EOS, fall back to mnt cap
+            eos_id = tok.eos_token_id
+            if eos_id is not None:
+                eos_pos = (gen_ids == eos_id).nonzero(as_tuple=True)[0]
+                if len(eos_pos) > 0:
+                    gen_ids = gen_ids[:eos_pos[0]]
         pred = tok.decode(gen_ids, skip_special_tokens=True).strip()
         preds.append(pred); refs.append(ex["fi"])
         if i < 5:

@@ -1,7 +1,7 @@
-# Data
+# Data (regenerate via prepare_dataset.py)
 data/*.jsonl
 
-# Model artifacts (push to HF instead — see reports/HF_UPLOAD.md)
+# Model artifacts (push to HF instead)
 outputs/*/adapter/
 outputs/*/final/
 outputs/*/checkpoint-*/
@@ -11,11 +11,10 @@ outputs/*/checkpoint-*/
 
 # Logs / runtime
 outputs/**/*.log
+outputs/hf_upload.log
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .venv/
 .env
-
-# OS
 .DS_Store

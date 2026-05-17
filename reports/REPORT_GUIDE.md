@@ -36,7 +36,7 @@ Body after the header is free-form, but **must include** these three:
 
 ## Rules
 
-1. Every numeric claim cites `outputs/<run>/eval_results.json`.
+1. Every numeric claim cites `outputs/<run>/eval_{free,gt_length}.json`.
 2. Re-open the JSON before quoting a number. No memory, no chat history.
 3. Include the exact training and eval commands (the reproducibility line).
 4. Figures go in `reports/figures/`; save the generator script next to them.

@@ -12,7 +12,8 @@ def main():
     p.add_argument("--base", default=BASE_ID)
     p.add_argument("--test_file", default="data/test_1k.jsonl")
     p.add_argument("--n_eval", type=int, default=100)
-    p.add_argument("--max_new_tokens", type=int, default=128)
+    p.add_argument("--max_new_tokens", type=int, default=256)
+    p.add_argument("--mode", default="free", choices=["free", "gt_length"])
     p.add_argument("--out", default=None)
     args = p.parse_args()
     out_path = args.out or os.path.join(os.path.dirname(args.adapter) or ".", "eval_results.json")
@@ -36,11 +37,19 @@ def main():
         prompt = (f"<|im_start|>user\n{ex['instruction']}<|im_end|>\n"
                   f"<|im_start|>assistant\n")
         inputs = tok(prompt, return_tensors="pt").to(model.device)
+        if args.mode == "gt_length":
+            gt_tok = len(tok.encode(ex["fi"], add_special_tokens=False))
+            mnt = gt_tok
+        else:
+            mnt = args.max_new_tokens
         with torch.no_grad():
-            out = model.generate(**inputs, max_new_tokens=args.max_new_tokens,
-                                 do_sample=False, pad_token_id=tok.eos_token_id)
-        pred = tok.decode(out[0][inputs["input_ids"].shape[1]:],
-                          skip_special_tokens=True).strip()
+            out = model.generate(**inputs, max_new_tokens=mnt,
+                                 do_sample=False, pad_token_id=tok.eos_token_id,
+                                 eos_token_id=(None if args.mode == "gt_length" else tok.eos_token_id))
+        gen_ids = out[0][inputs["input_ids"].shape[1]:]
+        if args.mode == "gt_length":
+            gen_ids = gen_ids[:gt_tok]
+        pred = tok.decode(gen_ids, skip_special_tokens=True).strip()
         preds.append(pred); refs.append(ex["fi"])
         if i < 5:
             print(f"[{i}] EN: {ex['en'][:80]}\n    REF: {ex['fi'][:80]}\n    PRED: {pred[:80]}")

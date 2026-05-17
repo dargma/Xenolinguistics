@@ -88,7 +88,8 @@ def main():
     p.add_argument("--batch_size", type=int, default=1)
     p.add_argument("--grad_accum", type=int, default=8)
     p.add_argument("--max_len", type=int, default=512)
-    p.add_argument("--save_steps", type=int, default=500)
+    p.add_argument("--save_steps", type=int, default=4000)
+    p.add_argument("--save_total_limit", type=int, default=2)
     p.add_argument("--lora_rank", type=int, default=0, help="0 = full FT")
     p.add_argument("--lora_alpha", type=int, default=0)
     p.add_argument("--lora_target", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
@@ -139,7 +140,7 @@ def main():
         bf16=True,
         logging_steps=10,
         save_steps=args.save_steps,
-        save_total_limit=4,
+        save_total_limit=args.save_total_limit,
         report_to="none",
         gradient_checkpointing=False,
         optim="adamw_torch",
