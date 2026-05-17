@@ -17,11 +17,18 @@ def main():
     args = p.parse_args()
     out_path = args.out or os.path.join(os.path.dirname(args.adapter) or ".", "eval_results.json")
 
-    tok = AutoTokenizer.from_pretrained(args.adapter, trust_remote_code=True)
-    base = AutoModelForCausalLM.from_pretrained(
-        args.base, torch_dtype=torch.bfloat16, device_map="auto"
-    )
-    model = PeftModel.from_pretrained(base, args.adapter).eval()
+    is_lora = os.path.exists(os.path.join(args.adapter, "adapter_config.json"))
+    tok_src = args.base if is_lora and not os.path.exists(os.path.join(args.adapter, "tokenizer_config.json")) else args.adapter
+    tok = AutoTokenizer.from_pretrained(tok_src, trust_remote_code=True)
+    if is_lora:
+        base = AutoModelForCausalLM.from_pretrained(
+            args.base, torch_dtype=torch.bfloat16, device_map="auto"
+        )
+        model = PeftModel.from_pretrained(base, args.adapter).eval()
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.adapter, torch_dtype=torch.bfloat16, device_map="auto"
+        ).eval()
 
     rows = [json.loads(l) for l in open(args.test_file)][:args.n_eval]
     preds, refs, examples = [], [], []

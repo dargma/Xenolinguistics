@@ -152,8 +152,8 @@ class Fast_dLLM_QwenForCausalLM:
 
                 if past_key_values is not None:
                     for layer_id in range(len(past_key_values)):
-                        past_key_values.key_cache[layer_id] = past_key_values.key_cache[layer_id][~finished_flag]
-                        past_key_values.value_cache[layer_id] = past_key_values.value_cache[layer_id][~finished_flag]
+                        past_key_values.layers[layer_id].keys = past_key_values.layers[layer_id].keys[~finished_flag]
+                        past_key_values.layers[layer_id].values = past_key_values.layers[layer_id].values[~finished_flag]
 
                 finished_flag = finished_flag[~finished_flag]
 

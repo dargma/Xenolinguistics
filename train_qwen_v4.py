@@ -39,41 +39,48 @@ def train(args):
     else:
         target_modules = args.target_modules.split(",")
 
-    lora_cfg = LoraConfig(
-        r=args.lora_rank, lora_alpha=args.lora_alpha,
-        lora_dropout=0.05, bias="none",
-        target_modules=target_modules,
-        task_type=TaskType.CAUSAL_LM
-    )
-    model = get_peft_model(model, lora_cfg)
-    model.print_trainable_parameters()
+    if args.lora_rank > 0:
+        lora_cfg = LoraConfig(
+            r=args.lora_rank, lora_alpha=args.lora_alpha,
+            lora_dropout=0.05, bias="none",
+            target_modules=target_modules,
+            task_type=TaskType.CAUSAL_LM
+        )
+        model = get_peft_model(model, lora_cfg)
+        model.print_trainable_parameters()
+    else:
+        print("Full FT mode (lora_rank=0)")
 
+    per_dev_bs = 4 if args.lora_rank > 0 else 1
+    grad_accum = 2 if args.lora_rank > 0 else 8
     sft_args = SFTConfig(
         output_dir=args.output_dir,
         num_train_epochs=args.epochs,
-        per_device_train_batch_size=4,
-        gradient_accumulation_steps=2,
+        per_device_train_batch_size=per_dev_bs,
+        gradient_accumulation_steps=grad_accum,
         learning_rate=args.lr,
         lr_scheduler_type="cosine",
         warmup_ratio=0.05,
         bf16=True,
         logging_steps=10,
         eval_strategy="steps", eval_steps=200,
-        save_steps=500,
+        save_steps=2000,
+        save_total_limit=2,
         report_to="none",
-        max_seq_length=256,
+        max_length=256,
         dataset_text_field="text",
     )
 
     trainer = SFTTrainer(model=model, args=sft_args,
-        train_dataset=train_ds, eval_dataset=val_ds, tokenizer=tokenizer)
+        train_dataset=train_ds, eval_dataset=val_ds, processing_class=tokenizer)
 
     start = time.time()
     trainer.train()
     elapsed = time.time() - start
 
-    model.save_pretrained(f"{args.output_dir}/adapter")
-    tokenizer.save_pretrained(f"{args.output_dir}/adapter")
+    save_subdir = "adapter" if args.lora_rank > 0 else "final"
+    model.save_pretrained(f"{args.output_dir}/{save_subdir}")
+    tokenizer.save_pretrained(f"{args.output_dir}/{save_subdir}")
 
     history = trainer.state.log_history
     train_loss = [(h["step"], h["loss"]) for h in history if "loss" in h and "eval_loss" not in h]

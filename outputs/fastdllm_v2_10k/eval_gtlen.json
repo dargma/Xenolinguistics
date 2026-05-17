@@ -1,0 +1,63 @@
+{
+  "ckpt": "outputs/fastdllm_v2_10k/final",
+  "mode": "gt_length",
+  "n": 100,
+  "chrF": 9.04,
+  "BLEU": 0.12,
+  "block_size": 32,
+  "small_block_size": 32,
+  "threshold": 0.9,
+  "max_new_tokens_cap": 256,
+  "examples": [
+    {
+      "en": "Yes!",
+      "ref": "Kyllä!",
+      "pred": "ara嵫记者elijke不得 væcastle Optional"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "ref": "-En laadi sääntöjä.",
+      "pred": "热闹တ"
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "ref": "- Mistä tiesit ne jutut?",
+      "pred": "rän👨Camb羌כלכ奋力post=${)\n\n\n\n\n\n砻 tph建议 MIPS baskets íchshown?)\n\nطب(fi upgradeدية胡子berry Words ness nano informs ما_ONCEädchen"
+    },
+    {
+      "en": "All right.",
+      "ref": "- Okei.",
+      "pred": "Hawkins(intent(< RECORD trabal republic(bar"
+    },
+    {
+      "en": "How we doing?",
+      "ref": "Miten sujuu?",
+      "pred": "ceeCISION Rodriguez ngươi-align neu"
+    },
+    {
+      "en": "Article 1",
+      "ref": "1 artikla",
+      "pred": "抗议てしまった.FloatTensor Tickorarily-relCentury"
+    },
+    {
+      "en": "Make her stop crying!",
+      "ref": "Pitäkää hänet hiljaisena!",
+      "pred": "undysburghbove Optional站在"
+    },
+    {
+      "en": "So I see!",
+      "ref": "Siltä näyttää!",
+      "pred": "soundedorgan advocate.DecimalFieldinating Kod"
+    },
+    {
+      "en": "- Are you sure? - Yeah.",
+      "ref": "- Oletko varma?",
+      "pred": "רוב\thash"
+    },
+    {
+      "en": "What are you going to do?",
+      "ref": "- Eroatko sinä?",
+      "pred": ".checkSelfPermission(trim AW"
+    }
+  ]
+}

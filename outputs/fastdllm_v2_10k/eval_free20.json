@@ -1,0 +1,63 @@
+{
+  "ckpt": "outputs/fastdllm_v2_10k/final",
+  "mode": "free",
+  "n": 20,
+  "chrF": 39.44,
+  "BLEU": 23.46,
+  "block_size": 32,
+  "small_block_size": 32,
+  "threshold": 0.9,
+  "max_new_tokens_cap": 256,
+  "examples": [
+    {
+      "en": "Yes!",
+      "ref": "Kyllä!",
+      "pred": "Kyllä!"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "ref": "-En laadi sääntöjä.",
+      "pred": "- En määääntöja."
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "ref": "- Mistä tiesit ne jutut?",
+      "pred": "Miten tiedit kaiksesta tietistä tänässä?"
+    },
+    {
+      "en": "All right.",
+      "ref": "- Okei.",
+      "pred": "Hyvä on."
+    },
+    {
+      "en": "How we doing?",
+      "ref": "Miten sujuu?",
+      "pred": "Miten meillä on?"
+    },
+    {
+      "en": "Article 1",
+      "ref": "1 artikla",
+      "pred": "1 artikla"
+    },
+    {
+      "en": "Make her stop crying!",
+      "ref": "Pitäkää hänet hiljaisena!",
+      "pred": "Lopeta hänen huutamäistä!"
+    },
+    {
+      "en": "So I see!",
+      "ref": "Siltä näyttää!",
+      "pred": "Niinä näkee!"
+    },
+    {
+      "en": "- Are you sure? - Yeah.",
+      "ref": "- Oletko varma?",
+      "pred": "- Oletko varma?"
+    },
+    {
+      "en": "What are you going to do?",
+      "ref": "- Eroatko sinä?",
+      "pred": "Mitä tehdään?"
+    }
+  ]
+}

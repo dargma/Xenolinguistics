@@ -25,7 +25,14 @@ reports/
 | Git commit | `<hash>` |
 ```
 
-Body after the header is free-form. Cover what matters for the run.
+Body after the header is free-form, but **must include** these three:
+
+1. **Loss curve** — training loss (and val loss if logged) across steps.
+   - Qwen: plot from `outputs/<run>/log_history.json` (entries with `loss` / `eval_loss`).
+   - Fast-dLLM v2: plot from `outputs/<run>/checkpoint-*/trainer_state.json` or from the `'loss': ...` lines in `train.log`.
+   - Save the figure at `reports/figures/<YYYY-MM-DD>-<short>-loss.png` and the generator script alongside.
+2. **Eval methodology** — which script, which `--mode`, the exact CLI command, `n_eval`, decode settings (greedy / threshold / max_new_tokens). One paragraph or a small table.
+3. **Reproducibility line** — exact training command + git commit hash.
 
 ## Rules
 

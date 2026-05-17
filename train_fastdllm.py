@@ -91,6 +91,9 @@ def main():
     p.add_argument("--save_steps", type=int, default=500)
     p.add_argument("--lora_rank", type=int, default=0, help="0 = full FT")
     p.add_argument("--lora_alpha", type=int, default=0)
+    p.add_argument("--lora_target", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
+                   help="comma-sep modules, or 'all-linear'. Exclude lm_head: known bf16 NaN trigger.")
+    p.add_argument("--seed", type=int, default=42)
     args = p.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -106,15 +109,18 @@ def main():
     )
     bd_size = model.config.bd_size
     print(f"bd_size={bd_size}")
-    model.gradient_checkpointing_enable()
+    # gradient_checkpointing disabled: transformers 5.x + bf16 + Fast-dLLM custom forward
+    # produces NaN loss via Trainer path despite direct forward being finite.
+    # model.gradient_checkpointing_enable()
     model.config.use_cache = False
 
     if args.lora_rank > 0:
         from peft import LoraConfig, get_peft_model
         alpha = args.lora_alpha or args.lora_rank * 2
+        tm = "all-linear" if args.lora_target == "all-linear" else args.lora_target.split(",")
         lcfg = LoraConfig(r=args.lora_rank, lora_alpha=alpha,
                           lora_dropout=0.05, bias="none",
-                          target_modules="all-linear")
+                          target_modules=tm)
         model.enable_input_require_grads()
         model = get_peft_model(model, lcfg)
         model.print_trainable_parameters()
@@ -135,13 +141,25 @@ def main():
         save_steps=args.save_steps,
         save_total_limit=4,
         report_to="none",
-        gradient_checkpointing=True,
+        gradient_checkpointing=False,
         optim="adamw_torch",
         remove_unused_columns=False,
         dataloader_num_workers=2,
+        seed=args.seed,
+        max_grad_norm=1.0,
     )
 
-    trainer = Trainer(
+    class NanGuardTrainer(Trainer):
+        def compute_loss(self, model, inputs, return_outputs=False, **kw):
+            out = model(**inputs)
+            loss = out.loss if hasattr(out, "loss") else out["loss"]
+            if not torch.isfinite(loss):
+                # surface the event but keep training alive: zero loss with grad-graph attached
+                print(f"[NanGuard] non-finite loss={loss.item()} → skipping update")
+                loss = sum(p.sum() * 0.0 for p in model.parameters() if p.requires_grad)
+            return (loss, out) if return_outputs else loss
+
+    trainer = NanGuardTrainer(
         model=model, args=targs, train_dataset=ds,
         data_collator=lambda b: collate(b, pad_id),
     )

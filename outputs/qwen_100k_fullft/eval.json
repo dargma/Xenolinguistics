@@ -1,0 +1,59 @@
+{
+  "adapter": "outputs/qwen_100k_fullft/checkpoint-7500",
+  "base": "Qwen/Qwen2.5-7B-Instruct",
+  "n": 100,
+  "chrF": 47.72,
+  "BLEU": 27.65,
+  "examples": [
+    {
+      "en": "Yes!",
+      "ref": "Kyllä!",
+      "pred": "Kyllä!"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "ref": "-En laadi sääntöjä.",
+      "pred": "- En määrää sääntöjä."
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "ref": "- Mistä tiesit ne jutut?",
+      "pred": "Mistä tiesit tuon?"
+    },
+    {
+      "en": "All right.",
+      "ref": "- Okei.",
+      "pred": "Hyvä on."
+    },
+    {
+      "en": "How we doing?",
+      "ref": "Miten sujuu?",
+      "pred": "Miten menee?"
+    },
+    {
+      "en": "Article 1",
+      "ref": "1 artikla",
+      "pred": "1 artikla"
+    },
+    {
+      "en": "Make her stop crying!",
+      "ref": "Pitäkää hänet hiljaisena!",
+      "pred": "- Lopettaa itkevä."
+    },
+    {
+      "en": "So I see!",
+      "ref": "Siltä näyttää!",
+      "pred": "Näin siis."
+    },
+    {
+      "en": "- Are you sure? - Yeah.",
+      "ref": "- Oletko varma?",
+      "pred": "- Oletko varma?"
+    },
+    {
+      "en": "What are you going to do?",
+      "ref": "- Eroatko sinä?",
+      "pred": "Mitä aiot tehdä?"
+    }
+  ]
+}

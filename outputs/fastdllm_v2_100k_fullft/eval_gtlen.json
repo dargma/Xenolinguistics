@@ -1,0 +1,63 @@
+{
+  "ckpt": "outputs/fastdllm_v2_100k_fullft/final",
+  "mode": "gt_length",
+  "n": 100,
+  "chrF": 32.55,
+  "BLEU": 9.97,
+  "block_size": 32,
+  "small_block_size": 32,
+  "threshold": 0.9,
+  "max_new_tokens_cap": 256,
+  "examples": [
+    {
+      "en": "Yes!",
+      "ref": "Kyllä!",
+      "pred": "Kyllä!"
+    },
+    {
+      "en": "- I don't make the rules.",
+      "ref": "-En laadi sääntöjä.",
+      "pred": "- En"
+    },
+    {
+      "en": "So how did you know all that stuff the other day?",
+      "ref": "- Mistä tiesit ne jutut?",
+      "pred": "Miten tiesit kaiken?"
+    },
+    {
+      "en": "All right.",
+      "ref": "- Okei.",
+      "pred": "Hyvä on."
+    },
+    {
+      "en": "How we doing?",
+      "ref": "Miten sujuu?",
+      "pred": "Miten mennään?"
+    },
+    {
+      "en": "Article 1",
+      "ref": "1 artikla",
+      "pred": "1 artikla"
+    },
+    {
+      "en": "Make her stop crying!",
+      "ref": "Pitäkää hänet hiljaisena!",
+      "pred": "Lopeta hänen"
+    },
+    {
+      "en": "So I see!",
+      "ref": "Siltä näyttää!",
+      "pred": "Siinäkö näen"
+    },
+    {
+      "en": "- Are you sure? - Yeah.",
+      "ref": "- Oletko varma?",
+      "pred": "- O"
+    },
+    {
+      "en": "What are you going to do?",
+      "ref": "- Eroatko sinä?",
+      "pred": "Mitä a"
+    }
+  ]
+}
