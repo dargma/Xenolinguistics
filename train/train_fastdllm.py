@@ -90,7 +90,9 @@ def main():
     p.add_argument("--max_len", type=int, default=512)
     p.add_argument("--save_steps", type=int, default=4000)
     p.add_argument("--save_total_limit", type=int, default=2)
-    p.add_argument("--lora_rank", type=int, default=0, help="0 = full FT")
+    # LoRA: --lora_rank N (>0) enables LoRA, 0 = Full FT (default).
+    # Suggested LoRA: --lora_rank 256 --lora_alpha 512 --lora_target all-linear (lr=5e-5)
+    p.add_argument("--lora_rank", type=int, default=0, help="0 = full FT, >0 = LoRA rank")
     p.add_argument("--lora_alpha", type=int, default=0)
     p.add_argument("--lora_target", default="q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj",
                    help="comma-sep modules, or 'all-linear'. Exclude lm_head: known bf16 NaN trigger.")

@@ -38,10 +38,7 @@ def main():
         seq_len = torch.tensor([input_ids.shape[1]], device=model.device)
         if args.mode == "gt_length":
             gt_tok = len(tok.encode(ex["fi"], add_special_tokens=False))
-            mnt = ((gt_tok + args.block_size - 1) // args.block_size) * args.block_size
-            mnt = max(mnt, args.block_size)
-        else:
-            mnt = args.max_new_tokens
+        mnt = args.max_new_tokens  # same denoise budget for both modes
         out = model.mdm_sample(
             input_ids, tokenizer=tok,
             block_size=args.block_size, small_block_size=args.small_block_size,
@@ -50,16 +47,15 @@ def main():
             use_block_cache=True, threshold=args.threshold,
         )
         gen_ids = out[0][input_ids.shape[1]:]
+        # Both modes use the same mnt=256 denoise budget. Strip EOS tail first.
+        eos_id = tok.eos_token_id
+        if eos_id is not None:
+            eos_pos = (gen_ids == eos_id).nonzero(as_tuple=True)[0]
+            if len(eos_pos) > 0:
+                gen_ids = gen_ids[:eos_pos[0]]
         if args.mode == "gt_length":
-            # Oracle cut at exact gt token length, ignore EOS
+            # Oracle-length cut on content tokens (EOS already stripped)
             gen_ids = gen_ids[:gt_tok]
-        else:
-            # free: cut at first EOS, fall back to mnt cap
-            eos_id = tok.eos_token_id
-            if eos_id is not None:
-                eos_pos = (gen_ids == eos_id).nonzero(as_tuple=True)[0]
-                if len(eos_pos) > 0:
-                    gen_ids = gen_ids[:eos_pos[0]]
         pred = tok.decode(gen_ids, skip_special_tokens=True).strip()
         preds.append(pred); refs.append(ex["fi"])
         if i < 5:

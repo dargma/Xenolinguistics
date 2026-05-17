@@ -39,14 +39,13 @@ def main():
         inputs = tok(prompt, return_tensors="pt").to(model.device)
         if args.mode == "gt_length":
             gt_tok = len(tok.encode(ex["fi"], add_special_tokens=False))
-            mnt = gt_tok
-        else:
-            mnt = args.max_new_tokens
+        mnt = args.max_new_tokens  # same budget for both
         with torch.no_grad():
             out = model.generate(**inputs, max_new_tokens=mnt,
-                                 do_sample=False, pad_token_id=tok.eos_token_id,
-                                 eos_token_id=(None if args.mode == "gt_length" else tok.eos_token_id))
+                                 do_sample=False, pad_token_id=tok.eos_token_id)
         gen_ids = out[0][inputs["input_ids"].shape[1]:]
+        # free: generate already stopped at EOS via eos_token_id.
+        # gt_length: cut at gt_tok content tokens (EOS already stops earlier paths).
         if args.mode == "gt_length":
             gen_ids = gen_ids[:gt_tok]
         pred = tok.decode(gen_ids, skip_special_tokens=True).strip()

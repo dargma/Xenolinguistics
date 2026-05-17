@@ -103,7 +103,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_id", default="Qwen/Qwen2.5-7B-Instruct")
     parser.add_argument("--target_modules", default="all-linear")
-    parser.add_argument("--lora_rank", type=int, default=16)
+    # LoRA: --lora_rank N (>0) enables LoRA, 0 = Full FT.
+    # Suggested LoRA: --lora_rank 256 --lora_alpha 512 --target_modules all-linear (lr=2e-4)
+    parser.add_argument("--lora_rank", type=int, default=0,
+                        help="0 = Full FT (default). >0 = LoRA with this rank.")
     parser.add_argument("--lora_alpha", type=int, default=32)
     parser.add_argument("--train_file", default="data/train_1k.jsonl")
     parser.add_argument("--val_file", default="data/val_1k.jsonl")

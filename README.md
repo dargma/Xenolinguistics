@@ -22,9 +22,15 @@
 |---|---|:---:|---|:---:|:---:|:---:|:---:|
 | `opus-mt-tc-big-en-fi` | NMT 베이스라인 | — | [HF](https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-fi) | **56.91** | **37.45** | — | — |
 | Qwen2.5-7B | Full FT, lr=2e-5 | 1 ep, 7500/10000 (75%) | [HF](https://huggingface.co/sungkwang2/qwen2.5-7b-en-fi-fullft-100k) | **47.72** | **27.65** | **46.33** | **25.18** |
-| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k) | 40.86 | 17.22 | 32.22 | 10.10 |
-| Fast-dLLM v2 7B | LoRA r=256, lr=5e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-lora256-100k) | 37.22 | 15.38 | 30.14 | 9.12 |
+| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k) | 40.86 | 17.22 | 40.25 | 18.79 |
 
+**평가 방법** (두 모드 모두):
+- `mnt = max_new_tokens = 256` 동일 (Diffusion의 denoise budget 비대칭 제거).
+- 모델은 256 토큰까지 생성 → `gen_ids[input_prompt:]` 만 남김.
+- **`free`**: 첫 EOS 토큰에서 컷. EOS 없으면 256까지 keep.
+- **`gt_length`**: 먼저 EOS 컷 → 그 후 `len_tok(fi_ref)` 토큰 cap (EOS와 ref 길이 중 빠른 것).
+- 디코드는 `skip_special_tokens=True`. chrF/BLEU는 `sacrebleu` 기본값 (corpus 레벨, n=100).
+- Reference NMT는 beam=4, `eval/eval_reference.py`.
 
 ---
 
@@ -79,19 +85,18 @@ python3 dataset/prepare_dataset.py --sizes 1k,10k,100k
 python3 eval/eval_reference.py
 ```
 
-### 4.2) Qwen2.5-7B + LoRA (≈ 3시간)
+### 4.2) Qwen2.5-7B Full FT (≈ 3시간)
 ```bash
 python3 train/train_qwen_v4.py \
   --train_file dataset/data/train_100k.jsonl --val_file dataset/data/val_1k.jsonl \
-  --output_dir outputs/qwen_100k_lora256 \
-  --target_modules all-linear --lora_rank 256 --lora_alpha 512 \
-  --lr 2e-4 --epochs 1
-python3 eval/eval_qwen.py --adapter outputs/qwen_100k_lora256/adapter \
-  --mode free      --out outputs/qwen_100k_lora256/eval_free.json
-python3 eval/eval_qwen.py --adapter outputs/qwen_100k_lora256/adapter \
-  --mode gt_length --out outputs/qwen_100k_lora256/eval_gt_length.json
+  --output_dir outputs/qwen_100k_fullft \
+  --lora_rank 0 \
+  --lr 2e-5 --epochs 1
+python3 eval/eval_qwen.py --adapter outputs/qwen_100k_fullft/final \
+  --mode free      --out outputs/qwen_100k_fullft/eval_free.json
+python3 eval/eval_qwen.py --adapter outputs/qwen_100k_fullft/final \
+  --mode gt_length --out outputs/qwen_100k_fullft/eval_gt_length.json
 ```
-`--lora_rank 0` 으로 같은 스크립트가 Full FT 모드 (batch=1, grad_accum=8).
 
 ### 4.3) Fast-dLLM v2 7B — Full FT (≈ 3시간)
 ```bash
@@ -106,34 +111,17 @@ python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_fullft/final \
   --mode gt_length --out outputs/fastdllm_v2_100k_fullft/eval_gt_length.json
 ```
 
-### 4.4) Fast-dLLM v2 7B — LoRA
-```bash
-python3 train/train_fastdllm.py \
-  --train_file dataset/data/train_100k.jsonl \
-  --output_dir outputs/fastdllm_v2_100k_lora256 \
-  --lr 5e-5 --epochs 1 --batch_size 1 --grad_accum 8 --max_len 512 \
-  --lora_rank 256 --lora_alpha 512 --lora_target all-linear
-python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_lora256/final \
-  --mode free      --out outputs/fastdllm_v2_100k_lora256/eval_free.json
-python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_lora256/final \
-  --mode gt_length --out outputs/fastdllm_v2_100k_lora256/eval_gt_length.json
-```
+## 5. 평가 모드
 
----
+두 모드 모두 `max_new_tokens=256` (동일 생성 예산 → Diffusion 모델의 denoise budget 비대칭 제거). 차이는 후처리만:
 
-## 5. 평가 모드 — 정확한 의미
-
-| 모드 | `max_new_tokens` | 종료/컷 규칙 | 용도 |
-|---|---|---|---|
-| `free` | 256 (cap) | 첫 EOS | 자연 생성 |
-| `gt_length` | `len_tok(fi_ref)` (Qwen) / 블록 정렬 (Fast-dLLM) | 정확히 `len_tok(fi_ref)` 토큰만큼 컷, EOS 무시 | 오라클 길이 비교 |
-
-모델별로 두 모드 모두 보고. 비교 행 안에서 모드 혼합 금지 (free vs free, gt_length vs gt_length만).
-
+| 모드 | 후처리 | 용도 |
+|---|---|---|
+| `free` | 첫 EOS에서 컷 | 자연 길이 비교 |
+| `gt_length` | EOS 스트립 후 `len_tok(fi_ref)` 토큰만큼 컷 | 오라클 길이 비교 |
 
 ## 참고
 
 - Fast-dLLM v2 7B — https://huggingface.co/Efficient-Large-Model/Fast_dLLM_v2_7B
 - Qwen2.5-7B-Instruct — https://huggingface.co/Qwen/Qwen2.5-7B-Instruct
 - OPUS-100 — https://huggingface.co/datasets/Helsinki-NLP/opus-100
-- Reference NMT — https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-fi
