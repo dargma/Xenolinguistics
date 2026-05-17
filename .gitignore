@@ -1,5 +1,5 @@
 # Data (regenerate via prepare_dataset.py)
-data/*.jsonl
+dataset/data/*.jsonl
 
 # Model artifacts (push to HF instead)
 outputs/*/adapter/

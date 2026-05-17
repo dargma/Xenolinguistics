@@ -1,23 +1,23 @@
-# Report guide
+# 보고서 가이드
 
-One file per run. Append-only. Never edit someone else's.
+런 하나당 파일 하나. Append-only. 타인 보고서 수정 금지.
 
-## Location
+## 위치
 
 ```
 reports/
 ├── REPORT_GUIDE.md
-├── figures/                  # flat: YYYY-MM-DD-<short>-<what>.{png,svg}
-└── <user_id>/                # your HF handle or github id, lowercase
+├── figures/                  # 평탄: YYYY-MM-DD-<short>-<what>.{png,svg}
+└── <user_id>/                # HF 핸들 또는 github id (소문자)
     └── YYYY-MM-DD-<short>.md
 ```
 
-## Mandatory header
+## 필수 헤더
 
 ```markdown
-# YYYY-MM-DD — <short title>
+# YYYY-MM-DD — <짧은 제목>
 
-| Field | Value |
+| 필드 | 값 |
 |---|---|
 | Author | <user_id> |
 | Date | YYYY-MM-DD |
@@ -25,39 +25,39 @@ reports/
 | Git commit | `<hash>` |
 ```
 
-Body after the header is free-form, but **must include** these three:
+본문은 자유 형식이지만 **다음 3가지는 필수**:
 
-1. **Loss curve** — training loss (and val loss if logged) across steps.
-   - Qwen: plot from `outputs/<run>/log_history.json` (entries with `loss` / `eval_loss`).
-   - Fast-dLLM v2: plot from `outputs/<run>/checkpoint-*/trainer_state.json` or from the `'loss': ...` lines in `train.log`.
-   - Save the figure at `reports/figures/<YYYY-MM-DD>-<short>-loss.png` and the generator script alongside.
-2. **Eval methodology** — which script, which `--mode`, the exact CLI command, `n_eval`, decode settings (greedy / threshold / max_new_tokens). One paragraph or a small table.
-3. **Reproducibility line** — exact training command + git commit hash.
+1. **Loss 곡선** — 학습 loss (있으면 val loss도) vs step.
+   - Qwen: `outputs/<run>/log_history.json` 의 `loss` / `eval_loss` 항목으로 플롯.
+   - Fast-dLLM v2: `outputs/<run>/checkpoint-*/trainer_state.json` 또는 `train.log` 의 `'loss': ...` 라인.
+   - 그림은 `reports/figures/<YYYY-MM-DD>-<short>-loss.png` 에, 생성 스크립트도 옆에.
+2. **평가 방법론** — 어떤 스크립트, 어떤 `--mode`, 정확한 CLI 명령, `n_eval`, 디코딩 설정(greedy / threshold / max_new_tokens). 한 단락 또는 작은 표.
+3. **재현 라인** — 정확한 학습 명령 + git commit 해시.
 
-## Rules
+## 규칙
 
-1. Every numeric claim cites `outputs/<run>/eval_{free,gt_length}.json`.
-2. Re-open the JSON before quoting a number. No memory, no chat history.
-3. Include the exact training and eval commands (the reproducibility line).
-4. Figures go in `reports/figures/`; save the generator script next to them.
-5. No bare conclusions — frame gaps relative to seed variation / baseline.
-6. New headline number → see [`CLAUDE.md`](../CLAUDE.md) §6 propagation rule.
+1. 모든 수치 주장은 `outputs/<run>/eval_{free,gt_length}.json` 인용.
+2. 인용 전 JSON 재오픈. 기억·대화 이력 금지.
+3. 학습/평가 명령 둘 다 포함 (재현 라인).
+4. 그림은 `reports/figures/`. 생성 스크립트는 옆에.
+5. 결론을 단독으로 쓰지 말 것 — 시드 분산 / 베이스라인 대비로 표현.
+6. 새 headline 숫자 → [`CLAUDE.md`](../CLAUDE.md) §6 전파 규칙.
 
-## Error-analysis axes (required for AR vs Diffusion comparisons, ≥ 3)
+## 에러 분석 축 (AR vs Diffusion 비교 필수, ≥ 3개 선택)
 
-| Axis | What to measure |
+| 축 | 측정 대상 |
 |---|---|
-| Length | `\|pred_tokens\| - \|gt_tokens\|` histogram |
-| Morphology | Finnish noun-case / verb-agreement errors (manual, n ≥ 30) |
-| Repetition | 2- and 3-gram repeat rate, normalized |
-| Stability | chrF spread across 5 seeds on the same prompt |
-| Faithfulness | Hallucinated vs dropped content spans (manual, n ≥ 20) |
+| 길이 | `|pred_tokens| - |gt_tokens|` 분포 |
+| 형태론 | 핀란드어 명사 격 / 동사 일치 오류 (수동, n ≥ 30) |
+| 반복 | 2-gram / 3-gram 반복률(정규화) |
+| 안정성 | 동일 prompt 5 seed의 chrF 분산 |
+| 충실도 | 환각 vs 누락 span (수동, n ≥ 20) |
 
-## Figure conventions
+## 그림 규약
 
-- Axis labels + legend mandatory; 150 DPI; 8 × 4 in default
-- Colors: opus-mt gray, Qwen blue, Fast-dLLM v2 orange
+- 축 라벨 + 범례 필수, 150 DPI, 기본 8 × 4 인치
+- 색: opus-mt 회색, Qwen 파랑, Fast-dLLM v2 주황
 
-## Number formatting
+## 수치 표기
 
-chrF/BLEU 2 decimals · loss 4 decimals · wall time `min` < 60 else `H:MM` · VRAM `X.X GB`
+chrF/BLEU 소수 2자리 · loss 소수 4자리 · wall time `min` < 60 그 외 `H:MM` · VRAM `X.X GB`

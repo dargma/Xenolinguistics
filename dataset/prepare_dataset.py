@@ -1,6 +1,6 @@
 """Prepare OPUS-100 en-fi data splits: train/val/test at 1k, 10k, 100k.
 
-Generates data/{train,val,test}_{1k,10k,100k}.jsonl with format:
+Generates dataset/data/{train,val,test}_{1k,10k,100k}.jsonl with format:
   {"instruction": "Translate to Finnish: <EN>", "output": "<FI>",
    "en": "<EN>", "fi": "<FI>"}
 
@@ -18,7 +18,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--sizes", default="1k,10k,100k",
                    help="comma-separated. tag → N: 1k=1000, 10k=10000, 100k=100000")
-    p.add_argument("--out_dir", default="data")
+    p.add_argument("--out_dir", default="dataset/data")
     p.add_argument("--seed", type=int, default=42)
     args = p.parse_args()
     os.makedirs(args.out_dir, exist_ok=True)

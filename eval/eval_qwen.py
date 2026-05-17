@@ -10,7 +10,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--adapter", default="outputs/qwen_100k/adapter")
     p.add_argument("--base", default=BASE_ID)
-    p.add_argument("--test_file", default="data/test_1k.jsonl")
+    p.add_argument("--test_file", default="dataset/data/test_1k.jsonl")
     p.add_argument("--n_eval", type=int, default=100)
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--mode", default="free", choices=["free", "gt_length"])

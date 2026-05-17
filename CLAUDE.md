@@ -1,43 +1,43 @@
-# AI assistant rules
+# AI 어시스턴트 규칙
 
-> Hard rules only. Commands + results → [`README.md`](README.md).
-> Reports → [`reports/REPORT_GUIDE.md`](reports/REPORT_GUIDE.md).
+> 하드 룰만. 명령어 + 결과 → [`README.md`](README.md).
+> 보고서 → [`reports/REPORT_GUIDE.md`](reports/REPORT_GUIDE.md).
 
-## Fixed model roles
+## 고정 모델 역할
 
-| Role | HF id |
+| 역할 | HF id |
 |---|---|
-| Reference NMT (never train) | `Helsinki-NLP/opus-mt-tc-big-en-fi` |
+| Reference NMT (학습 금지) | `Helsinki-NLP/opus-mt-tc-big-en-fi` |
 | AR LLM | `Qwen/Qwen2.5-7B-Instruct` |
 | Diffusion LLM | `Efficient-Large-Model/Fast_dLLM_v2_7B` |
 
-Changing the comparison → update this table first.
+비교 대상을 바꾸려면 이 표부터 갱신.
 
-## Hard rules
+## 하드 룰
 
-1. Each model reports **both** `free` and `gt_length` eval modes. Do not drop one.
-2. One run = one `outputs/<run>/` directory. Contents:
-   `eval_free.json`, `eval_gt_length.json`, `train.log`, plus the model
-   weights subdir (`final/` or `checkpoint-N/`). Nothing else.
-3. One run = one report under `reports/<user_id>/YYYY-MM-DD-<short>.md`.
-4. Never delete or edit someone else's report. Supersede with a new file.
-5. Numbers come from JSON files, never from chat or memory.
-6. New headline number → update the row in [`README.md`](README.md) §1 Results.
+1. 각 모델은 `free` 와 `gt_length` **두 모드 모두** 보고. 한쪽만 보고하지 말 것.
+2. 런 하나 = `outputs/<run>/` 하나. 구성: `eval_free.json`, `eval_gt_length.json`,
+   `train.log`, 모델 weight 서브디렉터리(`final/` 또는 `checkpoint-N/`). 그 외 금지.
+3. 런 하나 = 보고서 하나 (`reports/<user_id>/YYYY-MM-DD-<short>.md`).
+4. 타인의 보고서는 절대 삭제·수정 금지. 새 파일로 supersede.
+5. 숫자는 JSON에서. 대화·기억에서 가져오지 말 것.
+6. 새 headline 숫자 → [`README.md`](README.md) §1 표 갱신.
 
-## Anti-patterns
+## 안티패턴
 
-- ❌ Adding new top-level files for one-off scripts. Extend an existing one.
-- ❌ Editing weights in `outputs/` by hand.
-- ❌ Writing a "summary" markdown that paraphrases `eval_{free,gt_length}.json`. Open the JSON.
-- ❌ Compatibility patches outside `train/train_fastdllm.py` / `eval/fastdllm_generation.py` / `train/train_qwen_v4.py` / `eval/eval_*.py`.
-- ❌ Silent fallbacks (`try: ... except: pass`) around model loading. Errors should be loud.
-- ❌ Mixing modes in a single comparison row. Compare `free` vs `free` and `gt_length` vs `gt_length` only.
+- ❌ 일회용 스크립트를 위한 최상위 파일 추가. 기존 파일 확장으로.
+- ❌ `outputs/` 안 weight를 손으로 편집.
+- ❌ `eval_{free,gt_length}.json` 을 그대로 옮겨 적는 "요약" 마크다운. JSON을 직접 열 것.
+- ❌ 호환성 패치를 `train/train_fastdllm.py` / `eval/fastdllm_generation.py` /
+  `train/train_qwen_v4.py` / `eval/eval_*.py` 밖에 두는 행위.
+- ❌ 모델 로딩에 침묵 fallback (`try: ... except: pass`). 에러는 시끄럽게.
+- ❌ 한 비교 행 안에서 모드 혼합. `free` vs `free`, `gt_length` vs `gt_length` 만.
 
-## Comparison checklist
+## 비교 체크리스트
 
-Before claiming any comparison:
-1. Both `eval_free.json` and `eval_gt_length.json` opened. Numbers cited with path.
-2. Same `test_file` and `n_eval` in both.
-3. Same eval mode on both sides being compared.
-4. Qwen used the canonical chat template
+비교 주장 전에 확인:
+1. `eval_free.json` 과 `eval_gt_length.json` 을 직접 열어 경로와 함께 인용.
+2. 양쪽이 같은 `test_file` 과 `n_eval`.
+3. 양쪽이 같은 평가 모드.
+4. Qwen은 표준 chat template 사용
    (`<|im_start|>user\n...<|im_end|>\n<|im_start|>assistant\n`).

@@ -9,16 +9,16 @@ MODEL_ID = "Efficient-Large-Model/Fast_dLLM_v2_7B"
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--ckpt", default=MODEL_ID)
-    p.add_argument("--test_file", default="data/test_1k.jsonl")
+    p.add_argument("--test_file", default="dataset/data/test_1k.jsonl")
     p.add_argument("--n_eval", type=int, default=100)
     p.add_argument("--block_size", type=int, default=32)
     p.add_argument("--small_block_size", type=int, default=32)
     p.add_argument("--max_new_tokens", type=int, default=256)
     p.add_argument("--threshold", type=float, default=0.9)
-    p.add_argument("--mode", default="gt_length", choices=["gt_length", "free"],
-                   help="gt_length (default) = oracle target length, ceil(len_tok(fi_ref)/block_size)*block_size. "
-                        "Standard convention for diffusion LLM translation eval (LLaDA, Dream). "
-                        "free = max_new_tokens cap, no length info.")
+    p.add_argument("--mode", default="free", choices=["free", "gt_length"],
+                   help="free = first-EOS cut, max_new_tokens=256 cap (no length info). "
+                        "gt_length = generate ceil(len_tok(fi_ref)/block_size)*block_size masks "
+                        "and truncate to exactly len_tok(fi_ref) tokens (oracle length, EOS ignored).")
     p.add_argument("--out", default="eval_fastdllm.json")
     args = p.parse_args()
 

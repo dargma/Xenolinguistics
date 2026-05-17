@@ -7,7 +7,7 @@ MODEL_ID = "Helsinki-NLP/opus-mt-tc-big-en-fi"
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--test_file", default="data/test_1k.jsonl")
+    p.add_argument("--test_file", default="dataset/data/test_1k.jsonl")
     p.add_argument("--n_eval", type=int, default=100)
     p.add_argument("--num_beams", type=int, default=4)
     p.add_argument("--out", default="outputs/reference/eval_results.json")
