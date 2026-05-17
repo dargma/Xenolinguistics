@@ -21,15 +21,10 @@
 | 모델 | 방식 | 학습 진행 | 체크포인트 | chrF (free) | BLEU (free) | chrF (gt_length) | BLEU (gt_length) |
 |---|---|:---:|---|:---:|:---:|:---:|:---:|
 | `opus-mt-tc-big-en-fi` | NMT 베이스라인 | — | [HF](https://huggingface.co/Helsinki-NLP/opus-mt-tc-big-en-fi) | **56.91** | **37.45** | — | — |
-| Qwen2.5-7B | Full FT, lr=2e-5 | 1 ep, 7500/10000 (75%) | [HF](https://huggingface.co/sungkwang2/qwen2.5-7b-en-fi-fullft-100k) | **47.72** | **27.65** | 미측정 | 미측정 |
-| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k) | 40.86 | 17.22 | 미측정 | 미측정 |
-| Fast-dLLM v2 7B | LoRA r=256, lr=5e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-lora256-100k) | 37.22 | 15.38 | 미측정 | 미측정 |
+| Qwen2.5-7B | Full FT, lr=2e-5 | 1 ep, 7500/10000 (75%) | [HF](https://huggingface.co/sungkwang2/qwen2.5-7b-en-fi-fullft-100k) | **47.72** | **27.65** | **46.33** | **25.18** |
+| Fast-dLLM v2 7B | Full FT, lr=2e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-fullft-100k) | 40.86 | 17.22 | 32.22 | 10.10 |
+| Fast-dLLM v2 7B | LoRA r=256, lr=5e-5 | 1 ep, 10000/10000 (100%) | [HF](https://huggingface.co/sungkwang2/fastdllm-v2-7b-en-fi-lora256-100k) | 37.22 | 15.38 | 30.14 | 9.12 |
 
-같은 백본(Qwen2.5-7B 계열) → 품질 차이는 사전학습 데이터가 아니라 **생성 패러다임
-(AR vs block masked diffusion)** 때문입니다.
-
-**현 상태**: 모든 행에 대해 `free` 측정 완료. `gt_length` 통일 규칙 재측정 보류.
-Qwen LoRA r=256 100k는 디스크 이슈로 두 번 실패하여 보류.
 
 ---
 
@@ -61,19 +56,8 @@ print(torch.__version__, transformers.__version__, peft.__version__, trl.__versi
 
 ---
 
-## 3. 호환성 패치 (적용됨 — 되돌리지 말 것)
 
-| # | 이슈 | 위치 |
-|---|---|---|
-| Q1 | `apply_chat_template(tokenize=True)`가 `BatchEncoding` 반환 가능 | `train/train_fastdllm.py`의 `_tok()` |
-| Q2 | `gradient_checkpointing=True` + bf16 + Fast-dLLM 커스텀 forward → NaN loss | `train/train_fastdllm.py:144` 에서 비활성화 |
-| Q3 | `DynamicCache.key_cache[i]` 제거 → `.layers[i].keys/.values` 사용 | `eval/fastdllm_generation.py:155` |
-| Q4 | `batch_sample`가 `prompt_len <= block_size`일 때 past_key_values None으로 크래시 | `eval/fastdllm_generation.py:153` 가드 |
-| Q5 | `trl.SFTTrainer`가 `tokenizer=` kwarg 제거 → `processing_class=` 사용 | `train/train_qwen_v4.py:74` |
-
----
-
-## 4. 데이터 준비
+## 3. 데이터 준비
 
 ```bash
 python3 dataset/prepare_dataset.py --sizes 1k,10k,100k
@@ -86,16 +70,16 @@ python3 dataset/prepare_dataset.py --sizes 1k,10k,100k
 
 ---
 
-## 5. 학습 + 평가
+## 4. 학습 + 평가
 
 런 하나 = `outputs/<run>/` 디렉터리 하나 = `eval_*.json` (모드별) 하나.
 
-### 5.1) Reference NMT 베이스라인 (학습 없음, < 1분)
+### 4.1) Reference NMT 베이스라인 (학습 없음, < 1분)
 ```bash
 python3 eval/eval_reference.py
 ```
 
-### 5.2) Qwen2.5-7B + LoRA (≈ 3시간)
+### 4.2) Qwen2.5-7B + LoRA (≈ 3시간)
 ```bash
 python3 train/train_qwen_v4.py \
   --train_file dataset/data/train_100k.jsonl --val_file dataset/data/val_1k.jsonl \
@@ -109,7 +93,7 @@ python3 eval/eval_qwen.py --adapter outputs/qwen_100k_lora256/adapter \
 ```
 `--lora_rank 0` 으로 같은 스크립트가 Full FT 모드 (batch=1, grad_accum=8).
 
-### 5.3) Fast-dLLM v2 7B — Full FT (≈ 3시간)
+### 4.3) Fast-dLLM v2 7B — Full FT (≈ 3시간)
 ```bash
 python3 train/train_fastdllm.py \
   --train_file dataset/data/train_100k.jsonl \
@@ -122,7 +106,7 @@ python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_fullft/final \
   --mode gt_length --out outputs/fastdllm_v2_100k_fullft/eval_gt_length.json
 ```
 
-### 5.4) Fast-dLLM v2 7B — LoRA
+### 4.4) Fast-dLLM v2 7B — LoRA
 ```bash
 python3 train/train_fastdllm.py \
   --train_file dataset/data/train_100k.jsonl \
@@ -137,7 +121,7 @@ python3 eval/eval_fastdllm.py --ckpt outputs/fastdllm_v2_100k_lora256/final \
 
 ---
 
-## 6. 평가 모드 — 정확한 의미
+## 5. 평가 모드 — 정확한 의미
 
 | 모드 | `max_new_tokens` | 종료/컷 규칙 | 용도 |
 |---|---|---|---|
