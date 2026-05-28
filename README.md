@@ -50,7 +50,7 @@ n=300 (`eval_ft.py`). 숫자는 `outputs/klingon_ft_eval_{ar,diffusion}.json`.
 
 해석: 혼합/메트릭 의존적. **어순 τ에서 Diffusion>AR (0.936 vs 0.909) → H1 약한 지지**;
 전체 유창성(chrF/BLEU)은 AR 우세 (Diffusion 일부 입력 degenerate). 상세·loss 곡선·caveat:
-[`reports/dargma/2026-05-28-klingon-ar-vs-diffusion.md`](reports/dargma/2026-05-28-klingon-ar-vs-diffusion.md).
+[`reports/2026-05-28-klingon-ar-vs-diffusion.md`](reports/2026-05-28-klingon-ar-vs-diffusion.md).
 Khalani(55쌍)는 FT엔 너무 작아 ICL/탐색용으로만 취급.
 
 ---

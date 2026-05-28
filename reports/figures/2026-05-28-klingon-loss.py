@@ -24,6 +24,10 @@ a1.set_xlabel("step"); a1.set_ylabel("CE loss"); a1.legend(); a1.grid(alpha=.3)
 a2.plot(*zip(*df_tr), "o-", label="train loss", color="C1")
 a2.set_title("Diffusion — Fast-dLLM v2 7B full-FT (lr 2e-5, 1 ep)")
 a2.set_xlabel("step"); a2.set_ylabel("block-diffusion loss"); a2.legend(); a2.grid(alpha=.3)
+a2.annotate("eval/val loss not logged\n(no val set in diffusion trainer)",
+            xy=(0.96, 0.82), xycoords="axes fraction", ha="right", va="top",
+            fontsize=8, color="gray", style="italic",
+            bbox=dict(boxstyle="round", fc="white", ec="gray", alpha=.7))
 
 fig.suptitle("Klingon en→tlh full fine-tune — loss curves (2026-05-28)")
 fig.tight_layout()
