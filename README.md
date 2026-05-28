@@ -34,6 +34,27 @@
 
 ---
 
+## 1b. 결과 — 인공어 (conlang) en→인공어, full-FT
+
+가설: 인공어는 어휘+어순이 영어와 다르고 사전학습에 (대체로) 없으므로, 양방향 디코딩의
+Diffusion LLM이 AR LLM보다 — 특히 어순을 — 더 잘 학습할 것이다 (H1).
+
+### Klingon (OPUS Tatoeba en-tlh, 12.7k, OVS 어순)
+양쪽 동일: full-FT, lr 2e-5, 1 ep, eff.batch 8. eval: 0-shot, **양쪽 free-length 대칭**,
+n=300 (`eval_ft.py`). 숫자는 `outputs/klingon_ft_eval_{ar,diffusion}.json`.
+
+| 모델 | 체크포인트 | chrF | BLEU | EM | 어순 τ |
+|---|---|:---:|:---:|:---:|:---:|
+| Qwen2.5-7B (AR) | [HF](https://huggingface.co/sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft) | **38.43** | **10.40** | 8.33 | 0.909 |
+| Fast-dLLM v2 7B (Diffusion) | [HF](https://huggingface.co/sungkwang2/klingon-en2tlh-fastdllm-v2-7b-fullft) | 35.67 | 2.55 | **8.67** | **0.936** |
+
+해석: 혼합/메트릭 의존적. **어순 τ에서 Diffusion>AR (0.936 vs 0.909) → H1 약한 지지**;
+전체 유창성(chrF/BLEU)은 AR 우세 (Diffusion 일부 입력 degenerate). 상세·loss 곡선·caveat:
+[`reports/dargma/2026-05-28-klingon-ar-vs-diffusion.md`](reports/dargma/2026-05-28-klingon-ar-vs-diffusion.md).
+Khalani(55쌍)는 FT엔 너무 작아 ICL/탐색용으로만 취급.
+
+---
+
 ## 2. 환경
 
 | 항목 | 검증값 | 최저 요구 |

@@ -1,0 +1,64 @@
+{
+  "model_type": "ar",
+  "model_path": "/content/local_fast/outputs/klingon_qwen_fullft/final",
+  "test_file": "/content/local_fast/data/klingon/test.jsonl",
+  "n": 300,
+  "mode": "free",
+  "chrF": 38.43,
+  "BLEU": 10.4,
+  "exact_match": 8.33,
+  "word_order_tau": 0.909,
+  "word_order_tau_n": 77,
+  "examples": [
+    {
+      "en": "They must be cops.",
+      "ref": "Hung yaSpu' chaHbej.",
+      "pred": "chut qeSwI'pu' chaH."
+    },
+    {
+      "en": "My mouth forms a lot of saliva.",
+      "ref": "tlhepQe' law' lIng nujwIj.",
+      "pred": "tlhoS jIbIjqu' 'oH jatlhlu'wIj'e'."
+    },
+    {
+      "en": "This is the finest picture I have ever seen.",
+      "ref": "mIlloghvam 'ey law' Hoch latlh mIlloghmey vIleghpu'bogh 'ey puS.",
+      "pred": "mIllogh vIleghpu' 'IH law' Hoch vIleghpu' 'IH puS."
+    },
+    {
+      "en": "I like to look at old pictures.",
+      "ref": "ngo'bogh mIlloghmey beQ vItIv.",
+      "pred": "mIllogh qonwI'pu' vIlegh vIneH."
+    },
+    {
+      "en": "Are you coming to the store with me?",
+      "ref": "ngevwI'Daq vIghoStaHvIS chotlhej'a'?",
+      "pred": "jIghoStaH'a' chaHvaD beylIjDaq?"
+    },
+    {
+      "en": "She is dark-skinned.",
+      "ref": "Hurgh DIrDaj.",
+      "pred": "Doch 'IH ghaH."
+    },
+    {
+      "en": "What do we draw?",
+      "ref": "nuq wIDIj?",
+      "pred": "nuq wIHIv?"
+    },
+    {
+      "en": "I hate lawyers.",
+      "ref": "chut qeSwI'pu' vImuS.",
+      "pred": "chut qeSwI'pu' vImuS."
+    },
+    {
+      "en": "Revenge is the best revenge.",
+      "ref": "bortaS nIvqu' 'oH bortaS'e'.",
+      "pred": "Qaghqu' 'oH Qaghqu' je."
+    },
+    {
+      "en": "I can't put up with this smell.",
+      "ref": "pIwvam qab vISIQlaHbe'.",
+      "pred": "vay' vIlo'laHbe'."
+    }
+  ]
+}

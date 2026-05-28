@@ -1,0 +1,11 @@
+{"id": 13, "section": "Phrases", "instruction": "Translate to Khalani: May your spirit soar", "output": "Khas il'adare", "en": "May your spirit soar", "khalani": "Khas il'adare", "sources": ["comic"], "fold": 3}
+{"id": 38, "section": "Single Words/Terms", "instruction": "Translate to Khalani: Keepers of Wisdom", "output": "Alysaar", "en": "Keepers of Wisdom", "khalani": "Alysaar", "sources": ["novel"], "fold": 3}
+{"id": 48, "section": "Single Words/Terms", "instruction": "Translate to Khalani: Great forum", "output": "Khor-shakal", "en": "Great forum", "khalani": "Khor-shakal", "sources": ["novel"], "fold": 3}
+{"id": 50, "section": "Single Words/Terms", "instruction": "Translate to Khalani: Little hands", "output": "Kwah-kai", "en": "Little hands", "khalani": "Kwah-kai", "sources": ["novel"], "fold": 3}
+{"id": 25, "section": "Phrases", "instruction": "Translate to Khalani: Weapons primed", "output": "Ruwak khador", "en": "Weapons primed", "khalani": "Ruwak khador", "sources": ["SC2_ingame"], "fold": 3}
+{"id": 56, "section": "Single Words/Terms", "instruction": "Translate to Khalani: The Forged", "output": "Tal'darim", "en": "The Forged", "khalani": "Tal'darim", "sources": ["novel"], "fold": 3}
+{"id": 14, "section": "Phrases", "instruction": "Translate to Khalani: From order comes justice!", "output": "Khassar de templari!", "en": "From order comes justice!", "khalani": "Khassar de templari!", "sources": ["SC1_ingame", "SC2_ingame"], "fold": 3}
+{"id": 49, "section": "Single Words/Terms", "instruction": "Translate to Khalani: Great wonder", "output": "Koramund", "en": "Great wonder", "khalani": "Koramund", "sources": ["novel"], "fold": 3}
+{"id": 6, "section": "Phrases", "instruction": "Translate to Khalani: Cold fury!", "output": "Antu'kha", "en": "Cold fury!", "khalani": "Antu'kha", "sources": ["SC2_ingame"], "fold": 3}
+{"id": 16, "section": "Phrases", "instruction": "Translate to Khalani: We are as one", "output": "Ki nala atum", "en": "We are as one", "khalani": "Ki nala atum", "sources": ["SC2_ingame"], "fold": 3}
+{"id": 8, "section": "Phrases", "instruction": "Translate to Khalani: Death comes to all!", "output": "Doom'ha du nala", "en": "Death comes to all!", "khalani": "Doom'ha du nala", "sources": ["SC2_ingame"], "fold": 3}

@@ -1,0 +1,196 @@
+{
+  "model_type": "ar",
+  "ckpt": "Qwen/Qwen2.5-7B-Instruct",
+  "n_shot": 8,
+  "k_folds": 5,
+  "n_total": 110,
+  "chrF_macro_mean": 10.61,
+  "chrF_macro_std": 1.12,
+  "chrF_micro": 10.66,
+  "BLEU_micro": 0.34,
+  "exact_match_micro": 0.0,
+  "fold_scores": [
+    {
+      "fold": 0,
+      "chrF": 11.96,
+      "exact_match": 0.0,
+      "n": 22
+    },
+    {
+      "fold": 1,
+      "chrF": 9.62,
+      "exact_match": 0.0,
+      "n": 22
+    },
+    {
+      "fold": 2,
+      "chrF": 10.09,
+      "exact_match": 0.0,
+      "n": 22
+    },
+    {
+      "fold": 3,
+      "chrF": 11.95,
+      "exact_match": 0.0,
+      "n": 22
+    },
+    {
+      "fold": 4,
+      "chrF": 9.42,
+      "exact_match": 0.0,
+      "n": 22
+    }
+  ],
+  "fold_examples": [
+    {
+      "fold": 0,
+      "examples": [
+        {
+          "en": "They must be cops.",
+          "ref": "Hung yaSpu' chaHbej.",
+          "pred": "wa'wI' maH Sochegh."
+        },
+        {
+          "en": "She is dark-skinned.",
+          "ref": "Hurgh DIrDaj.",
+          "pred": "Daq nu'wI' Soch."
+        },
+        {
+          "en": "They probably know.",
+          "ref": "ghaytan Sov.",
+          "pred": "pu'wI'wa' evDaq."
+        },
+        {
+          "en": "Whether you agree or not, I’m going to do it.",
+          "ref": "bIQochchugh vIta' 'ej bIQochbe'chugh vIta'.",
+          "pred": "wa'vam vIqeyto'wI', wa'vam vISuqetlhwo'."
+        },
+        {
+          "en": "He said, 'May God help us!'",
+          "ref": "jatlh; «nuQaHjaj Qun'a'!»",
+          "pred": "pu' Hol wa'wa' SojDaHjaj!"
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "examples": [
+        {
+          "en": "My mouth forms a lot of saliva.",
+          "ref": "tlhepQe' law' lIng nujwIj.",
+          "pred": "chuQ nuqneHvIS."
+        },
+        {
+          "en": "What do we draw?",
+          "ref": "nuq wIDIj?",
+          "pred": "nuqDaq be' ma'egh?"
+        },
+        {
+          "en": "If it rains, I'll stay at home.",
+          "ref": "SISchugh juHwIjDaq jIratlh.",
+          "pred": "vISujDI' jeH wa'Daqne'."
+        },
+        {
+          "en": "It began to rain before I got home.",
+          "ref": "juHDaq jIpawpa' SISchoH.",
+          "pred": "wIjatlhchugh moH jatlh be'orghach."
+        },
+        {
+          "en": "I will explain it for you.",
+          "ref": "SoHvaD vIQIj.",
+          "pred": "chuQnuq nuq jeH."
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "examples": [
+        {
+          "en": "This is the finest picture I have ever seen.",
+          "ref": "mIlloghvam 'ey law' Hoch latlh mIlloghmey vIleghpu'bogh 'ey puS.",
+          "pred": "pu'Daq maHvISwI' jejDaqSo'ISwI'orgh Hol."
+        },
+        {
+          "en": "I hate lawyers.",
+          "ref": "chut qeSwI'pu' vImuS.",
+          "pred": "ghobe' jarwa'."
+        },
+        {
+          "en": "I'm sorry, I can't do that.",
+          "ref": "jIQoS. vIta'laHbe'.",
+          "pred": "nuQlu'e' SoH jajwa'egh."
+        },
+        {
+          "en": "Tony speaks English well.",
+          "ref": "DIvI' Hol jatlh to'nIy 'ej po'.",
+          "pred": "Tony anglIjDaq jeH."
+        },
+        {
+          "en": "May I use your pencil? Any one will do.",
+          "ref": "ghojmeH ghItlhwI'lIj vIlo' 'e' Dachaw''a'? vay' vISaHbe'.",
+          "pred": "nu qIpI' SochHa' Soch Ha'!"
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "examples": [
+        {
+          "en": "I like to look at old pictures.",
+          "ref": "ngo'bogh mIlloghmey beQ vItIv.",
+          "pred": "wa'loghvo'wI' Hol moH."
+        },
+        {
+          "en": "Revenge is the best revenge.",
+          "ref": "bortaS nIvqu' 'oH bortaS'e'.",
+          "pred": "qoplu'QoSta' qoplu'QaQta'."
+        },
+        {
+          "en": "You have eaten lunch, haven't you?",
+          "ref": "megh DaSopta' qar'a'?",
+          "pred": "toljatlh jajne', nu'evHa'?"
+        },
+        {
+          "en": "Actions, not words.",
+          "ref": "yIvang, yIjatlhQo'!",
+          "pred": "pojSoch, chaDoj."
+        },
+        {
+          "en": "Be a man.",
+          "ref": "loDna' yIDa!",
+          "pred": "chuQlu' Soch."
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "examples": [
+        {
+          "en": "Are you coming to the store with me?",
+          "ref": "ngevwI'Daq vIghoStaHvIS chotlhej'a'?",
+          "pred": "nu qo' stovHa' SoH?"
+        },
+        {
+          "en": "I can't put up with this smell.",
+          "ref": "pIwvam qab vISIQlaHbe'.",
+          "pred": "QaQqu'IHvam waSta'wa'oS."
+        },
+        {
+          "en": "He struck me in the face with his fist.",
+          "ref": "qabwIj tlhaw'ta'.",
+          "pred": "vISuvwI' chaStoH江eH. (Note: The character \"江\" is used here as a placeholder for the correct Klingon letter that represents the 'ch' sound followed by 'e', as the exact character may not be available or correctly represented in this context.)"
+        },
+        {
+          "en": "He's eating an apple.",
+          "ref": "'epIl naH SoptaH.",
+          "pred": "Hu' DIbaH江阴市天气预报。"
+        },
+        {
+          "en": "They hate each other.",
+          "ref": "muSchuq.",
+          "pred": "vISujDaq nuqneH."
+        }
+      ]
+    }
+  ]
+}
