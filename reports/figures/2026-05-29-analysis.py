@@ -33,7 +33,7 @@ for i, (a, t, f) in enumerate(zip(ar, tie, dff)):
     a2.text(a+t+f/2, i, str(f), va="center", ha="center", fontsize=9, color="white")
 a2.set_title("(B) Per-sentence chrF: who wins (n=300)"); a2.set_xlabel("sentences"); a2.legend(fontsize=8, loc="lower right")
 
-fig.suptitle("Klingon analysis — Diffusion over-generates; wins when output is English", fontsize=12)
+fig.suptitle("Klingon analysis — Diffusion stops late (longer output); wins when output is English", fontsize=12)
 fig.tight_layout(rect=[0, 0, 1, 0.95])
 fig.savefig("reports/figures/2026-05-29-analysis.png", dpi=130)
 print("saved reports/figures/2026-05-29-analysis.png")
