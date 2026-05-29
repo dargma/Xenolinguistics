@@ -27,13 +27,6 @@
 - **Khalani(55쌍)**: 양방향 모두 학습셋 암기(train loss ~0.18) + held-out 붕괴(chrF 11–15, EM 0)
   = 교과서적 과적합. 규모 한계로 우열 판단 불가 — "소량 인공어 FT = 암기" 사례.
 
-| 항목 | 값 |
-|---|---|
-| 날짜 | 2026-05-29 |
-| 비교 축 | 2 데이터셋(Klingon, Khalani) × 2 방향(순 en→X, 역 X→en) × 2 아키텍처(AR, Diffusion) |
-| AR / Diffusion 모델 | `Qwen/Qwen2.5-7B-Instruct` / `Efficient-Large-Model/Fast_dLLM_v2_7B` |
-| 환경 | `transformers 4.57.6`, `trl 1.4.0`, `torchao 0.17.0`, `peft 0.19.1` (5.x는 Fast-dLLM 생성이 깨짐) |
-
 **마스터 결과 매트릭스** (free 모드, 같은 방향끼리만 비교; 전체 수치·gt_length는 §3.1):
 
 | 데이터셋 · 방향 (n) | chrF (AR / Diff) | BLEU (AR / Diff) | 어순 τ (AR / Diff) |
@@ -216,8 +209,9 @@ Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습�
 
 ## 5. 재현성
 
-환경: `transformers 4.57.6` · `trl 1.4.0` · `torchao 0.17.0` · `peft 0.19.1`. 모델·데이터는
-`/content/local_fast`에서만 읽음(Drive는 백업).
+베이스 모델: AR `Qwen/Qwen2.5-7B-Instruct` · Diffusion `Efficient-Large-Model/Fast_dLLM_v2_7B`.
+환경: `transformers 4.57.6` · `trl 1.4.0` · `torchao 0.17.0` · `peft 0.19.1` (5.x는 Fast-dLLM 생성이
+깨짐). 모델·데이터는 `/content/local_fast`에서만 읽음(Drive는 백업).
 
 ```bash
 # 1) 데이터 (역방향은 instruction/output 스왑 → *_tlh2en.jsonl)
