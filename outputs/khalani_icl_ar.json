@@ -1,0 +1,196 @@
+{
+  "model_type": "ar",
+  "ckpt": "Qwen/Qwen2.5-7B-Instruct",
+  "n_shot": 8,
+  "k_folds": 5,
+  "n_total": 55,
+  "chrF_macro_mean": 14.08,
+  "chrF_macro_std": 1.3,
+  "chrF_micro": 14.13,
+  "BLEU_micro": 1.36,
+  "exact_match_micro": 0.0,
+  "fold_scores": [
+    {
+      "fold": 0,
+      "chrF": 13.09,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 1,
+      "chrF": 16.62,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 2,
+      "chrF": 13.96,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 3,
+      "chrF": 13.26,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 4,
+      "chrF": 13.49,
+      "exact_match": 0.0,
+      "n": 11
+    }
+  ],
+  "fold_examples": [
+    {
+      "fold": 0,
+      "examples": [
+        {
+          "en": "Oblivion awaits",
+          "ref": "Zerashk Gulida",
+          "pred": "Sraa'nir-awaited"
+        },
+        {
+          "en": "Prismatic core online",
+          "ref": "Peradak kural",
+          "pred": "Peradak ketha aghaanizha"
+        },
+        {
+          "en": "It shall be done",
+          "ref": "Ik ku dar anai",
+          "pred": "Sahk'thul"
+        },
+        {
+          "en": "To glory!",
+          "ref": "Por zalah",
+          "pred": "Za'calen!"
+        },
+        {
+          "en": "Intriguing",
+          "ref": "Veraku",
+          "pred": "Sahlan"
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "examples": [
+        {
+          "en": "Phase disruptors primed",
+          "ref": "Sal'orin khador",
+          "pred": "Sashar khador"
+        },
+        {
+          "en": "One Who Bears a Strong Heart",
+          "ref": "Talandar",
+          "pred": "Tah-khun Vaal"
+        },
+        {
+          "en": "Let me in the fight!",
+          "ref": "Zira vek kryor!",
+          "pred": "Shar'as ra'khi khas!"
+        },
+        {
+          "en": "Annihilation commencing",
+          "ref": "Andakur herak",
+          "pred": "Tahv khalessa"
+        },
+        {
+          "en": "It is destined",
+          "ref": "Ik sha'bi",
+          "pred": "Sahath khasa'een"
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "examples": [
+        {
+          "en": "Those Who Endure",
+          "ref": "Shel'na Kryhas",
+          "pred": "Tashaka Khael"
+        },
+        {
+          "en": "The Benefactor",
+          "ref": "Xava'tor",
+          "pred": "Tarnathak"
+        },
+        {
+          "en": "Great Teachers",
+          "ref": "Ihan-rii",
+          "pred": "Jen'el Khalessi"
+        },
+        {
+          "en": "Duty is my shield",
+          "ref": "Rautha sak ash",
+          "pred": "Tashan'u kahzhi'i"
+        },
+        {
+          "en": "Path of Ascension",
+          "ref": "Khala",
+          "pred": "Zerat kahzhan"
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "examples": [
+        {
+          "en": "May your spirit soar",
+          "ref": "Khas il'adare",
+          "pred": "Shiraka ketho"
+        },
+        {
+          "en": "Keepers of Wisdom",
+          "ref": "Alysaar",
+          "pred": "Vekh'tha'li"
+        },
+        {
+          "en": "Great forum",
+          "ref": "Khor-shakal",
+          "pred": "Dare'nulak"
+        },
+        {
+          "en": "Little hands",
+          "ref": "Kwah-kai",
+          "pred": "Zer'kha'avak"
+        },
+        {
+          "en": "Weapons primed",
+          "ref": "Ruwak khador",
+          "pred": "Qra'thun khador"
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "examples": [
+        {
+          "en": "We destroy",
+          "ref": "Na vazeal",
+          "pred": "Uhn'ad kael"
+        },
+        {
+          "en": "Prismatic beams aligning",
+          "ref": "Peradak aghanizha",
+          "pred": "Peradak kural kahatath"
+        },
+        {
+          "en": "This vessel shall avenge",
+          "ref": "Zak naku afal",
+          "pred": "Zha ketho sath kryos."
+        },
+        {
+          "en": "The gods watch over you",
+          "ref": "Anht zagatir nas",
+          "pred": "Aldur kyrath vena'kha."
+        },
+        {
+          "en": "great stewardship",
+          "ref": "Dae'Uhl",
+          "pred": "Gara kynarath"
+        }
+      ]
+    }
+  ]
+}

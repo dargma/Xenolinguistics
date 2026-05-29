@@ -1,0 +1,196 @@
+{
+  "model_type": "diffusion",
+  "ckpt": "Efficient-Large-Model/Fast_dLLM_v2_7B",
+  "n_shot": 8,
+  "k_folds": 5,
+  "n_total": 55,
+  "chrF_macro_mean": 11.29,
+  "chrF_macro_std": 1.3,
+  "chrF_micro": 11.27,
+  "BLEU_micro": 3.0,
+  "exact_match_micro": 0.0,
+  "fold_scores": [
+    {
+      "fold": 0,
+      "chrF": 10.63,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 1,
+      "chrF": 10.56,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 2,
+      "chrF": 10.16,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 3,
+      "chrF": 11.33,
+      "exact_match": 0.0,
+      "n": 11
+    },
+    {
+      "fold": 4,
+      "chrF": 13.77,
+      "exact_match": 0.0,
+      "n": 11
+    }
+  ],
+  "fold_examples": [
+    {
+      "fold": 0,
+      "examples": [
+        {
+          "en": "Oblivion awaits",
+          "ref": "Zerashk Gulida",
+          "pred": "Zy'na"
+        },
+        {
+          "en": "Prismatic core online",
+          "ref": "Peradak kural",
+          "pred": "Peradak a"
+        },
+        {
+          "en": "It shall be done",
+          "ref": "Ik ku dar anai",
+          "pred": "K'naa"
+        },
+        {
+          "en": "To glory!",
+          "ref": "Por zalah",
+          "pred": "Zyra!"
+        },
+        {
+          "en": "Intriguing",
+          "ref": "Veraku",
+          "pred": "Nel'na"
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "examples": [
+        {
+          "en": "Phase disruptors primed",
+          "ref": "Sal'orin khador",
+          "pred": "Ruw"
+        },
+        {
+          "en": "One Who Bears a Strong Heart",
+          "ref": "Talandar",
+          "pred": "Ethan'k'ar."
+        },
+        {
+          "en": "Let me in the fight!",
+          "ref": "Zira vek kryor!",
+          "pred": "Kael'adare ko'el!"
+        },
+        {
+          "en": "Annihilation commencing",
+          "ref": "Andakur herak",
+          "pred": "Dhun"
+        },
+        {
+          "en": "It is destined",
+          "ref": "Ik sha'bi",
+          "pred": "Ita'z"
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "examples": [
+        {
+          "en": "Those Who Endure",
+          "ref": "Shel'na Kryhas",
+          "pred": "Kael''ki atum"
+        },
+        {
+          "en": "The Benefactor",
+          "ref": "Xava'tor",
+          "pred": "Khalas'kha."
+        },
+        {
+          "en": "Great Teachers",
+          "ref": "Ihan-rii",
+          "pred": "Khanh'ki sean"
+        },
+        {
+          "en": "Duty is my shield",
+          "ref": "Rautha sak ash",
+          "pred": "Dhuk'kha."
+        },
+        {
+          "en": "Path of Ascension",
+          "ref": "Khala",
+          "pred": "Rah'kai ascension"
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "examples": [
+        {
+          "en": "May your spirit soar",
+          "ref": "Khas il'adare",
+          "pred": "Kael Toridas!"
+        },
+        {
+          "en": "Keepers of Wisdom",
+          "ref": "Alysaar",
+          "pred": "Kael'naa"
+        },
+        {
+          "en": "Great forum",
+          "ref": "Khor-shakal",
+          "pred": "Dae'U"
+        },
+        {
+          "en": "Little hands",
+          "ref": "Kwah-kai",
+          "pred": "Xava'kai"
+        },
+        {
+          "en": "Weapons primed",
+          "ref": "Ruwak khador",
+          "pred": "Sal'orin khador"
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "examples": [
+        {
+          "en": "We destroy",
+          "ref": "Na vazeal",
+          "pred": "Araziel kael!"
+        },
+        {
+          "en": "Prismatic beams aligning",
+          "ref": "Peradak aghanizha",
+          "pred": "Peradak kural kural."
+        },
+        {
+          "en": "This vessel shall avenge",
+          "ref": "Zak naku afal",
+          "pred": "Zv'el uhn'adarr."
+        },
+        {
+          "en": "The gods watch over you",
+          "ref": "Anht zagatir nas",
+          "pred": "Sar'yon uhn'adarr."
+        },
+        {
+          "en": "great stewardship",
+          "ref": "Dae'Uhl",
+          "pred": "Kael'na kael."
+        }
+      ]
+    }
+  ]
+}

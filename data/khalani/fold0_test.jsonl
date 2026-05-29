@@ -1,0 +1,11 @@
+{"id": 33, "section": "Phrases", "instruction": "Translate to Khalani: Oblivion awaits", "output": "Zerashk Gulida", "en": "Oblivion awaits", "khalani": "Zerashk Gulida", "sources": ["comic"], "fold": 0}
+{"id": 23, "section": "Phrases", "instruction": "Translate to Khalani: Prismatic core online", "output": "Peradak kural", "en": "Prismatic core online", "khalani": "Peradak kural", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 11, "section": "Phrases", "instruction": "Translate to Khalani: It shall be done", "output": "Ik ku dar anai", "en": "It shall be done", "khalani": "Ik ku dar anai", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 133, "section": "Affirmations", "instruction": "Translate to Khalani: To glory!", "output": "Por zalah", "en": "To glory!", "khalani": "Por zalah", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 31, "section": "Phrases", "instruction": "Translate to Khalani: Intriguing", "output": "Veraku", "en": "Intriguing", "khalani": "Veraku", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 27, "section": "Phrases", "instruction": "Translate to Khalani: On the wings of justice!", "output": "Sha'zu du templari", "en": "On the wings of justice!", "khalani": "Sha'zu du templari", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 34, "section": "Phrases", "instruction": "Translate to Khalani: The darkness writhes", "output": "Zhakul inok", "en": "The darkness writhes", "khalani": "Zhakul inok", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 35, "section": "Phrases", "instruction": "Translate to Khalani: Disruptor primed", "output": "Zintar khador", "en": "Disruptor primed", "khalani": "Zintar khador", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 3, "section": "Phrases", "instruction": "Translate to Khalani: Time for battle", "output": "Anan pokahl", "en": "Time for battle", "khalani": "Anan pokahl", "sources": ["SC2_ingame"], "fold": 0}
+{"id": 46, "section": "Single Words/Terms", "instruction": "Translate to Khalani: He Who Brings Order", "output": "Khas", "en": "He Who Brings Order", "khalani": "Khas", "sources": ["SC1_ingame"], "fold": 0}
+{"id": 20, "section": "Phrases", "instruction": "Translate to Khalani: You seek our service?", "output": "Nas beru uhn'adarr?", "en": "You seek our service?", "khalani": "Nas beru uhn'adarr?", "sources": ["SC2_ingame"], "fold": 0}

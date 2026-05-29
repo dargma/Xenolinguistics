@@ -1,0 +1,500 @@
+{"instruction": "Translate to Klingon: I am not tired.", "output": "jIDoy'be'.", "en": "I am not tired.", "klingon": "jIDoy'be'."}
+{"instruction": "Translate to Klingon: I may give up soon and just take a nap.", "output": "chaq tugh jIjegh 'ej jIDum neH.", "en": "I may give up soon and just take a nap.", "klingon": "chaq tugh jIjegh 'ej jIDum neH."}
+{"instruction": "Translate to Klingon: My father drives to work.", "output": "yaH SIchmeH puH Duj chIj vavwI'.", "en": "My father drives to work.", "klingon": "yaH SIchmeH puH Duj chIj vavwI'."}
+{"instruction": "Translate to Klingon: He is learning English.", "output": "DIvI' Hol ghojlI'.", "en": "He is learning English.", "klingon": "DIvI' Hol ghojlI'."}
+{"instruction": "Translate to Klingon: She drank milk.", "output": "nIm tlhutlh.", "en": "She drank milk.", "klingon": "nIm tlhutlh."}
+{"instruction": "Translate to Klingon: What did we miss?", "output": "nuq wIbuSHa'?", "en": "What did we miss?", "klingon": "nuq wIbuSHa'?"}
+{"instruction": "Translate to Klingon: They broke down the old house.", "output": "qach ngo' lupejta'.", "en": "They broke down the old house.", "klingon": "qach ngo' lupejta'."}
+{"instruction": "Translate to Klingon: The soup in the pot tasted very salty.", "output": "na'qu' chatlh'e' ngaSbogh 'un.", "en": "The soup in the pot tasted very salty.", "klingon": "na'qu' chatlh'e' ngaSbogh 'un."}
+{"instruction": "Translate to Klingon: What do you want to know that for?", "output": "qatlh DaSov DaneH?", "en": "What do you want to know that for?", "klingon": "qatlh DaSov DaneH?"}
+{"instruction": "Translate to Klingon: I swear it wasn't me.", "output": "jIvangbe' 'e' vI'Ip.", "en": "I swear it wasn't me.", "klingon": "jIvangbe' 'e' vI'Ip."}
+{"instruction": "Translate to Klingon: Our problem is the opposite.", "output": "Dop Dochmaj qay'.", "en": "Our problem is the opposite.", "klingon": "Dop Dochmaj qay'."}
+{"instruction": "Translate to Klingon: Would you wipe the table for me?", "output": "jIHvaD raS DalamHa'choHmoHlaH'a'?", "en": "Would you wipe the table for me?", "klingon": "jIHvaD raS DalamHa'choHmoHlaH'a'?"}
+{"instruction": "Translate to Klingon: Which seats do you like?", "output": "quSmey vIparHa'bogh tIngu'!", "en": "Which seats do you like?", "klingon": "quSmey vIparHa'bogh tIngu'!"}
+{"instruction": "Translate to Klingon: My father died before I got my diploma.", "output": "Qoyje'wIj vIHevta'pa' Heghpu' vavwI'.", "en": "My father died before I got my diploma.", "klingon": "Qoyje'wIj vIHevta'pa' Heghpu' vavwI'."}
+{"instruction": "Translate to Klingon: I tortured the prisoners.", "output": "qama'pu' vIjoy'ta'.", "en": "I tortured the prisoners.", "klingon": "qama'pu' vIjoy'ta'."}
+{"instruction": "Translate to Klingon: Tom hates liars.", "output": "nepwI'pu' muS tam.", "en": "Tom hates liars.", "klingon": "nepwI'pu' muS tam."}
+{"instruction": "Translate to Klingon: Tom never cheats.", "output": "not ngor tam.", "en": "Tom never cheats.", "klingon": "not ngor tam."}
+{"instruction": "Translate to Klingon: I can't come with you.", "output": "qatlhejlaHbe'.", "en": "I can't come with you.", "klingon": "qatlhejlaHbe'."}
+{"instruction": "Translate to Klingon: Is it a recent picture?", "output": "qen mIlloghvam qonlu''a'?", "en": "Is it a recent picture?", "klingon": "qen mIlloghvam qonlu''a'?"}
+{"instruction": "Translate to Klingon: I'm sorry I missed your party.", "output": "qaStaHvIS lopno'lIj jIDachmo' jIQoS.", "en": "I'm sorry I missed your party.", "klingon": "qaStaHvIS lopno'lIj jIDachmo' jIQoS."}
+{"instruction": "Translate to Klingon: That's my last word.", "output": "mu'wIj Qav 'oH mu'vam'e'.", "en": "That's my last word.", "klingon": "mu'wIj Qav 'oH mu'vam'e'."}
+{"instruction": "Translate to Klingon: Everything's very cheap.", "output": "qutlhqu' Hoch.", "en": "Everything's very cheap.", "klingon": "qutlhqu' Hoch."}
+{"instruction": "Translate to Klingon: I don't want them to see me.", "output": "mulegh vIneHbe'.", "en": "I don't want them to see me.", "klingon": "mulegh vIneHbe'."}
+{"instruction": "Translate to Klingon: He filled the bottle with water.", "output": "bal tebmeH bIQ lo'.", "en": "He filled the bottle with water.", "klingon": "bal tebmeH bIQ lo'."}
+{"instruction": "Translate to Klingon: In the end, we did not confess.", "output": "tagha' maDISbe'.", "en": "In the end, we did not confess.", "klingon": "tagha' maDISbe'."}
+{"instruction": "Translate to Klingon: I have a pain in my little toe.", "output": "'oy'taH Qay'wI'wIj.", "en": "I have a pain in my little toe.", "klingon": "'oy'taH Qay'wI'wIj."}
+{"instruction": "Translate to Klingon: Don't tell her anything.", "output": "ghaHvaD vay' yIja'Qo'!", "en": "Don't tell her anything.", "klingon": "ghaHvaD vay' yIja'Qo'!"}
+{"instruction": "Translate to Klingon: Why don't you give me the knife?", "output": "qatlh jIHvaD taj DanobQo'?", "en": "Why don't you give me the knife?", "klingon": "qatlh jIHvaD taj DanobQo'?"}
+{"instruction": "Translate to Klingon: He was surprised by what he saw.", "output": "mer Doch leghpu'bogh.", "en": "He was surprised by what he saw.", "klingon": "mer Doch leghpu'bogh."}
+{"instruction": "Translate to Klingon: This fresh raw fish is delicious.", "output": "'ey tlholbogh ghotI'vam ghoQ.", "en": "This fresh raw fish is delicious.", "klingon": "'ey tlholbogh ghotI'vam ghoQ."}
+{"instruction": "Translate to Klingon: They don't know us.", "output": "nuSovbe'.", "en": "They don't know us.", "klingon": "nuSovbe'."}
+{"instruction": "Translate to Klingon: Do you take plastic?", "output": "Huch chaw' Dalaj'a'?", "en": "Do you take plastic?", "klingon": "Huch chaw' Dalaj'a'?"}
+{"instruction": "Translate to Klingon: Their baby can walk.", "output": "yItlaH ghuchaj.", "en": "Their baby can walk.", "klingon": "yItlaH ghuchaj."}
+{"instruction": "Translate to Klingon: Eat fruits!", "output": "naHmey tISop!", "en": "Eat fruits!", "klingon": "naHmey tISop!"}
+{"instruction": "Translate to Klingon: I have sunglasses.", "output": "mIn QanwI' nguv vIghaj.", "en": "I have sunglasses.", "klingon": "mIn QanwI' nguv vIghaj."}
+{"instruction": "Translate to Klingon: Kittens are very playful.", "output": "roD reH vIghro'Hom.", "en": "Kittens are very playful.", "klingon": "roD reH vIghro'Hom."}
+{"instruction": "Translate to Klingon: Take off your socks, please.", "output": "paSloghlIj yItuQmoHHa'neS.", "en": "Take off your socks, please.", "klingon": "paSloghlIj yItuQmoHHa'neS."}
+{"instruction": "Translate to Klingon: Our TV is out of order.", "output": "Qapbe'taH HaSta jIHmaj.", "en": "Our TV is out of order.", "klingon": "Qapbe'taH HaSta jIHmaj."}
+{"instruction": "Translate to Klingon: She's trusted by everyone, isn't she?", "output": "ghaH voq Hoch qar'a'?", "en": "She's trusted by everyone, isn't she?", "klingon": "ghaH voq Hoch qar'a'?"}
+{"instruction": "Translate to Klingon: Tom and Mary both have ponytails.", "output": "DaQ ghaj tam me'rIy' je.", "en": "Tom and Mary both have ponytails.", "klingon": "DaQ ghaj tam me'rIy' je."}
+{"instruction": "Translate to Klingon: I don't like the ocean.", "output": "bIQ'a' vIpar.", "en": "I don't like the ocean.", "klingon": "bIQ'a' vIpar."}
+{"instruction": "Translate to Klingon: Go back to work.", "output": "pevumqa'!", "en": "Go back to work.", "klingon": "pevumqa'!"}
+{"instruction": "Translate to Klingon: Don't drink beer before going to bed.", "output": "QongDaq Da'elpa' HIq yItlhutlhQo'!", "en": "Don't drink beer before going to bed.", "klingon": "QongDaq Da'elpa' HIq yItlhutlhQo'!"}
+{"instruction": "Translate to Klingon: It is used by a great many people.", "output": "lulo' nuvpu' law'qu'.", "en": "It is used by a great many people.", "klingon": "lulo' nuvpu' law'qu'."}
+{"instruction": "Translate to Klingon: What changes the world is communication, not information.", "output": "qo' choH Qum'e', choHbe' De''e'.", "en": "What changes the world is communication, not information.", "klingon": "qo' choH Qum'e', choHbe' De''e'."}
+{"instruction": "Translate to Klingon: I don't believe God exists.", "output": "Qun'a' tu'lu' 'e' vIHarbe'.", "en": "I don't believe God exists.", "klingon": "Qun'a' tu'lu' 'e' vIHarbe'."}
+{"instruction": "Translate to Klingon: As soon as he saw me, he ran away.", "output": "muleghDI' Haw'.", "en": "As soon as he saw me, he ran away.", "klingon": "muleghDI' Haw'."}
+{"instruction": "Translate to Klingon: He seems hungry.", "output": "ghunglaw' ghaH.", "en": "He seems hungry.", "klingon": "ghunglaw' ghaH."}
+{"instruction": "Translate to Klingon: Tom doesn't want them.", "output": "bIH neHbe' tam.", "en": "Tom doesn't want them.", "klingon": "bIH neHbe' tam."}
+{"instruction": "Translate to Klingon: My mother is angry.", "output": "QeH SoSwI'.", "en": "My mother is angry.", "klingon": "QeH SoSwI'."}
+{"instruction": "Translate to Klingon: You aren't rich.", "output": "bImIpbe'.", "en": "You aren't rich.", "klingon": "bImIpbe'."}
+{"instruction": "Translate to Klingon: We saw him.", "output": "wIleghpu' maH.", "en": "We saw him.", "klingon": "wIleghpu' maH."}
+{"instruction": "Translate to Klingon: Let me treat you to a cup of coffee at the coffee shop over there.", "output": "pa' qa'vIn qachDaq SoHvaD qa'vIn vIje' vIneH.", "en": "Let me treat you to a cup of coffee at the coffee shop over there.", "klingon": "pa' qa'vIn qachDaq SoHvaD qa'vIn vIje' vIneH."}
+{"instruction": "Translate to Klingon: Let's try write a song together.", "output": "nItebHa' bom wIqon 'e' wInIDjaj.", "en": "Let's try write a song together.", "klingon": "nItebHa' bom wIqon 'e' wInIDjaj."}
+{"instruction": "Translate to Klingon: He is smarter than anyone.", "output": "ghaH val law' Hoch val puS.", "en": "He is smarter than anyone.", "klingon": "ghaH val law' Hoch val puS."}
+{"instruction": "Translate to Klingon: Tom has more friends than Mary.", "output": "tam juppu' law' law', me'rIy juppu' law' puS.", "en": "Tom has more friends than Mary.", "klingon": "tam juppu' law' law', me'rIy juppu' law' puS."}
+{"instruction": "Translate to Klingon: Animals have sharp teeth.", "output": "Ho'Du' jej ghaj Ha'DIbaHmey.", "en": "Animals have sharp teeth.", "klingon": "Ho'Du' jej ghaj Ha'DIbaHmey."}
+{"instruction": "Translate to Klingon: Today, I do not want to go to school.", "output": "DaHjaj DuSaQ vIjaH vIneHbe'.", "en": "Today, I do not want to go to school.", "klingon": "DaHjaj DuSaQ vIjaH vIneHbe'."}
+{"instruction": "Translate to Klingon: She visits him twice a year.", "output": "Hoch DIS cha'logh Such.", "en": "She visits him twice a year.", "klingon": "Hoch DIS cha'logh Such."}
+{"instruction": "Translate to Klingon: Is Tom stupid?", "output": "QIp'a' tam?", "en": "Is Tom stupid?", "klingon": "QIp'a' tam?"}
+{"instruction": "Translate to Klingon: I think this dictionary is useful for beginners.", "output": "ghojwI'pu' chu'vaD lI' mu'ghomvam 'e' vIQub.", "en": "I think this dictionary is useful for beginners.", "klingon": "ghojwI'pu' chu'vaD lI' mu'ghomvam 'e' vIQub."}
+{"instruction": "Translate to Klingon: He keeps two cats.", "output": "cha' vIghro' pol.", "en": "He keeps two cats.", "klingon": "cha' vIghro' pol."}
+{"instruction": "Translate to Klingon: He chipped the edge of the tea cup.", "output": "Dargh HIvje' HeH ghorpu'.", "en": "He chipped the edge of the tea cup.", "klingon": "Dargh HIvje' HeH ghorpu'."}
+{"instruction": "Translate to Klingon: I wash my hands.", "output": "ghopDu'wIj vISay'moH.", "en": "I wash my hands.", "klingon": "ghopDu'wIj vISay'moH."}
+{"instruction": "Translate to Klingon: That boy is speaking English.", "output": "DIvI' Hol jatlhtaH loDHomvetlh.", "en": "That boy is speaking English.", "klingon": "DIvI' Hol jatlhtaH loDHomvetlh."}
+{"instruction": "Translate to Klingon: He is talking.", "output": "jatlhtaH ghaH.", "en": "He is talking.", "klingon": "jatlhtaH ghaH."}
+{"instruction": "Translate to Klingon: I have two books.", "output": "cha' paqmey vIghaj.", "en": "I have two books.", "klingon": "cha' paqmey vIghaj."}
+{"instruction": "Translate to Klingon: If you would like some help, add me!", "output": "DuQaH vay' DaneHchugh, HIchel!", "en": "If you would like some help, add me!", "klingon": "DuQaH vay' DaneHchugh, HIchel!"}
+{"instruction": "Translate to Klingon: I think it's strange that no one is on the street this time of the day.", "output": "DaH HurDaq pagh tu'lu'mo' Huj 'e' vIQub.", "en": "I think it's strange that no one is on the street this time of the day.", "klingon": "DaH HurDaq pagh tu'lu'mo' Huj 'e' vIQub."}
+{"instruction": "Translate to Klingon: The bird flapped its wings.", "output": "telDu'Daj laqmoH bo'Degh.", "en": "The bird flapped its wings.", "klingon": "telDu'Daj laqmoH bo'Degh."}
+{"instruction": "Translate to Klingon: He died during surgery.", "output": "Hegh Haqlu'taHvIS.", "en": "He died during surgery.", "klingon": "Hegh Haqlu'taHvIS."}
+{"instruction": "Translate to Klingon: Take off your socks.", "output": "paSloghlIj yItuQHa'moH.", "en": "Take off your socks.", "klingon": "paSloghlIj yItuQHa'moH."}
+{"instruction": "Translate to Klingon: What bicycle do you like more?", "output": "qam Do Duj DamaSqu'bogh yIngu'!", "en": "What bicycle do you like more?", "klingon": "qam Do Duj DamaSqu'bogh yIngu'!"}
+{"instruction": "Translate to Klingon: He whistled as he walked.", "output": "yIttaHvIS 'uqtaH.", "en": "He whistled as he walked.", "klingon": "yIttaHvIS 'uqtaH."}
+{"instruction": "Translate to Klingon: We went on foot.", "output": "mayIt.", "en": "We went on foot.", "klingon": "mayIt."}
+{"instruction": "Translate to Klingon: Where can I find them?", "output": "nuqDaq chaH vItu'laH?", "en": "Where can I find them?", "klingon": "nuqDaq chaH vItu'laH?"}
+{"instruction": "Translate to Klingon: I think we're safe for a while.", "output": "qaStaHvIS poH ngaj maQobbe'law'.", "en": "I think we're safe for a while.", "klingon": "qaStaHvIS poH ngaj maQobbe'law'."}
+{"instruction": "Translate to Klingon: That might be Mary's ex-husband.", "output": "chaq me'rIy' loDnal Deq ghaH.", "en": "That might be Mary's ex-husband.", "klingon": "chaq me'rIy' loDnal Deq ghaH."}
+{"instruction": "Translate to Klingon: I think there has been some kind of mistake.", "output": "qaSlaw'pu' Qagh 'e' vIQub.", "en": "I think there has been some kind of mistake.", "klingon": "qaSlaw'pu' Qagh 'e' vIQub."}
+{"instruction": "Translate to Klingon: She wrote me four letters.", "output": "loS QIn mughItlhta'.", "en": "She wrote me four letters.", "klingon": "loS QIn mughItlhta'."}
+{"instruction": "Translate to Klingon: When I arrived, it was raining.", "output": "jIpawDI' SIStaH.", "en": "When I arrived, it was raining.", "klingon": "jIpawDI' SIStaH."}
+{"instruction": "Translate to Klingon: Tom wanted to save the world.", "output": "qo' toD neH tam.", "en": "Tom wanted to save the world.", "klingon": "qo' toD neH tam."}
+{"instruction": "Translate to Klingon: You see a tree.", "output": "Sor Dalegh.", "en": "You see a tree.", "klingon": "Sor Dalegh."}
+{"instruction": "Translate to Klingon: I don't mind the cold.", "output": "bIr 'e' vISaHbe'.", "en": "I don't mind the cold.", "klingon": "bIr 'e' vISaHbe'."}
+{"instruction": "Translate to Klingon: I lent Tom a flashlight.", "output": "tamvaD 'ul Sech vInoj.", "en": "I lent Tom a flashlight.", "klingon": "tamvaD 'ul Sech vInoj."}
+{"instruction": "Translate to Klingon: Thank you very much for the excellent coffee.", "output": "qa'vIn povmo' qatlho'qu'.", "en": "Thank you very much for the excellent coffee.", "klingon": "qa'vIn povmo' qatlho'qu'."}
+{"instruction": "Translate to Klingon: They bother me.", "output": "munuQ.", "en": "They bother me.", "klingon": "munuQ."}
+{"instruction": "Translate to Klingon: Tom taught Mary how to cook.", "output": "vutlaHmeH me'rIy' ghojmoH tam.", "en": "Tom taught Mary how to cook.", "klingon": "vutlaHmeH me'rIy' ghojmoH tam."}
+{"instruction": "Translate to Klingon: He became world-famous for his discovery.", "output": "Dochmeymo' tu'pu'bogh qo' naQDaq noychoH.", "en": "He became world-famous for his discovery.", "klingon": "Dochmeymo' tu'pu'bogh qo' naQDaq noychoH."}
+{"instruction": "Translate to Klingon: Let's eat lunch.", "output": "megh wISopjaj!", "en": "Let's eat lunch.", "klingon": "megh wISopjaj!"}
+{"instruction": "Translate to Klingon: Don't touch the glass.", "output": "HIvje' yIHotQo'!", "en": "Don't touch the glass.", "klingon": "HIvje' yIHotQo'!"}
+{"instruction": "Translate to Klingon: She was young.", "output": "Qup.", "en": "She was young.", "klingon": "Qup."}
+{"instruction": "Translate to Klingon: He looks like his father.", "output": "vavDaj rur.", "en": "He looks like his father.", "klingon": "vavDaj rur."}
+{"instruction": "Translate to Klingon: The projector doesn't work.", "output": "Qapbe' cha'wI'.", "en": "The projector doesn't work.", "klingon": "Qapbe' cha'wI'."}
+{"instruction": "Translate to Klingon: He lives near here.", "output": "Sum Daq Dabbogh.", "en": "He lives near here.", "klingon": "Sum Daq Dabbogh."}
+{"instruction": "Translate to Klingon: Do tell!", "output": "yIja'!", "en": "Do tell!", "klingon": "yIja'!"}
+{"instruction": "Translate to Klingon: My brother says he isn't afraid of the dark.", "output": "jatlh loDnI'wI'; ram Hajbe'.", "en": "My brother says he isn't afraid of the dark.", "klingon": "jatlh loDnI'wI'; ram Hajbe'."}
+{"instruction": "Translate to Klingon: I make lunch every day.", "output": "Hoch jaj megh vIvut.", "en": "I make lunch every day.", "klingon": "Hoch jaj megh vIvut."}
+{"instruction": "Translate to Klingon: I was looking for a weapon.", "output": "nuH vInejtaH.", "en": "I was looking for a weapon.", "klingon": "nuH vInejtaH."}
+{"instruction": "Translate to Klingon: He has decided to become a pilot.", "output": "'orwI' moj 'e' wuqpu'.", "en": "He has decided to become a pilot.", "klingon": "'orwI' moj 'e' wuqpu'."}
+{"instruction": "Translate to Klingon: The cats are meowing.", "output": "'Imyaghmey ghughtaH vIghro'mey.", "en": "The cats are meowing.", "klingon": "'Imyaghmey ghughtaH vIghro'mey."}
+{"instruction": "Translate to Klingon: He who lies for the truth is guilty.", "output": "DIv vItvaD nepbogh ghot'e'.", "en": "He who lies for the truth is guilty.", "klingon": "DIv vItvaD nepbogh ghot'e'."}
+{"instruction": "Translate to Klingon: I don't like my brother climbing the mountains.", "output": "HuDDaq toS loDnI'wI' 'e' vInaDbe'.", "en": "I don't like my brother climbing the mountains.", "klingon": "HuDDaq toS loDnI'wI' 'e' vInaDbe'."}
+{"instruction": "Translate to Klingon: Peter looks very young.", "output": "Qupqu'law' pIy'ter.", "en": "Peter looks very young.", "klingon": "Qupqu'law' pIy'ter."}
+{"instruction": "Translate to Klingon: It was only a dream.", "output": "bInajpu' neH.", "en": "It was only a dream.", "klingon": "bInajpu' neH."}
+{"instruction": "Translate to Klingon: Here's the house that Tom used to live in.", "output": "naDev juH qach'e' Dabpu'bogh tam tu'lu'.", "en": "Here's the house that Tom used to live in.", "klingon": "naDev juH qach'e' Dabpu'bogh tam tu'lu'."}
+{"instruction": "Translate to Klingon: Nobody has deleted this sentence.", "output": "mu'tlheghvam ngabmoHta' pagh.", "en": "Nobody has deleted this sentence.", "klingon": "mu'tlheghvam ngabmoHta' pagh."}
+{"instruction": "Translate to Klingon: Give me my sword.", "output": "'etlhwIj HInob.", "en": "Give me my sword.", "klingon": "'etlhwIj HInob."}
+{"instruction": "Translate to Klingon: Are we just friends?", "output": "juppu' neH maH'a'?", "en": "Are we just friends?", "klingon": "juppu' neH maH'a'?"}
+{"instruction": "Translate to Klingon: She lost a book.", "output": "paq chIlpu'.", "en": "She lost a book.", "klingon": "paq chIlpu'."}
+{"instruction": "Translate to Klingon: Bill, open the door.", "output": "bIl, lojmIt yIpoSmoH!", "en": "Bill, open the door.", "klingon": "bIl, lojmIt yIpoSmoH!"}
+{"instruction": "Translate to Klingon: Tom's hands trembled.", "output": "jel tam ghopDu'.", "en": "Tom's hands trembled.", "klingon": "jel tam ghopDu'."}
+{"instruction": "Translate to Klingon: Please do not feed the animals.", "output": "Ha'DIbaHmey tIje'Qo'!", "en": "Please do not feed the animals.", "klingon": "Ha'DIbaHmey tIje'Qo'!"}
+{"instruction": "Translate to Klingon: This is your first assignment.", "output": "Qu'lIj wa'DIch 'oH Qu'vam'e'.", "en": "This is your first assignment.", "klingon": "Qu'lIj wa'DIch 'oH Qu'vam'e'."}
+{"instruction": "Translate to Klingon: This is old news to me.", "output": "jIHvaD De' notlh 'oH.", "en": "This is old news to me.", "klingon": "jIHvaD De' notlh 'oH."}
+{"instruction": "Translate to Klingon: Both the parents are still living.", "output": "wej Heghpu' SoSDaj vavDaj je.", "en": "Both the parents are still living.", "klingon": "wej Heghpu' SoSDaj vavDaj je."}
+{"instruction": "Translate to Klingon: Please call us when you see the cat in this picture.", "output": "vIghro''e' 'aghbogh mIlloghvam DaleghDI' ghorI'neS!", "en": "Please call us when you see the cat in this picture.", "klingon": "vIghro''e' 'aghbogh mIlloghvam DaleghDI' ghorI'neS!"}
+{"instruction": "Translate to Klingon: There is no use in crying. No one will hear you.", "output": "lI'be' SaQtaHghachlIj. DuQoylaH pagh.", "en": "There is no use in crying. No one will hear you.", "klingon": "lI'be' SaQtaHghachlIj. DuQoylaH pagh."}
+{"instruction": "Translate to Klingon: Tom was murdered by Mary.", "output": "tam chot me'rIy''e'.", "en": "Tom was murdered by Mary.", "klingon": "tam chot me'rIy''e'."}
+{"instruction": "Translate to Klingon: Her new book is amazing.", "output": "Dun paq chu'Daj.", "en": "Her new book is amazing.", "klingon": "Dun paq chu'Daj."}
+{"instruction": "Translate to Klingon: Nobody has Internet in my country.", "output": "SepwIjDaq 'Internet naw'laHbe' pagh.", "en": "Nobody has Internet in my country.", "klingon": "SepwIjDaq 'Internet naw'laHbe' pagh."}
+{"instruction": "Translate to Klingon: Tom is my uncle.", "output": "'IrneHwI' ghaH tam'e'.", "en": "Tom is my uncle.", "klingon": "'IrneHwI' ghaH tam'e'."}
+{"instruction": "Translate to Klingon: If you do not surrender, you will die!", "output": "bIjeghbe'chugh vaj bIHegh!", "en": "If you do not surrender, you will die!", "klingon": "bIjeghbe'chugh vaj bIHegh!"}
+{"instruction": "Translate to Klingon: This is the place where my father was born.", "output": "naDev boghpu' vavwI'.", "en": "This is the place where my father was born.", "klingon": "naDev boghpu' vavwI'."}
+{"instruction": "Translate to Klingon: Hurry up.", "output": "pemoD!", "en": "Hurry up.", "klingon": "pemoD!"}
+{"instruction": "Translate to Klingon: You were just doing your duty.", "output": "Qu'lIj Data'taH neH.", "en": "You were just doing your duty.", "klingon": "Qu'lIj Data'taH neH."}
+{"instruction": "Translate to Klingon: Tom knows Mary.", "output": "me'rIy' Sov tam.", "en": "Tom knows Mary.", "klingon": "me'rIy' Sov tam."}
+{"instruction": "Translate to Klingon: I'll do the dishes, since you cooked.", "output": "bIvutta'mo' ngop vISay'moH jIH.", "en": "I'll do the dishes, since you cooked.", "klingon": "bIvutta'mo' ngop vISay'moH jIH."}
+{"instruction": "Translate to Klingon: He has money.", "output": "Huch ghaj.", "en": "He has money.", "klingon": "Huch ghaj."}
+{"instruction": "Translate to Klingon: She wanted to be alone.", "output": "mob neH.", "en": "She wanted to be alone.", "klingon": "mob neH."}
+{"instruction": "Translate to Klingon: I don't give a damn about you and your circumstances!", "output": "SoH ghu'lIj je SaSaHHa'chu' jay'!", "en": "I don't give a damn about you and your circumstances!", "klingon": "SoH ghu'lIj je SaSaHHa'chu' jay'!"}
+{"instruction": "Translate to Klingon: What do you want, cat?", "output": "nuqneH, vIghro'?", "en": "What do you want, cat?", "klingon": "nuqneH, vIghro'?"}
+{"instruction": "Translate to Klingon: I waited for an hour, but he didn't appear.", "output": "qaStaHvIS wa' rep jIloS, 'ach narghbe'.", "en": "I waited for an hour, but he didn't appear.", "klingon": "qaStaHvIS wa' rep jIloS, 'ach narghbe'."}
+{"instruction": "Translate to Klingon: He lent me two books.", "output": "cha' paqmey munojpu'.", "en": "He lent me two books.", "klingon": "cha' paqmey munojpu'."}
+{"instruction": "Translate to Klingon: Are those your horses?", "output": "SarghmeylIj bIH'a' Sarghvetlh'e'?", "en": "Are those your horses?", "klingon": "SarghmeylIj bIH'a' Sarghvetlh'e'?"}
+{"instruction": "Translate to Klingon: Your father works for a bank, doesn't he?", "output": "beylI' toy' vavlI' qar'a'?", "en": "Your father works for a bank, doesn't he?", "klingon": "beylI' toy' vavlI' qar'a'?"}
+{"instruction": "Translate to Klingon: He had called the rebels traitors.", "output": "lotlhwI'pu'vaD 'urwI'pu' pong.", "en": "He had called the rebels traitors.", "klingon": "lotlhwI'pu'vaD 'urwI'pu' pong."}
+{"instruction": "Translate to Klingon: He sat on the bed.", "output": "QongDaqDaq ba'choHpu'.", "en": "He sat on the bed.", "klingon": "QongDaqDaq ba'choHpu'."}
+{"instruction": "Translate to Klingon: We'll kill you.", "output": "pIHoH.", "en": "We'll kill you.", "klingon": "pIHoH."}
+{"instruction": "Translate to Klingon: He was standing behind the door.", "output": "lojmIt 'emDaq QamtaH.", "en": "He was standing behind the door.", "klingon": "lojmIt 'emDaq QamtaH."}
+{"instruction": "Translate to Klingon: Right then, go home.", "output": "SuH, juH yIjaH.", "en": "Right then, go home.", "klingon": "SuH, juH yIjaH."}
+{"instruction": "Translate to Klingon: I eat my breakfast at seven o'clock.", "output": "rep Soch nIQwIj jISop.", "en": "I eat my breakfast at seven o'clock.", "klingon": "rep Soch nIQwIj jISop."}
+{"instruction": "Translate to Klingon: I think I'm a good teacher.", "output": "ghojmoHwI' QaQ jIH 'e' vIQub.", "en": "I think I'm a good teacher.", "klingon": "ghojmoHwI' QaQ jIH 'e' vIQub."}
+{"instruction": "Translate to Klingon: We have the same name.", "output": "pong rap wIghaj.", "en": "We have the same name.", "klingon": "pong rap wIghaj."}
+{"instruction": "Translate to Klingon: It's been raining again.", "output": "SISqa'pu'.", "en": "It's been raining again.", "klingon": "SISqa'pu'."}
+{"instruction": "Translate to Klingon: Why aren't you helping him?", "output": "qatlh DaQaHtaHbe'?", "en": "Why aren't you helping him?", "klingon": "qatlh DaQaHtaHbe'?"}
+{"instruction": "Translate to Klingon: I don't know who that man is.", "output": "loDvam vIngu'laHbe'.", "en": "I don't know who that man is.", "klingon": "loDvam vIngu'laHbe'."}
+{"instruction": "Translate to Klingon: Take steady aim at the tiger.", "output": "tlhIghaqDaq vI' yIDub!", "en": "Take steady aim at the tiger.", "klingon": "tlhIghaqDaq vI' yIDub!"}
+{"instruction": "Translate to Klingon: I'll tell them.", "output": "vIja'.", "en": "I'll tell them.", "klingon": "vIja'."}
+{"instruction": "Translate to Klingon: How many people?", "output": "nuv 'ar?", "en": "How many people?", "klingon": "nuv 'ar?"}
+{"instruction": "Translate to Klingon: She married young.", "output": "nayDI' Qup.", "en": "She married young.", "klingon": "nayDI' Qup."}
+{"instruction": "Translate to Klingon: I don't steal.", "output": "jInIHbe'.", "en": "I don't steal.", "klingon": "jInIHbe'."}
+{"instruction": "Translate to Klingon: We have a cat. We all love cats.", "output": "vIghro' wIghaj. vIghro'mey DIparHa'qu' Hoch.", "en": "We have a cat. We all love cats.", "klingon": "vIghro' wIghaj. vIghro'mey DIparHa'qu' Hoch."}
+{"instruction": "Translate to Klingon: What he says is true in a sense.", "output": "loQ teH mu'meyDaj.", "en": "What he says is true in a sense.", "klingon": "loQ teH mu'meyDaj."}
+{"instruction": "Translate to Klingon: You're mistaken.", "output": "bIQagh.", "en": "You're mistaken.", "klingon": "bIQagh."}
+{"instruction": "Translate to Klingon: All at once it began to rain heavily.", "output": "pay' SISqu'choH.", "en": "All at once it began to rain heavily.", "klingon": "pay' SISqu'choH."}
+{"instruction": "Translate to Klingon: My unhappiness probably is because I very much like to be alone.", "output": "ghaytan nIteb jIratlh 'e' vIparHa'qu'mo' jIQuchHa'.", "en": "My unhappiness probably is because I very much like to be alone.", "klingon": "ghaytan nIteb jIratlh 'e' vIparHa'qu'mo' jIQuchHa'."}
+{"instruction": "Translate to Klingon: Don't bring any money to the party; just bring yourself.", "output": "'uQ'a'Daq Huch yItlhapQo'! yItlhap'egh neH!", "en": "Don't bring any money to the party; just bring yourself.", "klingon": "'uQ'a'Daq Huch yItlhapQo'! yItlhap'egh neH!"}
+{"instruction": "Translate to Klingon: He teaches English to his friends.", "output": "juppu'DajvaD DIvI' Hol ghojmoH.", "en": "He teaches English to his friends.", "klingon": "juppu'DajvaD DIvI' Hol ghojmoH."}
+{"instruction": "Translate to Klingon: Written in easy English, this book is suitable for beginners.", "output": "paqvam qonmeH DIvI' Hol nap lo'lu'mo' chu'wI'pu'vaD lI'.", "en": "Written in easy English, this book is suitable for beginners.", "klingon": "paqvam qonmeH DIvI' Hol nap lo'lu'mo' chu'wI'pu'vaD lI'."}
+{"instruction": "Translate to Klingon: Tom died young.", "output": "Qup tam HeghDI'.", "en": "Tom died young.", "klingon": "Qup tam HeghDI'."}
+{"instruction": "Translate to Klingon: I doubt if Tom would let me do that.", "output": "vIta' 'e' chaw' tam 'e' vIHon.", "en": "I doubt if Tom would let me do that.", "klingon": "vIta' 'e' chaw' tam 'e' vIHon."}
+{"instruction": "Translate to Klingon: Is this your cat?", "output": "vIghro'lIj 'oH'a'?", "en": "Is this your cat?", "klingon": "vIghro'lIj 'oH'a'?"}
+{"instruction": "Translate to Klingon: I plead not guilty.", "output": "jIDIvbe' vIjatlh.", "en": "I plead not guilty.", "klingon": "jIDIvbe' vIjatlh."}
+{"instruction": "Translate to Klingon: I don't want you following me.", "output": "chotlha' vIneHbe'.", "en": "I don't want you following me.", "klingon": "chotlha' vIneHbe'."}
+{"instruction": "Translate to Klingon: No.", "output": "ghobe'.", "en": "No.", "klingon": "ghobe'."}
+{"instruction": "Translate to Klingon: What do you think Tom is going to do?", "output": "nuq ta' tam 'e' DapIH?", "en": "What do you think Tom is going to do?", "klingon": "nuq ta' tam 'e' DapIH?"}
+{"instruction": "Translate to Klingon: Mary has visited Hungary.", "output": "maDyar Suchta' me'rIy'.", "en": "Mary has visited Hungary.", "klingon": "maDyar Suchta' me'rIy'."}
+{"instruction": "Translate to Klingon: I don't deserve to be this happy.", "output": "jIQuchqu' 'e' vIqotlhbe'.", "en": "I don't deserve to be this happy.", "klingon": "jIQuchqu' 'e' vIqotlhbe'."}
+{"instruction": "Translate to Klingon: She doesn't have a computer.", "output": "De'wI' ghajbe'.", "en": "She doesn't have a computer.", "klingon": "De'wI' ghajbe'."}
+{"instruction": "Translate to Klingon: But I don't want to escape, I want to see Italy.", "output": "'ach jInargh vIneHbe'. 'Italya' vIlegh vIneH.", "en": "But I don't want to escape, I want to see Italy.", "klingon": "'ach jInargh vIneHbe'. 'Italya' vIlegh vIneH."}
+{"instruction": "Translate to Klingon: It's not a good car, but it's a car.", "output": "puH Duj QaQ 'oHbe', 'ach puH Duj 'oH.", "en": "It's not a good car, but it's a car.", "klingon": "puH Duj QaQ 'oHbe', 'ach puH Duj 'oH."}
+{"instruction": "Translate to Klingon: That's pretty good.", "output": "majQa'!", "en": "That's pretty good.", "klingon": "majQa'!"}
+{"instruction": "Translate to Klingon: I want to eat some grapes.", "output": "ghIrep naHmey puS vISop vIneH.", "en": "I want to eat some grapes.", "klingon": "ghIrep naHmey puS vISop vIneH."}
+{"instruction": "Translate to Klingon: Tom is a sincere person.", "output": "ghot 'Il ghaH tam'e'.", "en": "Tom is a sincere person.", "klingon": "ghot 'Il ghaH tam'e'."}
+{"instruction": "Translate to Klingon: You may now kiss the bride.", "output": "DaH naywI' Dachop 'e' vIchaw'.", "en": "You may now kiss the bride.", "klingon": "DaH naywI' Dachop 'e' vIchaw'."}
+{"instruction": "Translate to Klingon: I'll be looking for a weapon.", "output": "nuH vInejtaH.", "en": "I'll be looking for a weapon.", "klingon": "nuH vInejtaH."}
+{"instruction": "Translate to Klingon: The boy took no notice of his father's advice.", "output": "vavDaj qeS buSHa' loDHom.", "en": "The boy took no notice of his father's advice.", "klingon": "vavDaj qeS buSHa' loDHom."}
+{"instruction": "Translate to Klingon: His wife seems to be a foreigner.", "output": "nov ghaHlaw' be'nalDaj'e'.", "en": "His wife seems to be a foreigner.", "klingon": "nov ghaHlaw' be'nalDaj'e'."}
+{"instruction": "Translate to Klingon: I'll get my diploma in two years.", "output": "cha' nem Qoyje'wIj vIHev.", "en": "I'll get my diploma in two years.", "klingon": "cha' nem Qoyje'wIj vIHev."}
+{"instruction": "Translate to Klingon: Two sheets were on the bed.", "output": "QongDaqDaq cha' tlhImmey tu'lu'.", "en": "Two sheets were on the bed.", "klingon": "QongDaqDaq cha' tlhImmey tu'lu'."}
+{"instruction": "Translate to Klingon: Is this your pencil?", "output": "ghojmeH ghItlhwI'lIj 'oH'a' Dochvam'e'?", "en": "Is this your pencil?", "klingon": "ghojmeH ghItlhwI'lIj 'oH'a' Dochvam'e'?"}
+{"instruction": "Translate to Klingon: Tom wants way too much money.", "output": "Huch 'Iqqu' neH tam.", "en": "Tom wants way too much money.", "klingon": "Huch 'Iqqu' neH tam."}
+{"instruction": "Translate to Klingon: Osamu Dazai killed himself.", "output": "HoH'eghta' 'oSamu' DaSay'.", "en": "Osamu Dazai killed himself.", "klingon": "HoH'eghta' 'oSamu' DaSay'."}
+{"instruction": "Translate to Klingon: Be careful.", "output": "peyep!", "en": "Be careful.", "klingon": "peyep!"}
+{"instruction": "Translate to Klingon: Do you have a house in Italy?", "output": "'Italya'Daq 'oHbogh juH qach'e' Daghaj'a'?", "en": "Do you have a house in Italy?", "klingon": "'Italya'Daq 'oHbogh juH qach'e' Daghaj'a'?"}
+{"instruction": "Translate to Klingon: I speak Ancient Greek.", "output": "'elaDya' Hol tIQ vIjatlh.", "en": "I speak Ancient Greek.", "klingon": "'elaDya' Hol tIQ vIjatlh."}
+{"instruction": "Translate to Klingon: Who knows?", "output": "Sov 'Iv?", "en": "Who knows?", "klingon": "Sov 'Iv?"}
+{"instruction": "Translate to Klingon: He is running.", "output": "qettaH.", "en": "He is running.", "klingon": "qettaH."}
+{"instruction": "Translate to Klingon: I am a Klingon warrior.", "output": "tlhIngan SuvwI' jIH.", "en": "I am a Klingon warrior.", "klingon": "tlhIngan SuvwI' jIH."}
+{"instruction": "Translate to Klingon: Where is the Turkish embassy?", "output": "nuqDaq 'oH turIqya' rIvSo''e'?", "en": "Where is the Turkish embassy?", "klingon": "nuqDaq 'oH turIqya' rIvSo''e'?"}
+{"instruction": "Translate to Klingon: Allah is great!", "output": "Dun Qun'a'!", "en": "Allah is great!", "klingon": "Dun Qun'a'!"}
+{"instruction": "Translate to Klingon: His aunt has three cats.", "output": "wej vIghro' ghaj 'e'mamnalDaj.", "en": "His aunt has three cats.", "klingon": "wej vIghro' ghaj 'e'mamnalDaj."}
+{"instruction": "Translate to Klingon: I'm hungry!", "output": "jIghung!", "en": "I'm hungry!", "klingon": "jIghung!"}
+{"instruction": "Translate to Klingon: Shut up and listen!", "output": "yItamchoH 'ej yI'Ij!", "en": "Shut up and listen!", "klingon": "yItamchoH 'ej yI'Ij!"}
+{"instruction": "Translate to Klingon: I think you're sitting in my seat.", "output": "quSDaq bIba'law'.", "en": "I think you're sitting in my seat.", "klingon": "quSDaq bIba'law'."}
+{"instruction": "Translate to Klingon: She bought it.", "output": "je'.", "en": "She bought it.", "klingon": "je'."}
+{"instruction": "Translate to Klingon: Nothing scares her.", "output": "ghIj pagh.", "en": "Nothing scares her.", "klingon": "ghIj pagh."}
+{"instruction": "Translate to Klingon: She was pretty, wasn't she?", "output": "'IH qar'a'?", "en": "She was pretty, wasn't she?", "klingon": "'IH qar'a'?"}
+{"instruction": "Translate to Klingon: They can't act.", "output": "DalaHbe' chaH.", "en": "They can't act.", "klingon": "DalaHbe' chaH."}
+{"instruction": "Translate to Klingon: He seems to be rich.", "output": "mIplaw' ghaH.", "en": "He seems to be rich.", "klingon": "mIplaw' ghaH."}
+{"instruction": "Translate to Klingon: Tell me how to play the game.", "output": "QujmeH mIw HIja'!", "en": "Tell me how to play the game.", "klingon": "QujmeH mIw HIja'!"}
+{"instruction": "Translate to Klingon: She is just a child.", "output": "puq neH ghaHtaH.", "en": "She is just a child.", "klingon": "puq neH ghaHtaH."}
+{"instruction": "Translate to Klingon: She wouldn't speak to him.", "output": "ghaHvaD jatlhQo'.", "en": "She wouldn't speak to him.", "klingon": "ghaHvaD jatlhQo'."}
+{"instruction": "Translate to Klingon: Is there a zoo in the city?", "output": "vengvamDaq Hu tu'lu''a'?", "en": "Is there a zoo in the city?", "klingon": "vengvamDaq Hu tu'lu''a'?"}
+{"instruction": "Translate to Klingon: You captured nothing.", "output": "pagh Dajon.", "en": "You captured nothing.", "klingon": "pagh Dajon."}
+{"instruction": "Translate to Klingon: They are proud of their clever son.", "output": "puqloD valchajmo' Hem chaH.", "en": "They are proud of their clever son.", "klingon": "puqloD valchajmo' Hem chaH."}
+{"instruction": "Translate to Klingon: Nothing bars our way.", "output": "Hemaj bot pagh.", "en": "Nothing bars our way.", "klingon": "Hemaj bot pagh."}
+{"instruction": "Translate to Klingon: I hope for your success.", "output": "bIQap 'e' vItul.", "en": "I hope for your success.", "klingon": "bIQap 'e' vItul."}
+{"instruction": "Translate to Klingon: There are too many people here. Let's go somewhere else.", "output": "naDev Hutvagh tu'lu'. Ha'! latlh Daq wIjaH!", "en": "There are too many people here. Let's go somewhere else.", "klingon": "naDev Hutvagh tu'lu'. Ha'! latlh Daq wIjaH!"}
+{"instruction": "Translate to Klingon: I've just sent an invitation for you.", "output": "qen qarItpu'.", "en": "I've just sent an invitation for you.", "klingon": "qen qarItpu'."}
+{"instruction": "Translate to Klingon: Were you sincere?", "output": "Su'Il'a'?", "en": "Were you sincere?", "klingon": "Su'Il'a'?"}
+{"instruction": "Translate to Klingon: He's our neighbor.", "output": "jIlma' ghaH.", "en": "He's our neighbor.", "klingon": "jIlma' ghaH."}
+{"instruction": "Translate to Klingon: We're saying \"Thank you\" to the great King.", "output": "voDleH DunvaD «pItlho'neS» majatlh.", "en": "We're saying \"Thank you\" to the great King.", "klingon": "voDleH DunvaD «pItlho'neS» majatlh."}
+{"instruction": "Translate to Klingon: Can Tom help us?", "output": "nuQaHlaH'a' tam?", "en": "Can Tom help us?", "klingon": "nuQaHlaH'a' tam?"}
+{"instruction": "Translate to Klingon: My birthday is next week.", "output": "wa' Hogh pIq qaS qoSwIj.", "en": "My birthday is next week.", "klingon": "wa' Hogh pIq qaS qoSwIj."}
+{"instruction": "Translate to Klingon: In the beginning God created the heaven and the earth.", "output": "bI'reS QI'tu' yav je chenmoHta' Qun'a'.", "en": "In the beginning God created the heaven and the earth.", "klingon": "bI'reS QI'tu' yav je chenmoHta' Qun'a'."}
+{"instruction": "Translate to Klingon: I am a student.", "output": "ghojwI' jIH.", "en": "I am a student.", "klingon": "ghojwI' jIH."}
+{"instruction": "Translate to Klingon: There is no guarantee that he'll be back next week.", "output": "rInpa' Hogh veb, cheghbejbe'ta' ghaH.", "en": "There is no guarantee that he'll be back next week.", "klingon": "rInpa' Hogh veb, cheghbejbe'ta' ghaH."}
+{"instruction": "Translate to Klingon: She doesn't know who the father is.", "output": "vav ngu'laHbe'.", "en": "She doesn't know who the father is.", "klingon": "vav ngu'laHbe'."}
+{"instruction": "Translate to Klingon: The tower fell into ruin.", "output": "ragh chalqach.", "en": "The tower fell into ruin.", "klingon": "ragh chalqach."}
+{"instruction": "Translate to Klingon: You killed Tom.", "output": "tam boHoH.", "en": "You killed Tom.", "klingon": "tam boHoH."}
+{"instruction": "Translate to Klingon: I lost my favorite pen.", "output": "ghItlhwI'wIj vImaSqu'bogh vIchIl.", "en": "I lost my favorite pen.", "klingon": "ghItlhwI'wIj vImaSqu'bogh vIchIl."}
+{"instruction": "Translate to Klingon: I need a stamp.", "output": "HIjmeH chaw' vIpoQ.", "en": "I need a stamp.", "klingon": "HIjmeH chaw' vIpoQ."}
+{"instruction": "Translate to Klingon: Are they looking at us?", "output": "nubejtaH'a'?", "en": "Are they looking at us?", "klingon": "nubejtaH'a'?"}
+{"instruction": "Translate to Klingon: She slapped him in the face.", "output": "qabDaj qIppu'.", "en": "She slapped him in the face.", "klingon": "qabDaj qIppu'."}
+{"instruction": "Translate to Klingon: He told me an interesting story.", "output": "jIHvaD lut Daj ja'.", "en": "He told me an interesting story.", "klingon": "jIHvaD lut Daj ja'."}
+{"instruction": "Translate to Klingon: Do you want to sit down?", "output": "bIba' DaneH'a'?", "en": "Do you want to sit down?", "klingon": "bIba' DaneH'a'?"}
+{"instruction": "Translate to Klingon: Tom is my enemy.", "output": "jaghwI' ghaH tam'e'.", "en": "Tom is my enemy.", "klingon": "jaghwI' ghaH tam'e'."}
+{"instruction": "Translate to Klingon: This mine will close down next month.", "output": "wa'waQ tlhIlHalvam SoQmoHlu'.", "en": "This mine will close down next month.", "klingon": "wa'waQ tlhIlHalvam SoQmoHlu'."}
+{"instruction": "Translate to Klingon: All human beings are mortal.", "output": "jubbe' Hoch Humanpu'.", "en": "All human beings are mortal.", "klingon": "jubbe' Hoch Humanpu'."}
+{"instruction": "Translate to Klingon: Do not forget!", "output": "yIlIjQo'!", "en": "Do not forget!", "klingon": "yIlIjQo'!"}
+{"instruction": "Translate to Klingon: I'm going to look for a weapon.", "output": "nuH vInej.", "en": "I'm going to look for a weapon.", "klingon": "nuH vInej."}
+{"instruction": "Translate to Klingon: I like pizza very much.", "output": "pItSa' chab vIparHa'qu'.", "en": "I like pizza very much.", "klingon": "pItSa' chab vIparHa'qu'."}
+{"instruction": "Translate to Klingon: Tom needs rest.", "output": "leSnIS tam.", "en": "Tom needs rest.", "klingon": "leSnIS tam."}
+{"instruction": "Translate to Klingon: It's dark out.", "output": "HurDaq Hurgh.", "en": "It's dark out.", "klingon": "HurDaq Hurgh."}
+{"instruction": "Translate to Klingon: Tom is impatient.", "output": "boH tam.", "en": "Tom is impatient.", "klingon": "boH tam."}
+{"instruction": "Translate to Klingon: Y is pronounced with the tongue approximating the hard palate.", "output": "yay jatlhmeH levDaq ghoSnIS jat.", "en": "Y is pronounced with the tongue approximating the hard palate.", "klingon": "yay jatlhmeH levDaq ghoSnIS jat."}
+{"instruction": "Translate to Klingon: Did Tom succeed?", "output": "Qap'a' tam?", "en": "Did Tom succeed?", "klingon": "Qap'a' tam?"}
+{"instruction": "Translate to Klingon: Don't let the enemy get close.", "output": "chol jagh 'e' yIchaw'Qo'!", "en": "Don't let the enemy get close.", "klingon": "chol jagh 'e' yIchaw'Qo'!"}
+{"instruction": "Translate to Klingon: Everything will work out.", "output": "Qapbej Hoch.", "en": "Everything will work out.", "klingon": "Qapbej Hoch."}
+{"instruction": "Translate to Klingon: She had a very beautiful wife.", "output": "be'nal 'IHqu' ghaj.", "en": "She had a very beautiful wife.", "klingon": "be'nal 'IHqu' ghaj."}
+{"instruction": "Translate to Klingon: I've been here since July.", "output": "qaSpu'DI' tera' jar Soch naDev jIHtaH.", "en": "I've been here since July.", "klingon": "qaSpu'DI' tera' jar Soch naDev jIHtaH."}
+{"instruction": "Translate to Klingon: Don't laugh at his mistake.", "output": "QaghDajmo' yIHaghQo'!", "en": "Don't laugh at his mistake.", "klingon": "QaghDajmo' yIHaghQo'!"}
+{"instruction": "Translate to Klingon: I like this place.", "output": "Daqvam vIparHa'.", "en": "I like this place.", "klingon": "Daqvam vIparHa'."}
+{"instruction": "Translate to Klingon: Tom is Mary's ex-boyfriend.", "output": "me'rIy bang Deq ghaH tam'e'.", "en": "Tom is Mary's ex-boyfriend.", "klingon": "me'rIy bang Deq ghaH tam'e'."}
+{"instruction": "Translate to Klingon: We can talk when you get back.", "output": "bIcheghDI' maja'chuqlaH.", "en": "We can talk when you get back.", "klingon": "bIcheghDI' maja'chuqlaH."}
+{"instruction": "Translate to Klingon: Don't come out here.", "output": "naDev yIghoSQo'!", "en": "Don't come out here.", "klingon": "naDev yIghoSQo'!"}
+{"instruction": "Translate to Klingon: Tom is joking.", "output": "qID tam.", "en": "Tom is joking.", "klingon": "qID tam."}
+{"instruction": "Translate to Klingon: Have courage.", "output": "yIyoH!", "en": "Have courage.", "klingon": "yIyoH!"}
+{"instruction": "Translate to Klingon: I'm very fortunate.", "output": "jIDo'qu'.", "en": "I'm very fortunate.", "klingon": "jIDo'qu'."}
+{"instruction": "Translate to Klingon: I want to buy a new bed linen.", "output": "QongDaq tlhIm chu' vIje' vIneH.", "en": "I want to buy a new bed linen.", "klingon": "QongDaq tlhIm chu' vIje' vIneH."}
+{"instruction": "Translate to Klingon: She turned away in anger.", "output": "QeHmo' tlhe'.", "en": "She turned away in anger.", "klingon": "QeHmo' tlhe'."}
+{"instruction": "Translate to Klingon: Cat eats bread.", "output": "tIr ngogh Sop vIghro'.", "en": "Cat eats bread.", "klingon": "tIr ngogh Sop vIghro'."}
+{"instruction": "Translate to Klingon: Unfortunately I was not in time for his speech.", "output": "Do'Ha' SoQDaj vI'IjmeH narghpu' 'eb jIpaSmo'.", "en": "Unfortunately I was not in time for his speech.", "klingon": "Do'Ha' SoQDaj vI'IjmeH narghpu' 'eb jIpaSmo'."}
+{"instruction": "Translate to Klingon: Our troops engaged with the enemy.", "output": "jagh HIvta' QaSmaj.", "en": "Our troops engaged with the enemy.", "klingon": "jagh HIvta' QaSmaj."}
+{"instruction": "Translate to Klingon: I usually get up at eight o'clock.", "output": "roD rep chorgh jIHu'.", "en": "I usually get up at eight o'clock.", "klingon": "roD rep chorgh jIHu'."}
+{"instruction": "Translate to Klingon: How did you know we were here?", "output": "naDev maHtaH chay' 'e' DaSov?", "en": "How did you know we were here?", "klingon": "naDev maHtaH chay' 'e' DaSov?"}
+{"instruction": "Translate to Klingon: Did your mother make those?", "output": "Dochmeyvetlh vutta''a' SoSlIj?", "en": "Did your mother make those?", "klingon": "Dochmeyvetlh vutta''a' SoSlIj?"}
+{"instruction": "Translate to Klingon: I'd say you're jealous.", "output": "bIghallaw'.", "en": "I'd say you're jealous.", "klingon": "bIghallaw'."}
+{"instruction": "Translate to Klingon: You walk quickly!", "output": "nom bIyIt!", "en": "You walk quickly!", "klingon": "nom bIyIt!"}
+{"instruction": "Translate to Klingon: Don't you have any good news?", "output": "QaQbogh De' chu' Daghajbe''a'?", "en": "Don't you have any good news?", "klingon": "QaQbogh De' chu' Daghajbe''a'?"}
+{"instruction": "Translate to Klingon: Where's the cat?", "output": "nuqDaq 'oHtaH vIghro''e'?", "en": "Where's the cat?", "klingon": "nuqDaq 'oHtaH vIghro''e'?"}
+{"instruction": "Translate to Klingon: Speak fast.", "output": "nom yIjatlh.", "en": "Speak fast.", "klingon": "nom yIjatlh."}
+{"instruction": "Translate to Klingon: She went out to buy some food.", "output": "Soj je'meH HurDaq jaHpu'.", "en": "She went out to buy some food.", "klingon": "Soj je'meH HurDaq jaHpu'."}
+{"instruction": "Translate to Klingon: She isn't young.", "output": "Qupbe'.", "en": "She isn't young.", "klingon": "Qupbe'."}
+{"instruction": "Translate to Klingon: I love the smell of coffee in the morning.", "output": "po qa'vIn pIw vImuSHa'.", "en": "I love the smell of coffee in the morning.", "klingon": "po qa'vIn pIw vImuSHa'."}
+{"instruction": "Translate to Klingon: Tom isn't bad-looking.", "output": "moHbe' tam.", "en": "Tom isn't bad-looking.", "klingon": "moHbe' tam."}
+{"instruction": "Translate to Klingon: Sign here, please.", "output": "naDev yIqI'!", "en": "Sign here, please.", "klingon": "naDev yIqI'!"}
+{"instruction": "Translate to Klingon: He has just come here by taxi.", "output": "naDev ghoSmeH ra'wI' lupwI' lIgh.", "en": "He has just come here by taxi.", "klingon": "naDev ghoSmeH ra'wI' lupwI' lIgh."}
+{"instruction": "Translate to Klingon: How many hours a day do you sleep?", "output": "qaStaHvIS wa' jaj rep 'ar bIQong?", "en": "How many hours a day do you sleep?", "klingon": "qaStaHvIS wa' jaj rep 'ar bIQong?"}
+{"instruction": "Translate to Klingon: Tom hates carrots.", "output": "qe'rot 'oQqarmey muS tam.", "en": "Tom hates carrots.", "klingon": "qe'rot 'oQqarmey muS tam."}
+{"instruction": "Translate to Klingon: She's drinking a glass of white wine.", "output": "ghIrep naH HIq chIS HIvje' tlhutlhtaH.", "en": "She's drinking a glass of white wine.", "klingon": "ghIrep naH HIq chIS HIvje' tlhutlhtaH."}
+{"instruction": "Translate to Klingon: Hearing the news they all cried for joy.", "output": "De' chu' luQoyDI' Quchmo' SaQ Hoch.", "en": "Hearing the news they all cried for joy.", "klingon": "De' chu' luQoyDI' Quchmo' SaQ Hoch."}
+{"instruction": "Translate to Klingon: Bacteria do not reproduce in alcohol.", "output": "HIqDaq law''eghmoHbe' lerupmey.", "en": "Bacteria do not reproduce in alcohol.", "klingon": "HIqDaq law''eghmoHbe' lerupmey."}
+{"instruction": "Translate to Klingon: Don't put your elbows on the table.", "output": "raSDaq DeSqIvDu'lIj tIlanQo'!", "en": "Don't put your elbows on the table.", "klingon": "raSDaq DeSqIvDu'lIj tIlanQo'!"}
+{"instruction": "Translate to Klingon: He is a merry fellow.", "output": "ghot Quch ghaH.", "en": "He is a merry fellow.", "klingon": "ghot Quch ghaH."}
+{"instruction": "Translate to Klingon: You annoy me.", "output": "chonuQ.", "en": "You annoy me.", "klingon": "chonuQ."}
+{"instruction": "Translate to Klingon: I'll speak to Tom.", "output": "tamvaD jIjatlh.", "en": "I'll speak to Tom.", "klingon": "tamvaD jIjatlh."}
+{"instruction": "Translate to Klingon: She needs some help from us.", "output": "loQ wIboQ 'e' poQ.", "en": "She needs some help from us.", "klingon": "loQ wIboQ 'e' poQ."}
+{"instruction": "Translate to Klingon: Tom and Mary were talking to each other.", "output": "ja'chuqtaH tam me'rIy' je.", "en": "Tom and Mary were talking to each other.", "klingon": "ja'chuqtaH tam me'rIy' je."}
+{"instruction": "Translate to Klingon: I should stop procrastinating.", "output": "jIlum 'e' vImevnIS.", "en": "I should stop procrastinating.", "klingon": "jIlum 'e' vImevnIS."}
+{"instruction": "Translate to Klingon: Let's go get drunk.", "output": "Ha', machechchoHjaj.", "en": "Let's go get drunk.", "klingon": "Ha', machechchoHjaj."}
+{"instruction": "Translate to Klingon: Come inside because it's cold outside.", "output": "bIrtaH Hur. qoD yIjaH!", "en": "Come inside because it's cold outside.", "klingon": "bIrtaH Hur. qoD yIjaH!"}
+{"instruction": "Translate to Klingon: You can't handle it.", "output": "DaraQlaHbe'.", "en": "You can't handle it.", "klingon": "DaraQlaHbe'."}
+{"instruction": "Translate to Klingon: You remind me of my mother.", "output": "jIHvaD SoSwI' DaqawmoH.", "en": "You remind me of my mother.", "klingon": "jIHvaD SoSwI' DaqawmoH."}
+{"instruction": "Translate to Klingon: They made love to each other.", "output": "ngaghchuq.", "en": "They made love to each other.", "klingon": "ngaghchuq."}
+{"instruction": "Translate to Klingon: We got robbed.", "output": "wIHejlu'.", "en": "We got robbed.", "klingon": "wIHejlu'."}
+{"instruction": "Translate to Klingon: We had a cat.", "output": "vIghro' wIghaj.", "en": "We had a cat.", "klingon": "vIghro' wIghaj."}
+{"instruction": "Translate to Klingon: I like to laugh.", "output": "jIHaghtaH 'e' vItIv.", "en": "I like to laugh.", "klingon": "jIHaghtaH 'e' vItIv."}
+{"instruction": "Translate to Klingon: \"When do you watch TV?\" \"I watch TV after dinner.\"", "output": "«ghorgh HaSta jIH Dabej?» «'uQ vISoppu'DI' HaSta jIH vIbej.»", "en": "\"When do you watch TV?\" \"I watch TV after dinner.\"", "klingon": "«ghorgh HaSta jIH Dabej?» «'uQ vISoppu'DI' HaSta jIH vIbej.»"}
+{"instruction": "Translate to Klingon: I don't talk to them anymore.", "output": "chaHvaD vIjatlhbe'choHpu'.", "en": "I don't talk to them anymore.", "klingon": "chaHvaD vIjatlhbe'choHpu'."}
+{"instruction": "Translate to Klingon: It's an apple and it's on the table.", "output": "'epIl naH 'oH 'ej raSDaq 'oHtaH.", "en": "It's an apple and it's on the table.", "klingon": "'epIl naH 'oH 'ej raSDaq 'oHtaH."}
+{"instruction": "Translate to Klingon: Tom is very clumsy.", "output": "Soy'qu' tam.", "en": "Tom is very clumsy.", "klingon": "Soy'qu' tam."}
+{"instruction": "Translate to Klingon: I'll ask them if you like.", "output": "DaneHchugh chaH vIghel.", "en": "I'll ask them if you like.", "klingon": "DaneHchugh chaH vIghel."}
+{"instruction": "Translate to Klingon: In my opinion, you are wrong.", "output": "bIQ ngaS HIvje'lIj 'e' vIQub.", "en": "In my opinion, you are wrong.", "klingon": "bIQ ngaS HIvje'lIj 'e' vIQub."}
+{"instruction": "Translate to Klingon: This is the most interesting.", "output": "Dochvam Daj law' Hoch Daj puS.", "en": "This is the most interesting.", "klingon": "Dochvam Daj law' Hoch Daj puS."}
+{"instruction": "Translate to Klingon: Eat something.", "output": "vay' yISop.", "en": "Eat something.", "klingon": "vay' yISop."}
+{"instruction": "Translate to Klingon: We'll never know.", "output": "not wISov.", "en": "We'll never know.", "klingon": "not wISov."}
+{"instruction": "Translate to Klingon: I lost my glasses.", "output": "neqratlhwIj vIchIl.", "en": "I lost my glasses.", "klingon": "neqratlhwIj vIchIl."}
+{"instruction": "Translate to Klingon: He took the newspaper away from George.", "output": "jo'rIjvo' De' chu' ghItlh nge'.", "en": "He took the newspaper away from George.", "klingon": "jo'rIjvo' De' chu' ghItlh nge'."}
+{"instruction": "Translate to Klingon: Our boat followed a school of fish.", "output": "ghotI' ghom tlha' bIQ Dujmaj.", "en": "Our boat followed a school of fish.", "klingon": "ghotI' ghom tlha' bIQ Dujmaj."}
+{"instruction": "Translate to Klingon: Whoever guesses the number wins.", "output": "Qap mI' loychu'bogh nuv'e'.", "en": "Whoever guesses the number wins.", "klingon": "Qap mI' loychu'bogh nuv'e'."}
+{"instruction": "Translate to Klingon: Carrots are cheap!", "output": "qutlh qe'rot 'oQqar!", "en": "Carrots are cheap!", "klingon": "qutlh qe'rot 'oQqar!"}
+{"instruction": "Translate to Klingon: How did you get so strong?", "output": "chay' bIHoSqu'choHpu'?", "en": "How did you get so strong?", "klingon": "chay' bIHoSqu'choHpu'?"}
+{"instruction": "Translate to Klingon: It's going to be a long trip.", "output": "leng nI' 'oHbej.", "en": "It's going to be a long trip.", "klingon": "leng nI' 'oHbej."}
+{"instruction": "Translate to Klingon: Raise your hand.", "output": "ghoplIj yIpep!", "en": "Raise your hand.", "klingon": "ghoplIj yIpep!"}
+{"instruction": "Translate to Klingon: What time shall I pick you up?", "output": "ghorgh DaDorchoH DaneH?", "en": "What time shall I pick you up?", "klingon": "ghorgh DaDorchoH DaneH?"}
+{"instruction": "Translate to Klingon: Here we are at the station.", "output": "naDev tengchaHDaq maHtaH.", "en": "Here we are at the station.", "klingon": "naDev tengchaHDaq maHtaH."}
+{"instruction": "Translate to Klingon: Who is lurking in the shadows?", "output": "QIbmeyDaq ghachtaH 'Iv?", "en": "Who is lurking in the shadows?", "klingon": "QIbmeyDaq ghachtaH 'Iv?"}
+{"instruction": "Translate to Klingon: What's the capital of China?", "output": "nuq 'oH jungwoq mon'e'?", "en": "What's the capital of China?", "klingon": "nuq 'oH jungwoq mon'e'?"}
+{"instruction": "Translate to Klingon: He belongs to the camera club.", "output": "mIllogh qonwI' jeS.", "en": "He belongs to the camera club.", "klingon": "mIllogh qonwI' jeS."}
+{"instruction": "Translate to Klingon: Tom likes tea better than coffee.", "output": "Dargh maS tam; qa'vIn maSbe'.", "en": "Tom likes tea better than coffee.", "klingon": "Dargh maS tam; qa'vIn maSbe'."}
+{"instruction": "Translate to Klingon: I can see you.", "output": "qaleghlaH.", "en": "I can see you.", "klingon": "qaleghlaH."}
+{"instruction": "Translate to Klingon: I really hate Tom.", "output": "tam vImuSqu'.", "en": "I really hate Tom.", "klingon": "tam vImuSqu'."}
+{"instruction": "Translate to Klingon: I admire Tom a lot.", "output": "tam vIHo'qu'.", "en": "I admire Tom a lot.", "klingon": "tam vIHo'qu'."}
+{"instruction": "Translate to Klingon: Speak gently to everyone.", "output": "pe'vIlHa' HochvaD pejatlh.", "en": "Speak gently to everyone.", "klingon": "pe'vIlHa' HochvaD pejatlh."}
+{"instruction": "Translate to Klingon: He deserves it.", "output": "'oH qotlh.", "en": "He deserves it.", "klingon": "'oH qotlh."}
+{"instruction": "Translate to Klingon: My dream is to study Klingon on Qo'noS.", "output": "Qo'noSDaq tlhIngan Hol vIHaD 'e' vIjIn.", "en": "My dream is to study Klingon on Qo'noS.", "klingon": "Qo'noSDaq tlhIngan Hol vIHaD 'e' vIjIn."}
+{"instruction": "Translate to Klingon: I think he will succeed.", "output": "Qaplaw'.", "en": "I think he will succeed.", "klingon": "Qaplaw'."}
+{"instruction": "Translate to Klingon: Antimatter is highly unstable.", "output": "ngaDHa'qu' rugh.", "en": "Antimatter is highly unstable.", "klingon": "ngaDHa'qu' rugh."}
+{"instruction": "Translate to Klingon: I have a lot of old books. A couple of them are quite valuable.", "output": "ngo'bogh paqmey law' vIghaj. lo'laHqu' 'op.", "en": "I have a lot of old books. A couple of them are quite valuable.", "klingon": "ngo'bogh paqmey law' vIghaj. lo'laHqu' 'op."}
+{"instruction": "Translate to Klingon: You broke your promise.", "output": "'IplIj DapabHa'.", "en": "You broke your promise.", "klingon": "'IplIj DapabHa'."}
+{"instruction": "Translate to Klingon: Also, I can fly.", "output": "jIpuvlaH je.", "en": "Also, I can fly.", "klingon": "jIpuvlaH je."}
+{"instruction": "Translate to Klingon: The bread is brown.", "output": "Doq tIr ngogh 'ej wovbe'.", "en": "The bread is brown.", "klingon": "Doq tIr ngogh 'ej wovbe'."}
+{"instruction": "Translate to Klingon: Shoes are required.", "output": "waq lutuQnISlu'.", "en": "Shoes are required.", "klingon": "waq lutuQnISlu'."}
+{"instruction": "Translate to Klingon: I hate to lose.", "output": "jIluj 'e' vImuS.", "en": "I hate to lose.", "klingon": "jIluj 'e' vImuS."}
+{"instruction": "Translate to Klingon: The lake is very deep.", "output": "jaQqu' ngeng,", "en": "The lake is very deep.", "klingon": "jaQqu' ngeng,"}
+{"instruction": "Translate to Klingon: After you've had some tea, carry on practising.", "output": "Dargh Datlhutlhta'DI', yIqeqqa'.", "en": "After you've had some tea, carry on practising.", "klingon": "Dargh Datlhutlhta'DI', yIqeqqa'."}
+{"instruction": "Translate to Klingon: A heavy rain fell.", "output": "SISqu'.", "en": "A heavy rain fell.", "klingon": "SISqu'."}
+{"instruction": "Translate to Klingon: I hung the laundry out to dry last night and by morning it had frozen hard as a rock.", "output": "wa'Hu' ram HurDaq Sut vIHuSpu' 'ej po taDchoHchu'pu'; Separmey rur.", "en": "I hung the laundry out to dry last night and by morning it had frozen hard as a rock.", "klingon": "wa'Hu' ram HurDaq Sut vIHuSpu' 'ej po taDchoHchu'pu'; Separmey rur."}
+{"instruction": "Translate to Klingon: Do I need to go right now?", "output": "DaH jIjaHnIS'a'?", "en": "Do I need to go right now?", "klingon": "DaH jIjaHnIS'a'?"}
+{"instruction": "Translate to Klingon: I married young.", "output": "jItlhoghDI' jIQup.", "en": "I married young.", "klingon": "jItlhoghDI' jIQup."}
+{"instruction": "Translate to Klingon: I have already finished this book.", "output": "paqvam vIlaDchu'ta'.", "en": "I have already finished this book.", "klingon": "paqvam vIlaDchu'ta'."}
+{"instruction": "Translate to Klingon: I am really sorry.", "output": "jIQoSqu'.", "en": "I am really sorry.", "klingon": "jIQoSqu'."}
+{"instruction": "Translate to Klingon: Tom is arrogant, isn't he?", "output": "nguq tam qar'a'?", "en": "Tom is arrogant, isn't he?", "klingon": "nguq tam qar'a'?"}
+{"instruction": "Translate to Klingon: Please wake me up at 6 tomorrow morning.", "output": "wa'leS rep jav HIvemmoH.", "en": "Please wake me up at 6 tomorrow morning.", "klingon": "wa'leS rep jav HIvemmoH."}
+{"instruction": "Translate to Klingon: Is this paper white?", "output": "chIS'a' navvam?", "en": "Is this paper white?", "klingon": "chIS'a' navvam?"}
+{"instruction": "Translate to Klingon: I learn ten new words every day.", "output": "Hoch jaj wa'maH mu'mey chu' vIghoj.", "en": "I learn ten new words every day.", "klingon": "Hoch jaj wa'maH mu'mey chu' vIghoj."}
+{"instruction": "Translate to Klingon: Try it again.", "output": "yInIDqa'!", "en": "Try it again.", "klingon": "yInIDqa'!"}
+{"instruction": "Translate to Klingon: Could you bring it to me?", "output": "jIHvaD 'oH Daqem'a'?", "en": "Could you bring it to me?", "klingon": "jIHvaD 'oH Daqem'a'?"}
+{"instruction": "Translate to Klingon: I am interested in old cities in the world.", "output": "jIHvaD Daj qo' vengmey ngo'.", "en": "I am interested in old cities in the world.", "klingon": "jIHvaD Daj qo' vengmey ngo'."}
+{"instruction": "Translate to Klingon: You haven't eaten anything yet, have you?", "output": "wej vay' DaSop, qar'a'?", "en": "You haven't eaten anything yet, have you?", "klingon": "wej vay' DaSop, qar'a'?"}
+{"instruction": "Translate to Klingon: I went back to the house.", "output": "qach vIchegh.", "en": "I went back to the house.", "klingon": "qach vIchegh."}
+{"instruction": "Translate to Klingon: Tom paid for my lawyer.", "output": "chut qeSwI'wI' DIl tam.", "en": "Tom paid for my lawyer.", "klingon": "chut qeSwI'wI' DIl tam."}
+{"instruction": "Translate to Klingon: He is just a child.", "output": "puq neH ghaHtaH.", "en": "He is just a child.", "klingon": "puq neH ghaHtaH."}
+{"instruction": "Translate to Klingon: Sami is pretentious.", "output": "Qaq Sa'mIy.", "en": "Sami is pretentious.", "klingon": "Qaq Sa'mIy."}
+{"instruction": "Translate to Klingon: No, you don't have to.", "output": "ghobe', bIta'nISbe'.", "en": "No, you don't have to.", "klingon": "ghobe', bIta'nISbe'."}
+{"instruction": "Translate to Klingon: No, this paper isn't white.", "output": "ghobe', chISbe' navvam.", "en": "No, this paper isn't white.", "klingon": "ghobe', chISbe' navvam."}
+{"instruction": "Translate to Klingon: Are you sure it's not possible?", "output": "DuHbe' 'e' DaSovbej'a'?", "en": "Are you sure it's not possible?", "klingon": "DuHbe' 'e' DaSovbej'a'?"}
+{"instruction": "Translate to Klingon: He is hated.", "output": "ghaH muSlu'.", "en": "He is hated.", "klingon": "ghaH muSlu'."}
+{"instruction": "Translate to Klingon: My favorite team lost yesterday.", "output": "wa'Hu' luj ghom vImaSbogh.", "en": "My favorite team lost yesterday.", "klingon": "wa'Hu' luj ghom vImaSbogh."}
+{"instruction": "Translate to Klingon: Where is it possible for you to see me?", "output": "nuqDaq choghomlaH?", "en": "Where is it possible for you to see me?", "klingon": "nuqDaq choghomlaH?"}
+{"instruction": "Translate to Klingon: A good coach trains this team.", "output": "ghomvam qeqmoHtaH qeqmoHwI' QaQ.", "en": "A good coach trains this team.", "klingon": "ghomvam qeqmoHtaH qeqmoHwI' QaQ."}
+{"instruction": "Translate to Klingon: I learned it in school.", "output": "DuSaQDaq vIghoj.", "en": "I learned it in school.", "klingon": "DuSaQDaq vIghoj."}
+{"instruction": "Translate to Klingon: I like a challenge.", "output": "qaDmey vItIv.", "en": "I like a challenge.", "klingon": "qaDmey vItIv."}
+{"instruction": "Translate to Klingon: I can't do everything myself.", "output": "nIteb Hoch vIvu'laHbe'.", "en": "I can't do everything myself.", "klingon": "nIteb Hoch vIvu'laHbe'."}
+{"instruction": "Translate to Klingon: I didn't recognize my ex-wife.", "output": "be'nalwI' Deq vIghovbe'.", "en": "I didn't recognize my ex-wife.", "klingon": "be'nalwI' Deq vIghovbe'."}
+{"instruction": "Translate to Klingon: What is the temperature of the ice?", "output": "chuch Hat 'ar?", "en": "What is the temperature of the ice?", "klingon": "chuch Hat 'ar?"}
+{"instruction": "Translate to Klingon: Has anything strange happened?", "output": "qaSpu''a' wanI' Huj?", "en": "Has anything strange happened?", "klingon": "qaSpu''a' wanI' Huj?"}
+{"instruction": "Translate to Klingon: Don't you trust your instincts?", "output": "DujlIj Davoqbe''a'?", "en": "Don't you trust your instincts?", "klingon": "DujlIj Davoqbe''a'?"}
+{"instruction": "Translate to Klingon: This sentence contains an error.", "output": "Qagh ngaS mu'tlheghvam.", "en": "This sentence contains an error.", "klingon": "Qagh ngaS mu'tlheghvam."}
+{"instruction": "Translate to Klingon: Let's sit down in the shade of that tree.", "output": "Sorvetlh QIbDaq maba'jaj!", "en": "Let's sit down in the shade of that tree.", "klingon": "Sorvetlh QIbDaq maba'jaj!"}
+{"instruction": "Translate to Klingon: I can't untie this knot; it's too tight!", "output": "meSvam vImeSHa'laHbe'; tlhoy Qey!", "en": "I can't untie this knot; it's too tight!", "klingon": "meSvam vImeSHa'laHbe'; tlhoy Qey!"}
+{"instruction": "Translate to Klingon: I'll tell you when I get back.", "output": "jIcheghDI' Saja'.", "en": "I'll tell you when I get back.", "klingon": "jIcheghDI' Saja'."}
+{"instruction": "Translate to Klingon: He can drive a car.", "output": "puH Duj chIjlaH.", "en": "He can drive a car.", "klingon": "puH Duj chIjlaH."}
+{"instruction": "Translate to Klingon: He amused the children by singing.", "output": "puqpu' tIvmoHmeH bom ghaH.", "en": "He amused the children by singing.", "klingon": "puqpu' tIvmoHmeH bom ghaH."}
+{"instruction": "Translate to Klingon: Your lips are blue. You should get out of the water.", "output": "SuD wuSDu'lIj. bIQvo' bIghoSnIS.", "en": "Your lips are blue. You should get out of the water.", "klingon": "SuD wuSDu'lIj. bIQvo' bIghoSnIS."}
+{"instruction": "Translate to Klingon: Stop talking with each other and listen!", "output": "Suja'chuq pemev 'ej peQoy!", "en": "Stop talking with each other and listen!", "klingon": "Suja'chuq pemev 'ej peQoy!"}
+{"instruction": "Translate to Klingon: That was a nice speech.", "output": "QaQ SoQvetlh.", "en": "That was a nice speech.", "klingon": "QaQ SoQvetlh."}
+{"instruction": "Translate to Klingon: I guess it's only natural.", "output": "le'be'law'.", "en": "I guess it's only natural.", "klingon": "le'be'law'."}
+{"instruction": "Translate to Klingon: We called off the wedding.", "output": "tlhogh tay wIqIl.", "en": "We called off the wedding.", "klingon": "tlhogh tay wIqIl."}
+{"instruction": "Translate to Klingon: Where were you when the fire occurred?", "output": "neQtaHvIS qul nuqDaq bIHtaH?", "en": "Where were you when the fire occurred?", "klingon": "neQtaHvIS qul nuqDaq bIHtaH?"}
+{"instruction": "Translate to Klingon: Its neck and head were very soft.", "output": "tunqu' mongDaj nachDaj je.", "en": "Its neck and head were very soft.", "klingon": "tunqu' mongDaj nachDaj je."}
+{"instruction": "Translate to Klingon: It has a lot of hair.", "output": "law' pobDaj.", "en": "It has a lot of hair.", "klingon": "law' pobDaj."}
+{"instruction": "Translate to Klingon: Anne Frank wasn't a citizen.", "output": "rewbe' ghaHbe' 'a'ne vrangq'e'.", "en": "Anne Frank wasn't a citizen.", "klingon": "rewbe' ghaHbe' 'a'ne vrangq'e'."}
+{"instruction": "Translate to Klingon: It's hot.", "output": "tuj.", "en": "It's hot.", "klingon": "tuj."}
+{"instruction": "Translate to Klingon: Ducks were swimming about on the pond.", "output": "ngengHomDaq QaltaH Da'nalmey.", "en": "Ducks were swimming about on the pond.", "klingon": "ngengHomDaq QaltaH Da'nalmey."}
+{"instruction": "Translate to Klingon: Tom's phone is huge.", "output": "tInqu' tam ghogh HablI'.", "en": "Tom's phone is huge.", "klingon": "tInqu' tam ghogh HablI'."}
+{"instruction": "Translate to Klingon: He was a poet and a diplomat.", "output": "qonwI' gharwI' je ghaH.", "en": "He was a poet and a diplomat.", "klingon": "qonwI' gharwI' je ghaH."}
+{"instruction": "Translate to Klingon: A cat has nine lives.", "output": "Hutlogh yIn vIghro'.", "en": "A cat has nine lives.", "klingon": "Hutlogh yIn vIghro'."}
+{"instruction": "Translate to Klingon: This chapter is the heart of the novel.", "output": "lut qolqoS 'oH 'ay'vam'e'.", "en": "This chapter is the heart of the novel.", "klingon": "lut qolqoS 'oH 'ay'vam'e'."}
+{"instruction": "Translate to Klingon: I never trusted Tom.", "output": "not tam vIvoq.", "en": "I never trusted Tom.", "klingon": "not tam vIvoq."}
+{"instruction": "Translate to Klingon: George has lived there for six weeks.", "output": "qaStaHvIS jav Hogh pa' Dab jo'rIj.", "en": "George has lived there for six weeks.", "klingon": "qaStaHvIS jav Hogh pa' Dab jo'rIj."}
+{"instruction": "Translate to Klingon: Why did you stop by?", "output": "qatlh choSuch?", "en": "Why did you stop by?", "klingon": "qatlh choSuch?"}
+{"instruction": "Translate to Klingon: To begin with, you must know yourself.", "output": "bI'reS bISov'eghnIS.", "en": "To begin with, you must know yourself.", "klingon": "bI'reS bISov'eghnIS."}
+{"instruction": "Translate to Klingon: Were you guys serious?", "output": "SuSagh'a'?", "en": "Were you guys serious?", "klingon": "SuSagh'a'?"}
+{"instruction": "Translate to Klingon: You seem to be a misogynist.", "output": "be'pu' DamuSlaw'.", "en": "You seem to be a misogynist.", "klingon": "be'pu' DamuSlaw'."}
+{"instruction": "Translate to Klingon: Do you have anything hot to drink?", "output": "tujbogh vay' Datlhutlh DaneH'a'?", "en": "Do you have anything hot to drink?", "klingon": "tujbogh vay' Datlhutlh DaneH'a'?"}
+{"instruction": "Translate to Klingon: I'll deal with her later.", "output": "SIbI'Ha' ghaH vIbam.", "en": "I'll deal with her later.", "klingon": "SIbI'Ha' ghaH vIbam."}
+{"instruction": "Translate to Klingon: I have a cat and a dog.", "output": "vIghro' Ha'DIbaH je vIghaj.", "en": "I have a cat and a dog.", "klingon": "vIghro' Ha'DIbaH je vIghaj."}
+{"instruction": "Translate to Klingon: What doesn't kill you makes you stronger.", "output": "DuHoHbe'chugh, Durach.", "en": "What doesn't kill you makes you stronger.", "klingon": "DuHoHbe'chugh, Durach."}
+{"instruction": "Translate to Klingon: My little sister can read books well now.", "output": "DaH paqmey laDlaHchu' be'nI'HomwI'.", "en": "My little sister can read books well now.", "klingon": "DaH paqmey laDlaHchu' be'nI'HomwI'."}
+{"instruction": "Translate to Klingon: I read a story to my children.", "output": "puqpu'wI'vaD lut vIlaD.", "en": "I read a story to my children.", "klingon": "puqpu'wI'vaD lut vIlaD."}
+{"instruction": "Translate to Klingon: It's Sunday today.", "output": "jaj wa' 'oH jajvam.", "en": "It's Sunday today.", "klingon": "jaj wa' 'oH jajvam."}
+{"instruction": "Translate to Klingon: Do you really want to be immortal?", "output": "Sujub boneHbej'a'?", "en": "Do you really want to be immortal?", "klingon": "Sujub boneHbej'a'?"}
+{"instruction": "Translate to Klingon: I want this cat.", "output": "vIghro'vam vIneH.", "en": "I want this cat.", "klingon": "vIghro'vam vIneH."}
+{"instruction": "Translate to Klingon: Which tooth hurts?", "output": "'oy'bogh Ho' yIngu'!", "en": "Which tooth hurts?", "klingon": "'oy'bogh Ho' yIngu'!"}
+{"instruction": "Translate to Klingon: I thought Tom and Mary were crazy.", "output": "maw' tam me'rIy' je 'e' vIQub.", "en": "I thought Tom and Mary were crazy.", "klingon": "maw' tam me'rIy' je 'e' vIQub."}
+{"instruction": "Translate to Klingon: They turned against Germany.", "output": "DoyIchlanvaD matlhHa'choH chaH.", "en": "They turned against Germany.", "klingon": "DoyIchlanvaD matlhHa'choH chaH."}
+{"instruction": "Translate to Klingon: She wore a white dress.", "output": "paH chIS tuQpu'.", "en": "She wore a white dress.", "klingon": "paH chIS tuQpu'."}
+{"instruction": "Translate to Klingon: He's evil.", "output": "mIgh.", "en": "He's evil.", "klingon": "mIgh."}
+{"instruction": "Translate to Klingon: The bag was too heavy for me to carry by myself.", "output": "tlhoy 'ughmo' buq nIteb vIqenglaHbe'.", "en": "The bag was too heavy for me to carry by myself.", "klingon": "tlhoy 'ughmo' buq nIteb vIqenglaHbe'."}
+{"instruction": "Translate to Klingon: No I'm not; you are!", "output": "ghobe'. jIHbe'. SoH'e'!", "en": "No I'm not; you are!", "klingon": "ghobe'. jIHbe'. SoH'e'!"}
+{"instruction": "Translate to Klingon: I hated Tom.", "output": "tam vImuS.", "en": "I hated Tom.", "klingon": "tam vImuS."}
+{"instruction": "Translate to Klingon: He has two cats.", "output": "cha' vIghro' ghaj ghaH.", "en": "He has two cats.", "klingon": "cha' vIghro' ghaj ghaH."}
+{"instruction": "Translate to Klingon: Can I sleep here?", "output": "naDev jIQong 'e' Dachaw''a'?", "en": "Can I sleep here?", "klingon": "naDev jIQong 'e' Dachaw''a'?"}
+{"instruction": "Translate to Klingon: He always says, \"only kidding!\" at the end.", "output": "vay' jatlhta'DI' ghaH, Hochlogh jatlh, jIqID neH!", "en": "He always says, \"only kidding!\" at the end.", "klingon": "vay' jatlhta'DI' ghaH, Hochlogh jatlh, jIqID neH!"}
+{"instruction": "Translate to Klingon: Please forget I called.", "output": "jIrI' 'e' yIlIj.", "en": "Please forget I called.", "klingon": "jIrI' 'e' yIlIj."}
+{"instruction": "Translate to Klingon: We took our shoes off.", "output": "waqmeymaj DIteqpu'.", "en": "We took our shoes off.", "klingon": "waqmeymaj DIteqpu'."}
+{"instruction": "Translate to Klingon: They're coming.", "output": "nughoSlI'.", "en": "They're coming.", "klingon": "nughoSlI'."}
+{"instruction": "Translate to Klingon: So, I didn't call for any particular reason; I just wanted to hear your voice. If you're busy, I'll let you go.", "output": "toH. chorItmeH meq vIghajbe'. ghoghlIj vIQoy neH vIneH. vay' Data'nISchugh, bImej 'e' vIchaw'.", "en": "So, I didn't call for any particular reason; I just wanted to hear your voice. If you're busy, I'll let you go.", "klingon": "toH. chorItmeH meq vIghajbe'. ghoghlIj vIQoy neH vIneH. vay' Data'nISchugh, bImej 'e' vIchaw'."}
+{"instruction": "Translate to Klingon: I need a hammer.", "output": "mupwI' vIpoQ.", "en": "I need a hammer.", "klingon": "mupwI' vIpoQ."}
+{"instruction": "Translate to Klingon: If that happens, I'll resign.", "output": "qaSchugh, vaj jIpaj.", "en": "If that happens, I'll resign.", "klingon": "qaSchugh, vaj jIpaj."}
+{"instruction": "Translate to Klingon: He talked with his eyes shining.", "output": "jatlhtaHvIS boch mInDu'Daj.", "en": "He talked with his eyes shining.", "klingon": "jatlhtaHvIS boch mInDu'Daj."}
+{"instruction": "Translate to Klingon: I recognized the name.", "output": "pong vIghov.", "en": "I recognized the name.", "klingon": "pong vIghov."}
+{"instruction": "Translate to Klingon: Tom paid for it by credit card.", "output": "'oH DIlmeH Huch chaw' lo' *Tom.", "en": "Tom paid for it by credit card.", "klingon": "'oH DIlmeH Huch chaw' lo' *Tom."}
+{"instruction": "Translate to Klingon: I have bottled water.", "output": "bIQ bal vIghaj.", "en": "I have bottled water.", "klingon": "bIQ bal vIghaj."}
+{"instruction": "Translate to Klingon: Classes are starting again soon.", "output": "tugh taghqa' paQDI'norgh.", "en": "Classes are starting again soon.", "klingon": "tugh taghqa' paQDI'norgh."}
+{"instruction": "Translate to Klingon: Those were his actual words.", "output": "mu'meyna'Daj bIH.", "en": "Those were his actual words.", "klingon": "mu'meyna'Daj bIH."}
+{"instruction": "Translate to Klingon: I am fond of Australian food.", "output": "'aSralya' Soj vIparHa'.", "en": "I am fond of Australian food.", "klingon": "'aSralya' Soj vIparHa'."}
+{"instruction": "Translate to Klingon: How many languages do you speak?", "output": "Hol 'ar Dajatlh?", "en": "How many languages do you speak?", "klingon": "Hol 'ar Dajatlh?"}
+{"instruction": "Translate to Klingon: Three times three is nine.", "output": "wejlogh boq'egh wej; chen Hut.", "en": "Three times three is nine.", "klingon": "wejlogh boq'egh wej; chen Hut."}
+{"instruction": "Translate to Klingon: You're such a show off.", "output": "bImIyqu'bej jay'.", "en": "You're such a show off.", "klingon": "bImIyqu'bej jay'."}
+{"instruction": "Translate to Klingon: I found the book easy.", "output": "ngeD paqvam 'e' vItu'.", "en": "I found the book easy.", "klingon": "ngeD paqvam 'e' vItu'."}
+{"instruction": "Translate to Klingon: He was listening to music.", "output": "QoQ 'IjtaH.", "en": "He was listening to music.", "klingon": "QoQ 'IjtaH."}
+{"instruction": "Translate to Klingon: You're over-analyzing.", "output": "tlhoy DapojtaH.", "en": "You're over-analyzing.", "klingon": "tlhoy DapojtaH."}
+{"instruction": "Translate to Klingon: I got this job with my teacher's help.", "output": "ghojmoHwI'wI' QaHmo' Qu'vam vISuqta'.", "en": "I got this job with my teacher's help.", "klingon": "ghojmoHwI'wI' QaHmo' Qu'vam vISuqta'."}
+{"instruction": "Translate to Klingon: Do you like robots?", "output": "qoqpu' DaparHa''a'?", "en": "Do you like robots?", "klingon": "qoqpu' DaparHa''a'?"}
+{"instruction": "Translate to Klingon: Give! Giiive!!!", "output": "Ver! veeer!!!", "en": "Give! Giiive!!!", "klingon": "Ver! veeer!!!"}
+{"instruction": "Translate to Klingon: It's okay, you can tell me.", "output": "qay'be', choja'laH.", "en": "It's okay, you can tell me.", "klingon": "qay'be', choja'laH."}
+{"instruction": "Translate to Klingon: At last, we reached our destination.", "output": "tagha' ghochmaj wIpaw.", "en": "At last, we reached our destination.", "klingon": "tagha' ghochmaj wIpaw."}
+{"instruction": "Translate to Klingon: I love the way the air is so fresh and clean after it rains.", "output": "SISpu'DI' Say' muD 'ej loQ bIr 'e' vImuSHa'.", "en": "I love the way the air is so fresh and clean after it rains.", "klingon": "SISpu'DI' Say' muD 'ej loQ bIr 'e' vImuSHa'."}
+{"instruction": "Translate to Klingon: Tom didn't hate Mary.", "output": "me'rIy' muSbe' tam.", "en": "Tom didn't hate Mary.", "klingon": "me'rIy' muSbe' tam."}
+{"instruction": "Translate to Klingon: I may be plump, but I'm vigorous.", "output": "jIpI'law' 'ach jIvaQ.", "en": "I may be plump, but I'm vigorous.", "klingon": "jIpI'law' 'ach jIvaQ."}
+{"instruction": "Translate to Klingon: If you like it, you can keep it!", "output": "DaparHa'chugh, DapollaH!", "en": "If you like it, you can keep it!", "klingon": "DaparHa'chugh, DapollaH!"}
+{"instruction": "Translate to Klingon: You're stupid.", "output": "bIQIp.", "en": "You're stupid.", "klingon": "bIQIp."}
+{"instruction": "Translate to Klingon: He killed himself at the age of thirty.", "output": "wejmaH ben boghpu'DI' HoH'eghta'.", "en": "He killed himself at the age of thirty.", "klingon": "wejmaH ben boghpu'DI' HoH'eghta'."}
+{"instruction": "Translate to Klingon: Two times two is four.", "output": "cha'logh boq'egh cha'; chen loS.", "en": "Two times two is four.", "klingon": "cha'logh boq'egh cha'; chen loS."}
+{"instruction": "Translate to Klingon: I like him.", "output": "ghaH vIparHa'.", "en": "I like him.", "klingon": "ghaH vIparHa'."}
+{"instruction": "Translate to Klingon: She's twenty-six (26).", "output": "cha'maH jav (26) ben boghpu'.", "en": "She's twenty-six (26).", "klingon": "cha'maH jav (26) ben boghpu'."}
+{"instruction": "Translate to Klingon: There are lots of people who don't have any idea about that.", "output": "luyajbe'chu'bogh nuvpu' law''e' tu'lu'.", "en": "There are lots of people who don't have any idea about that.", "klingon": "luyajbe'chu'bogh nuvpu' law''e' tu'lu'."}
+{"instruction": "Translate to Klingon: She gave up everything for her children.", "output": "puqDajvaD Hoch lonpu'.", "en": "She gave up everything for her children.", "klingon": "puqDajvaD Hoch lonpu'."}
+{"instruction": "Translate to Klingon: How could you resist them?", "output": "chay' bo'omta'?", "en": "How could you resist them?", "klingon": "chay' bo'omta'?"}
+{"instruction": "Translate to Klingon: Tom might have stolen Mary's camera.", "output": "chaq *Mary mIllogh qonwI' nIHpu' *Tom.", "en": "Tom might have stolen Mary's camera.", "klingon": "chaq *Mary mIllogh qonwI' nIHpu' *Tom."}
+{"instruction": "Translate to Klingon: That's not funny.", "output": "tlhaQbe'.", "en": "That's not funny.", "klingon": "tlhaQbe'."}
+{"instruction": "Translate to Klingon: He found the door locked.", "output": "ngaQ lojmIt 'e' tu'.", "en": "He found the door locked.", "klingon": "ngaQ lojmIt 'e' tu'."}
+{"instruction": "Translate to Klingon: Austria isn't Australia.", "output": "'aSralya' 'oHbe' 'oSteray''e'.", "en": "Austria isn't Australia.", "klingon": "'aSralya' 'oHbe' 'oSteray''e'."}
+{"instruction": "Translate to Klingon: Were you scared?", "output": "DughIj'a'?", "en": "Were you scared?", "klingon": "DughIj'a'?"}
+{"instruction": "Translate to Klingon: I am learning Turkish.", "output": "turIqya' Hol vIghojlI'.", "en": "I am learning Turkish.", "klingon": "turIqya' Hol vIghojlI'."}
+{"instruction": "Translate to Klingon: The tip of the spear was dipped in a deadly poison.", "output": "HoHlaHbogh tarDaq naQjejvetlh QIn lanlu'pu'.", "en": "The tip of the spear was dipped in a deadly poison.", "klingon": "HoHlaHbogh tarDaq naQjejvetlh QIn lanlu'pu'."}
+{"instruction": "Translate to Klingon: They swam.", "output": "Qal chaH.", "en": "They swam.", "klingon": "Qal chaH."}
+{"instruction": "Translate to Klingon: The battery died.", "output": "QopchoHpu' 'ul 'aplo'.", "en": "The battery died.", "klingon": "QopchoHpu' 'ul 'aplo'."}
+{"instruction": "Translate to Klingon: I've been looking for you.", "output": "qanejtaH.", "en": "I've been looking for you.", "klingon": "qanejtaH."}
+{"instruction": "Translate to Klingon: What did Tom ask you to do?", "output": "nuq ta' tam 'e' Datlhob?", "en": "What did Tom ask you to do?", "klingon": "nuq ta' tam 'e' Datlhob?"}
+{"instruction": "Translate to Klingon: It will be also interesting.", "output": "Daj je.", "en": "It will be also interesting.", "klingon": "Daj je."}
+{"instruction": "Translate to Klingon: My house is nice.", "output": "belmoH juH qachwIj.", "en": "My house is nice.", "klingon": "belmoH juH qachwIj."}
+{"instruction": "Translate to Klingon: I cook well.", "output": "jIvutmeH jIpo'.", "en": "I cook well.", "klingon": "jIvutmeH jIpo'."}
+{"instruction": "Translate to Klingon: Bush followed Reagan as president.", "output": "che'wI' ghaHpu'DI' reyghen'e', che'wI' mojta' buS.", "en": "Bush followed Reagan as president.", "klingon": "che'wI' ghaHpu'DI' reyghen'e', che'wI' mojta' buS."}
+{"instruction": "Translate to Klingon: Do you speak Judeo-Spanish?", "output": "yISra'el 'eSpanya' Hol Dajatlh'a'?", "en": "Do you speak Judeo-Spanish?", "klingon": "yISra'el 'eSpanya' Hol Dajatlh'a'?"}
+{"instruction": "Translate to Klingon: I really do love your tie.", "output": "mong Ha'qujlIj vIparHa'qu'!", "en": "I really do love your tie.", "klingon": "mong Ha'qujlIj vIparHa'qu'!"}
+{"instruction": "Translate to Klingon: Tom wears glasses.", "output": "neqratlh tuQ tam.", "en": "Tom wears glasses.", "klingon": "neqratlh tuQ tam."}
+{"instruction": "Translate to Klingon: Those chairs are in the way.", "output": "bot quSmeyvetlh.", "en": "Those chairs are in the way.", "klingon": "bot quSmeyvetlh."}
+{"instruction": "Translate to Klingon: He knows us very well.", "output": "nuSovqu'.", "en": "He knows us very well.", "klingon": "nuSovqu'."}
+{"instruction": "Translate to Klingon: I do not doubt that he is sincere.", "output": "'Il 'e' vIHonbe'.", "en": "I do not doubt that he is sincere.", "klingon": "'Il 'e' vIHonbe'."}
+{"instruction": "Translate to Klingon: May you succeed!", "output": "Qapla'!", "en": "May you succeed!", "klingon": "Qapla'!"}
+{"instruction": "Translate to Klingon: The city annoys me a lot because it's noisy.", "output": "chuSmo' veng munuQqu'.", "en": "The city annoys me a lot because it's noisy.", "klingon": "chuSmo' veng munuQqu'."}
+{"instruction": "Translate to Klingon: What the hell is going on here?", "output": "naDev qaS nuq jay'?", "en": "What the hell is going on here?", "klingon": "naDev qaS nuq jay'?"}
+{"instruction": "Translate to Klingon: It's awfully bitter.", "output": "pe'vIl wIb.", "en": "It's awfully bitter.", "klingon": "pe'vIl wIb."}
+{"instruction": "Translate to Klingon: Is it necessary to live in a French-speaking country to become fluent in French?", "output": "vIraS Hol ghojchu'meH vay', vIraS Hol jatlhwI' Sep DabnIS'a'?", "en": "Is it necessary to live in a French-speaking country to become fluent in French?", "klingon": "vIraS Hol ghojchu'meH vay', vIraS Hol jatlhwI' Sep DabnIS'a'?"}
+{"instruction": "Translate to Klingon: I really thought Tom was dead.", "output": "Heghpu' tam 'e' vIHarqu'.", "en": "I really thought Tom was dead.", "klingon": "Heghpu' tam 'e' vIHarqu'."}
+{"instruction": "Translate to Klingon: The days are long in the summer.", "output": "qaStaHvIS qImroq tuj nI' pemmey.", "en": "The days are long in the summer.", "klingon": "qaStaHvIS qImroq tuj nI' pemmey."}
+{"instruction": "Translate to Klingon: At times, I can't trust him.", "output": "rut vIvoqlaHbe'.", "en": "At times, I can't trust him.", "klingon": "rut vIvoqlaHbe'."}
+{"instruction": "Translate to Klingon: It's inspiring.", "output": "pIlmoH.", "en": "It's inspiring.", "klingon": "pIlmoH."}
+{"instruction": "Translate to Klingon: You're hurting us.", "output": "che'oy'moHtaH.", "en": "You're hurting us.", "klingon": "che'oy'moHtaH."}
+{"instruction": "Translate to Klingon: Speak more slowly so that we can understand you.", "output": "QIt yIjItlh pIyajlaHmeH!", "en": "Speak more slowly so that we can understand you.", "klingon": "QIt yIjItlh pIyajlaHmeH!"}
+{"instruction": "Translate to Klingon: George put a chain on the dog.", "output": "Ha'DIbaHDaq mIr rar jo'rIj.", "en": "George put a chain on the dog.", "klingon": "Ha'DIbaHDaq mIr rar jo'rIj."}
+{"instruction": "Translate to Klingon: You're rich.", "output": "bImIp.", "en": "You're rich.", "klingon": "bImIp."}
+{"instruction": "Translate to Klingon: Tom kicked Mary.", "output": "me'rIy' pup tam.", "en": "Tom kicked Mary.", "klingon": "me'rIy' pup tam."}
+{"instruction": "Translate to Klingon: I'm training hard at the moment.", "output": "DaH pe'vIl jIqeqtaH.", "en": "I'm training hard at the moment.", "klingon": "DaH pe'vIl jIqeqtaH."}
+{"instruction": "Translate to Klingon: The doctor came immediately.", "output": "SIbI' pawchoHpu' Qel.", "en": "The doctor came immediately.", "klingon": "SIbI' pawchoHpu' Qel."}
+{"instruction": "Translate to Klingon: War may break out at any moment.", "output": "Hochlogh taghlaH noH.", "en": "War may break out at any moment.", "klingon": "Hochlogh taghlaH noH."}
+{"instruction": "Translate to Klingon: I just need a little help.", "output": "loQ muQaH neH vay' 'e' vIpoQ.", "en": "I just need a little help.", "klingon": "loQ muQaH neH vay' 'e' vIpoQ."}
+{"instruction": "Translate to Klingon: It matters little what kind of books one reads, so long as one has sound judgement.", "output": "potlhqu'be' paqmey laDlu'ta'bogh, noHnISlu'chu'chugh.", "en": "It matters little what kind of books one reads, so long as one has sound judgement.", "klingon": "potlhqu'be' paqmey laDlu'ta'bogh, noHnISlu'chu'chugh."}
+{"instruction": "Translate to Klingon: How many plums are there?", "output": "pIlam naH 'ar tu'lu'?", "en": "How many plums are there?", "klingon": "pIlam naH 'ar tu'lu'?"}
+{"instruction": "Translate to Klingon: I have occasional pains in the stomach.", "output": "rut burghDaq 'oy' vIghaj.", "en": "I have occasional pains in the stomach.", "klingon": "rut burghDaq 'oy' vIghaj."}
+{"instruction": "Translate to Klingon: Luckily, Dick's father was not killed in the war.", "output": "Do' qaStaHvIS noH DIq vav HoHlu'be'.", "en": "Luckily, Dick's father was not killed in the war.", "klingon": "Do' qaStaHvIS noH DIq vav HoHlu'be'."}
+{"instruction": "Translate to Klingon: You told a lie.", "output": "bInep.", "en": "You told a lie.", "klingon": "bInep."}
+{"instruction": "Translate to Klingon: I can't trust anybody.", "output": "vay' vIvoqlaHbe'.", "en": "I can't trust anybody.", "klingon": "vay' vIvoqlaHbe'."}
+{"instruction": "Translate to Klingon: I'll steal your mobile phone!", "output": "QumwI'lIj vInIH!", "en": "I'll steal your mobile phone!", "klingon": "QumwI'lIj vInIH!"}
+{"instruction": "Translate to Klingon: Is he the owner of that car?", "output": "puH Dujvetlh ghaj'a' ghaH'e'?", "en": "Is he the owner of that car?", "klingon": "puH Dujvetlh ghaj'a' ghaH'e'?"}
+{"instruction": "Translate to Klingon: We can't stand apart. We ought to do something.", "output": "retlhDaq maQambe'nIS maH. mavangnIS.", "en": "We can't stand apart. We ought to do something.", "klingon": "retlhDaq maQambe'nIS maH. mavangnIS."}
+{"instruction": "Translate to Klingon: All of them are connected.", "output": "Hoch lurarlu'.", "en": "All of them are connected.", "klingon": "Hoch lurarlu'."}
+{"instruction": "Translate to Klingon: Tom doesn't like Mary.", "output": "me'rIy' parHa'be' tam.", "en": "Tom doesn't like Mary.", "klingon": "me'rIy' parHa'be' tam."}
+{"instruction": "Translate to Klingon: You must endure the pain.", "output": "'oy' DaSIQnIS.", "en": "You must endure the pain.", "klingon": "'oy' DaSIQnIS."}
+{"instruction": "Translate to Klingon: Would you mind if I took a break?", "output": "jIleS 'e' bonaDHa''a'?", "en": "Would you mind if I took a break?", "klingon": "jIleS 'e' bonaDHa''a'?"}
+{"instruction": "Translate to Klingon: We have little opportunity to use English.", "output": "puS DIvI' Hol wIlo'meH 'eb'e'.", "en": "We have little opportunity to use English.", "klingon": "puS DIvI' Hol wIlo'meH 'eb'e'."}
+{"instruction": "Translate to Klingon: I like hares.", "output": "chuSwI' vIparHa'.", "en": "I like hares.", "klingon": "chuSwI' vIparHa'."}
+{"instruction": "Translate to Klingon: My history teacher is an old Portuguese.", "output": "portughalngan qan ghaH qun ghojmoHwI'wI''e'.", "en": "My history teacher is an old Portuguese.", "klingon": "portughalngan qan ghaH qun ghojmoHwI'wI''e'."}
+{"instruction": "Translate to Klingon: We didn't order these.", "output": "DItlhobpu'be'.", "en": "We didn't order these.", "klingon": "DItlhobpu'be'."}
