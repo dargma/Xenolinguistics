@@ -42,6 +42,24 @@ runs = {
 
 fig, axes = plt.subplots(2, 2, figsize=(13, 9))
 
+def parse_text(txt, pat):
+    xs, ys = [], []
+    for m in pat.finditer(txt):
+        ys.append(float(m.group(1))); xs.append(float(m.group(2)))
+    return xs, ys
+
+# khalani 역방향: AR+Diffusion이 한 로그에 순차 기록 → "TRAIN Diffusion" 기준 분리
+_kr = open(f"{LF}/khalani_fastdllm_kha2en_fullft".rsplit("/",2)[0] + "/khalani_rev.log").read() \
+      if False else open("/content/local_fast/khalani_rev.log").read()
+_split = _kr.find("TRAIN Diffusion")
+KHA_REV_AR_TXT = _kr[:_split]
+KHA_REV_DF_TXT = _kr[_split:]
+
+def plot_text(ax, txt, pat, label, color, style="-"):
+    xs, ys = parse_text(txt, pat)
+    if xs:
+        ax.plot(xs, ys, style, label=f"{label} ({ys[-1]:.2f})", color=color, markersize=3, linewidth=1.4)
+
 def plot_curve(ax, path, pat, label, color, style="-"):
     xs, ys = parse(path, pat)
     if xs:
@@ -68,18 +86,20 @@ ax.annotate("no val set in diffusion trainer (train only)", xy=(0.97, 0.95),
             xycoords="axes fraction", ha="right", va="top", fontsize=8,
             color="gray", style="italic")
 
-# (1,0) AR · Khalani — train only (no val), epochs 20
+# (1,0) AR · Khalani — fwd/rev train (no val), epochs 20
 ax = axes[1, 0]
 plot_curve(ax, runs["kha_ar"], LOSS, "fwd train", "C0")
+plot_text(ax, KHA_REV_AR_TXT, LOSS, "rev train", "C3")
 ax.set_title("AR (Qwen2.5-7B) · Khalani (55 pairs, 20 ep)"); ax.set_xlabel("epoch")
 ax.set_ylabel("CE loss"); ax.legend(fontsize=8); ax.grid(alpha=.3)
 ax.annotate("no val set; train→0 (memorizes 44)", xy=(0.97, 0.95),
             xycoords="axes fraction", ha="right", va="top", fontsize=8,
             color="gray", style="italic")
 
-# (1,1) Diffusion · Khalani — train only
+# (1,1) Diffusion · Khalani — fwd/rev train
 ax = axes[1, 1]
 plot_curve(ax, runs["kha_df"], LOSS, "fwd train", "C0")
+plot_text(ax, KHA_REV_DF_TXT, LOSS, "rev train", "C3")
 ax.set_title("Diffusion (Fast-dLLM v2 7B) · Khalani (55 pairs, 20 ep)")
 ax.set_xlabel("epoch"); ax.set_ylabel("block-diffusion loss")
 ax.legend(fontsize=8); ax.grid(alpha=.3)
