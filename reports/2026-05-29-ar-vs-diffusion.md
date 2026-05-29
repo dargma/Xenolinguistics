@@ -2,7 +2,7 @@
 
 ## 0. 목차
 
-1. **요약** — 핵심 발견(방향에 따라 승자 역전)
+1. **요약** — 핵심 발견(방향에 따라 우열이 갈림)
 2. **방법** — 2.1 데이터 · 2.2 학습(+Loss 곡선) · 2.3 평가(생성·길이·메트릭)
 3. **결과** — 3.1 정량 · 3.2 정성
 4. **논의** — 해석 · 주의(caveat)
@@ -15,18 +15,14 @@
 
 같은 7B 백본의 **AR LLM**(Qwen2.5-7B-Instruct)과 **Diffusion LLM**(Fast-dLLM v2 7B)이 인공어를
 얼마나 잘 배우는지를, **두 인공어**(Klingon 12.7k · Khalani 55쌍) × **두 방향** × **두 아키텍처**에서
-**완전히 동일한 full-FT 설정**으로 비교했다. 방향 정의(이후 이 용어로 통일): **순방향** = en→인공어
-(인공어를 *생성*) · **역방향** = 인공어→en (인공어를 *이해*).
+**완전히 동일한 full-FT 설정**으로 비교했다 (**순방향** = en→인공어, **역방향** = 인공어→en).
 
-**핵심 발견 — 승자는 방향에 따라 뒤집힌다.**
-- **순방향**: 유창성은 **AR 우세**(chrF 38.4 vs 35.7, BLEU 10.4 vs 2.6),
-  *어순*은 **Diffusion 우세**(τ 0.936 vs 0.909). 혼합.
-- **역방향**: **Diffusion이 chrF를 역전**(41.4 vs 37.2). 출력이 모델이 이미 아는
-  영어라 양방향 모델이 영어 prior를 살려 더 유창. 역방향 Diffusion의 **train loss가 훨씬 높게 끝났음에도**
-  (10.6 vs 순방향 3.8) 나타난 현상 — 입력 denoising 난이도와 출력 품질이 분리됨.
+**핵심 발견 — 어느 쪽이 우세한지는 방향에 따라 달라진다.**
+- **순방향**: **AR 우세** — chrF 38.4 vs 35.7, BLEU 10.4 vs 2.6.
+- **역방향**: **Diffusion이 chrF를 역전**(41.4 vs 37.2). 출력이 모델이 이미 아는 영어라 양방향 모델이
+  유리한 것으로 보임 (상세 해석은 §4).
+- **Khalani(55쌍)**: 데이터가 너무 적어 양쪽 다 외우기만 함(test EM 0) → 결론 불가.
 - **종합**: "한 아키텍처가 인공어에 일관 우월"하다는 증거 없음. **우위는 방향·지표에 의존.**
-- **Khalani(55쌍)**: 양방향 모두 학습셋 암기(train loss ~0.18) + held-out 붕괴(chrF 11–15, EM 0)
-  = 교과서적 과적합. 규모 한계로 우열 판단 불가 — "소량 인공어 FT = 암기" 사례.
 
 ---
 
@@ -36,17 +32,17 @@
 
 | 데이터셋 | 무엇인가 | 규모 (train/val/test) | 어순 |
 |---|---|---|---|
-| **Klingon** (tlh) | 〈스타트랙〉 외계 종족 '클링온'의 언어. Marc Okrand가 문법까지 설계한 실제 작동 인공어. | 12,717 / 500 / 500 | **OVS** (목적어–동사–주어; 영어 SVO와 정반대, 세계적으로 희귀) |
+| **Klingon** (tlh) | 〈스타트랙〉 외계 종족 '클링온'의 언어. Marc Okrand가 문법까지 설계한 실제 작동 인공어. | 12,717 / 500 / 500 | **OVS** (목적어–동사–주어; 영어 SVO와 정반대) |
 | **Khalani** (kha) | 게임 〈스타크래프트〉 외계 종족 '프로토스'의 언어. 단편적 대사·구호 위주. | 55쌍 → 학습 44 / 평가 11 (단일 split) | (소량, 분석 불가) |
 
-**스키마**(각 줄): `{"instruction","output","en","klingon"}`. 역방향은 instruction/output을 스왑
-(`*_tlh2en.jsonl`, `"Translate to English: <tlh>"`) — 동일 문장쌍이라 순↔역 **완전 대칭**.
-생성: `prepare_klingon.py` / `prepare_khalani.py`.
+각 데이터는 (영어 문장 ↔ 인공어 문장) 한 쌍이다. 순방향은 이 쌍을 'en→인공어'로, 역방향은 같은 쌍을
+뒤집어 '인공어→en'으로 쓴다 — **두 방향이 똑같은 문장쌍**이라 데이터 차이 없이 방향만 공정하게 비교된다.
+(역방향 파일은 `*_tlh2en.jsonl`. 데이터 생성: `prepare_klingon.py` · `prepare_khalani.py`.)
 
 ### 2.2 학습
 
-**8개 런 모두 같은 하이퍼파라미터**로 학습해 아키텍처만 변수로 두었다. LoRA는 배제 — 선행 en→fi에서 Fast-dLLM이 LoRA로는
-거의 학습되지 않아 Diffusion에 불리한 핸디캡이 되기 때문(full-FT가 유일한 공정 공통 기반).
+학습 설정은 8개 런에서 모두 똑같이 맞추고, **AR이냐 Diffusion이냐**만 바꿔가며 비교했다. LoRA는 쓰지 않았다 —
+선행 en→fi 실험에서 Fast-dLLM은 LoRA로는 거의 학습되지 않아, LoRA로 비교하면 Diffusion이 불리해지기 때문이다(full-FT가 유일한 공정한 공통 기반).
 
 | 방식 | LR | Epochs | Eff. batch | max_len |
 |---|---|---|---|---|
@@ -84,7 +80,7 @@ Khalani는 양쪽 다 0 근처로 추락 = 44개 암기.
 AR과 Diffusion은 문장을 만드는 방식이 근본적으로 달라 공정 비교가 까다로운데, 두 가지를 맞췄다.
 
 **① 생성 예산을 똑같이.** Diffusion은 "몇 토큰짜리 빈칸을 채울지"를 미리 정해야 한다. 이 길이를
-정답에서 받으면 부당한 이점(오라클)이 되므로, 양쪽에 똑같이 **최대 64토큰**만 주고(`max_new_tokens=64`)
+정답에서 받으면 부당한 이점이 되므로, 양쪽에 똑같이 **최대 64토큰**만 주고(`max_new_tokens=64`)
 길이는 모델이 알아서 정하게 했다(선행 en→fi 실험과 동일 원칙). 64는 넉넉하다 — test 정답 최대가 42토큰,
 학습 입력 최대 224토큰(<512)이라 **학습·평가 어디서도 잘린 게 없다(절단 0%)**.
 
@@ -97,20 +93,18 @@ AR과 Diffusion은 문장을 만드는 방식이 근본적으로 달라 공정 �
 | 후처리 | 결과의 첫 번째 줄만 사용 | 동일 |
 
 **평가 모드 두 가지** (같은 64 예산으로 생성한 뒤 채점 방식만 다름, `--mode`):
-- **`free`** (주력): 모델이 끝낸 자연스러운 길이 그대로 채점. 어느 쪽도 정답 길이를 모름 → 가장 공정.
-- **`gt_length`** (오라클): 생성 결과를 정답 토큰 수만큼 잘라서 채점(`gen_ids[:gt_tok]`, en→fi와 동일 로직).
+- **`free`** (기본): 모델이 끝낸 자연스러운 길이 그대로 채점. 어느 쪽도 정답 길이를 모름 → 가장 공정.
+- **`gt_length`**: 생성 결과를 정답 토큰 수만큼 잘라서 채점(`gen_ids[:gt_tok]`, en→fi와 동일 로직).
   예산(64)이 정답(≤42)보다 길므로, 길이를 줄이는 건 예산 한도가 아니라 이 컷이다.
 
 **Diffusion은 몇 번 계산하나.** AR은 토큰 1개당 forward 1회로 고정이지만, Diffusion은 블록마다
 "확신도>0.9인 토큰을 한꺼번에 확정"하는 식이라 횟수가 문장마다 다르다. **실측(문장 20개)**: 순방향
 평균 **30.1회**(23–41), 역방향 **27.0회**(18–38) — threshold 0.9에선 대략 토큰 1개당 1회 수준.
 
-**채점 지표 4가지:**
-- **chrF** — 문자 n-gram F-score. 교착어 형태(접사)에 강건. **주력 지표.**
+**채점 지표 3가지:**
+- **chrF** — 문자 n-gram F-score. 교착어 형태(접사)에 강건. **대표 지표.**
 - **BLEU** — 단어 n-gram precision. 반복·degenerate 출력에 가혹.
 - **EM** — 정답과 완전히 같은 비율(%).
-- **어순 τ** — 예측·정답에 **공통으로 나온 단어들**이 정답과 같은 순서로 놓였는지(Kendall 순서상관).
-  어휘 정확도와 분리된 **순수 어순 신호** (공통 단어 ≥2개인 문장에서만 계산).
 
 ---
 
@@ -118,36 +112,35 @@ AR과 Diffusion은 문장을 만드는 방식이 근본적으로 달라 공정 �
 
 ### 3.1 정량 평가
 
-**Klingon** (n=300). `outputs/klingon[_tlh2en]_ft_eval_{ar,diffusion}_{free,gt_length}.json`.
-셀 표기 = **왼쪽 AR / 오른쪽 Diffusion**, **굵게 = 그 칸의 우세**(모든 지표 높을수록 좋음). `free`가 주력 모드.
+**Klingon** (n=300, `outputs/klingon[_tlh2en]_ft_eval_*.json`). 셀 = **AR / Diffusion**, 굵게 = 우세.
 
-| 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) | 어순 τ (AR/Diff) |
-|---|---|:---:|:---:|:---:|:---:|
-| en→tlh | free | **38.43**/35.67 | **10.40**/2.55 | 8.33/**8.67** | 0.909/**0.936** |
-| | gt_length | **36.96**/33.95 | **10.15**/5.06 | **8.67**/8.33 | 0.904/**0.921** |
-| tlh→en | free | 37.19/**41.40** | **20.40**/17.91 | 7.33/**9.00** | **0.934**/0.922 |
-| | gt_length | 36.34/**39.13** | 19.51/**20.26** | 7.33/**9.00** | **0.924**/0.898 |
+| 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) |
+|---|---|:---:|:---:|:---:|
+| en→tlh | free | **38.43**/35.67 | **10.40**/2.55 | 8.33/**8.67** |
+| | gt_length | **36.96**/33.95 | **10.15**/5.06 | **8.67**/8.33 |
+| tlh→en | free | 37.19/**41.40** | **20.40**/17.91 | 7.33/**9.00** |
+| | gt_length | 36.34/**39.13** | 19.51/**20.26** | 7.33/**9.00** |
 
-- 순방향: chrF·BLEU는 AR, 어순 τ는 Diffusion (양 모드 일관).
+- 순방향: chrF·BLEU 모두 AR (양 모드 일관).
 - 역방향: chrF는 Diffusion 역전. BLEU는 free에선 AR, gt_length에선 Diffusion(20.26)이 따라붙음.
 
 **Khalani** (학습 44 / 평가 11, epochs 20). `outputs/khalani[_kha2en]_ft_eval_*.json`.
 
-| 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) | 어순 τ (AR/Diff) |
-|---|---|:---:|:---:|:---:|:---:|
-| en→kha | free | 13.20/**14.94** | **7.68**/0.00 | 0/0 | — |
-| kha→en | free | **11.82**/11.08 | 2.41/**2.71** | 0/0 | — |
+| 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) |
+|---|---|:---:|:---:|:---:|
+| en→kha | free | 13.20/**14.94** | **7.68**/0.00 | 0/0 |
+| kha→en | free | **11.82**/11.08 | 2.41/**2.71** | 0/0 |
 
 **암기 판정 근거** — 같은 모델을 *학습에 쓴 44개*에 다시 돌리면 AR이 chrF·EM **100**
 (`khalani_ft_eval_ar_train.json`)으로 본 문장을 그대로 재현하지만, 위 *안 본 11개*에선 chrF ~13·EM 0으로
 붕괴한다. 언어를 배웠다면 test도 높아야 하므로, **train 100 ↔ test 0 격차** = 교과서적 과적합(학습이
-아니라 암기). 방향·아키텍처 차이는 **n=11이라 노이즈** — 55쌍은 결론 불가. (τ는 공통 단어가 거의 없어 산출 불가.)
+아니라 암기). 방향·아키텍처 차이는 **n=11이라 노이즈** — 55쌍은 결론 불가.
 
 ### 3.2 정성 평가
 
 **Klingon en→tlh**:
 
-| English | Reference | AR | Diffusion |
+| English (src) | Klingon (ref) | AR | Diffusion |
 |---|---|---|---|
 | I hate lawyers. | `chut qeSwI'pu' vImuS.` | `chut qeSwI'pu' vImuS.` ✅ | `chut qeSwI' vImuS.` |
 | What do we draw? | `nuq wIDIj?` | `nuq wIHIv?` | `nuq wIlo' 'e' wIvang?` |
@@ -158,28 +151,28 @@ AR은 형태론(접사 `-pu'`,`vI-`,`-'a'`)을 살림. Diffusion은 일부 입�
 
 **Klingon tlh→en**:
 
-| Reference (en) | AR | Diffusion |
-|---|---|---|
-| Are you coming to the store with me? | May I go with you to the museum? | Would you come with me to the back of the store? |
-| This is the finest picture I have ever seen. | This picture is the most beautiful one I have ever seen | This picture is the best of all the pictures I've seen |
+| Klingon (src) | English (ref) | AR | Diffusion |
+|---|---|---|---|
+| `ngevwI'Daq vIghoStaHvIS chotlhej'a'?` | Are you coming to the store with me? | May I go with you to the museum? | Would you come with me to the back of the store? |
+| `mIlloghvam 'ey law' Hoch latlh mIlloghmey...` | This is the finest picture I have ever seen. | This picture is the most beautiful one I have ever seen | This picture is the best of all the pictures I've seen |
 
 양쪽 다 **문법적으로 자연스러운 영어**를 만들지만 의미는 자주 빗나감. Diffusion이 핵심어(store, come
 with me)를 더 자주 보존 → 역방향 chrF 우세와 일치.
 
 **Khalani en→kha**:
 
-| English | Reference (kha) | AR | Diffusion |
+| English (src) | Khalani (ref) | AR | Diffusion |
 |---|---|---|---|
 | Prismatic core online | `Peradak kural` | `Peradak aghanizha` (첫 단어만) | `Peradak kry` (첫 단어만) |
 | Oblivion awaits | `Zerashk Gulida` | `Oblivionak tara` (영어 잔재) | `Oblivion n'` (붕괴) |
 
 **Khalani kha→en**:
 
-| Reference (en) | AR | Diffusion |
-|---|---|---|
-| Prismatic core online | Prismatic beams aligning | `Prismaticismatic beams` ⚠️반복 붕괴 |
-| Oblivion awaits | Duty is my shield | `Zero Pointk Unle` (붕괴) |
-| It shall be done | I feel your presence | Our minds are as one |
+| Khalani (src) | English (ref) | AR | Diffusion |
+|---|---|---|---|
+| `Peradak kural` | Prismatic core online | Prismatic beams aligning | `Prismaticismatic beams` ⚠️반복 붕괴 |
+| `Zerashk Gulida` | Oblivion awaits | Duty is my shield | `Zero Pointk Unle` (붕괴) |
+| `Ik ku dar anai` | It shall be done | I feel your presence | Our minds are as one |
 
 Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습셋에서 본 다른 Protoss 대사를 끌어다 쓰거나
 (역방향 AR: 의미 무관한 유창한 영어) 토큰을 반복(Diffusion `Prismaticismatic`)한다 — 44개 암기의 전형.
@@ -188,18 +181,18 @@ Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습�
 
 ## 4. 논의
 
-단일 승자는 없고 **우위가 방향·지표에 따라 갈린다**는 것이 핵심이다. 양방향 디코딩(Diffusion)은
-*어순*(순방향)과 *영어 출력 유창성*(역방향)에서, AR은 *인공어 표면형 정밀도*(순방향 BLEU)에서 강하다.
-특히 역방향에서 Diffusion이 train loss가 높은데도 chrF가 앞선 점은, **인공어 입력을 푸는 난이도와 영어
-출력의 품질이 별개**임을 시사한다 — 익숙한 언어로 출력할 때 양방향 문맥이 이점이 된다는 해석.
+한 아키텍처가 모든 면에서 낫지는 않았고, **우위가 방향에 따라 갈린다.** 순방향(인공어 생성)에선 AR이
+chrF(38.4 vs 35.7)·BLEU(10.4 vs 2.6) 모두 앞섰지만, 역방향(영어로 번역)에선 Diffusion이 chrF(41.4 vs
+37.2)로 역전했다. 특히 역방향 Diffusion은 **train loss가 순방향보다 훨씬 높게(10.6 vs 3.8) 끝났는데도**
+평가 chrF가 더 높았다 — 학습 손실(인공어 입력을 복원하는 난이도)과 실제 번역 품질(영어 출력)이 따로
+논다는 신호다. '익숙한 영어로 출력할 때 양방향 문맥이 유리하다'는 해석이 가능하지만, single seed·1 epoch라
+아직 **추정**이다(아래 caveat).
 
 **주의 (caveat).**
 1. Klingon은 온라인 자료가 많아 Qwen 사전학습 포함 가능성 → 부분적 *회상*(미지 언어 전제 오염). 더
    깨끗한 축은 Khalani지만 55쌍이라 FT 부적합.
-2. single seed, Diffusion 샘플링 비결정적 → 작은 τ 격차 신뢰엔 ≥3 seed 필요.
+2. single seed · Diffusion 샘플링은 비결정적 → 작은 격차는 우연일 수 있어 다중 seed 재현이 필요하다.
 3. 1 epoch, Diffusion 디코딩 하이퍼파라미터(block 32 / threshold 0.9) 미튜닝.
-4. 어순 τ는 ≥2 공통단어 쌍에서만 계산. 역방향(영어 출력)은 어휘 중복이 커 n이 큼(순방향은 적음) →
-   방향 간 τ 직접 비교는 주의.
 
 ---
 
