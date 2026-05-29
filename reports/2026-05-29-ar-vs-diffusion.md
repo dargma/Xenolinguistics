@@ -43,15 +43,6 @@
 | Khalani en→kha (11) | 13.2 / **14.9** | **7.7** / 0.0 | — |
 | Khalani kha→en (11) | **11.8** / 11.1 | 2.4 / **2.7** | — |
 
-**실험 매트릭스** (8 런, 전부 학습·평가 완료):
-
-| 데이터셋 | 방향 | AR 런 | Diffusion 런 |
-|---|---|---|---|
-| Klingon 12.7k | en→tlh | `klingon_qwen_fullft` | `klingon_fastdllm_fullft` |
-| Klingon 12.7k | tlh→en | `klingon_qwen_tlh2en_fullft` | `klingon_fastdllm_tlh2en_fullft` |
-| Khalani 55 | en→kha | `khalani_qwen_fullft` | `khalani_fastdllm_fullft` |
-| Khalani 55 | kha→en | `khalani_qwen_kha2en_fullft` | `khalani_fastdllm_kha2en_fullft` |
-
 체크포인트·데이터셋 HF 링크 → **§6**.
 
 ---
@@ -99,37 +90,48 @@ Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figure
 읽을 점: Klingon Diffusion 패널에서 순방향(→3.81)은 잘 내려가나 **역방향은 ~10.6에서 정체** — 그럼에도
 평가 chrF는 역방향 Diffusion이 더 높다(§3.1). Khalani는 양쪽 다 train loss가 0 근처로 추락 = 암기.
 
-### 2.3 평가 — 생성·길이 처리
+### 2.3 평가 방법
 
-`eval_ft.py`, **0-shot**. 공정성 원칙(선행 en→fi와 동일): **두 아키텍처에 동일 생성 예산
-(max_new_tokens=64)** 을 줘 Diffusion의 denoise-budget 비대칭을 제거. 학습·평가 모두 **절단 0%**
-(학습 전체 max 224<512, test 출력 max 42<64).
+`eval_ft.py`로 **0-shot 번역**(예시 없이 instruction만 주고 생성). AR과 Diffusion은 문장을 만드는
+방식이 근본적으로 달라 공정 비교가 까다로운데, 두 가지를 맞췄다.
+
+**① 생성 예산을 똑같이.** Diffusion은 "몇 토큰짜리 빈칸을 채울지"를 미리 정해야 한다. 이 길이를
+정답에서 받으면 부당한 이점(오라클)이 되므로, 양쪽에 똑같이 **최대 64토큰**만 주고(`max_new_tokens=64`)
+길이는 모델이 알아서 정하게 했다(선행 en→fi 실험과 동일 원칙). 64는 넉넉하다 — test 정답 최대가 42토큰,
+학습 입력 최대 224토큰(<512)이라 **학습·평가 어디서도 잘린 게 없다(절단 0%)**.
+
+**② 길이는 모델이 스스로 결정한다.** 64는 상한일 뿐, 실제 길이는 두 모델 모두 자기가 끝낸다:
 
 | | **AR (Qwen)** | **Diffusion (Fast-dLLM v2)** |
 |---|---|---|
-| 디코딩 | autoregressive greedy | block diffusion `mdm_sample` (block 32, threshold 0.9) |
-| 길이 자동조절 | EOS에서 per-token 정지 | EOS(`151645`) 감지 → 뒤 pad + 남은 블록 조기종료 (per-block) |
-| 후처리 | 첫 비어있지 않은 줄 | 동일 |
+| 생성 방식 | 토큰을 왼→오로 1개씩 (greedy) | 64토큰 빈칸을 32토큰 블록 단위로 채움 (`mdm_sample`, threshold 0.9) |
+| 멈추는 법 | EOS 토큰이 나오면 정지 | EOS(id 151645)가 확정되면 그 뒤는 버리고(pad) 남은 블록도 건너뜀 |
+| 후처리 | 결과의 첫 번째 줄만 사용 | 동일 |
 
-**두 모드**(`--mode`): 동일 64 예산 생성 후 후처리만 — `free`(주력, 모델 자율 길이) / `gt_length`(오라클,
-생성 토큰을 정답 길이로 슬라이스 `gen_ids[:gt_tok]`). 예산(64)≥정답(≤42)이라 gt_length가 실제 컷 기준.
+**평가 모드 두 가지** (같은 64 예산으로 생성한 뒤 채점 방식만 다름, `--mode`):
+- **`free`** (주력): 모델이 끝낸 자연스러운 길이 그대로 채점. 어느 쪽도 정답 길이를 모름 → 가장 공정.
+- **`gt_length`** (오라클): 생성 결과를 정답 토큰 수만큼 잘라서 채점(`gen_ids[:gt_tok]`, en→fi와 동일 로직).
+  예산(64)이 정답(≤42)보다 길므로, 길이를 줄이는 건 예산 한도가 아니라 이 컷이다.
 
-**Diffusion step 수**: AR은 토큰당 1 forward로 고정, Diffusion은 동적(블록당 confidence>0.9 토큰을
-한꺼번에 확정). **실측(n=20)**: 순방향 평균 **30.1** step/문장(23–41), 역방향 **27.0**(18–38) —
-threshold 0.9에서 대략 토큰당 1 step. 캔버스 = 64토큰 = 2블록.
+**Diffusion은 몇 번 계산하나.** AR은 토큰 1개당 forward 1회로 고정이지만, Diffusion은 블록마다
+"확신도>0.9인 토큰을 한꺼번에 확정"하는 식이라 횟수가 문장마다 다르다. **실측(문장 20개)**: 순방향
+평균 **30.1회**(23–41), 역방향 **27.0회**(18–38) — threshold 0.9에선 대략 토큰 1개당 1회 수준.
 
-**메트릭**: **chrF**(문자 n-gram F, 교착어 형태론에 강건; 주력) · **BLEU**(단어 n-gram, degenerate에
-가혹) · **EM**(완전일치 %) · **어순 τ**(예측·정답 공통 단어의 Kendall 순서상관, 어휘와 분리된 어순 신호;
-≥2 공통단어 쌍만).
+**채점 지표 4가지:**
+- **chrF** — 문자 n-gram F-score. 교착어 형태(접사)에 강건. **주력 지표.**
+- **BLEU** — 단어 n-gram precision. 반복·degenerate 출력에 가혹.
+- **EM** — 정답과 완전히 같은 비율(%).
+- **어순 τ** — 예측·정답에 **공통으로 나온 단어들**이 정답과 같은 순서로 놓였는지(Kendall 순서상관).
+  어휘 정확도와 분리된 **순수 어순 신호** (공통 단어 ≥2개인 문장에서만 계산).
 
 ---
 
 ## 3. 결과
 
-### 3.1 정량
+### 3.1 정량 평가
 
 **Klingon** (n=300). `outputs/klingon[_tlh2en]_ft_eval_{ar,diffusion}_{free,gt_length}.json`.
-**굵게 = 같은 방향·모드에서 우세.**
+셀 표기 = **왼쪽 AR / 오른쪽 Diffusion**, **굵게 = 그 칸의 우세**(모든 지표 높을수록 좋음). `free`가 주력 모드.
 
 | 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) | 어순 τ (AR/Diff) |
 |---|---|:---:|:---:|:---:|:---:|
@@ -152,7 +154,7 @@ threshold 0.9에서 대략 토큰당 1 step. 캔버스 = 64토큰 = 2블록.
 학습셋 44개를 100% 암기하나 held-out에선 chrF 11–15·EM 0으로 붕괴 → **교과서적 과적합**.
 방향·아키텍처 차이는 **n=11이라 노이즈** — 55쌍은 결론 불가.
 
-### 3.2 정성
+### 3.2 정성 평가
 
 **Klingon en→tlh** (순):
 
@@ -175,8 +177,23 @@ AR은 형태론(접사 `-pu'`,`vI-`,`-'a'`)을 살림. Diffusion은 일부 입�
 양쪽 다 **문법적으로 자연스러운 영어**를 만들지만 의미는 자주 빗나감. Diffusion이 핵심어(store, come
 with me)를 더 자주 보존 → 역방향 chrF 우세와 일치.
 
-**Khalani**: `Prismatic core online` → ref `Peradak kural`, AR `Peradak aghanizha`(첫 단어만);
-역방향 Diffusion은 `Prismaticismatic beams`처럼 반복 붕괴.
+**Khalani en→kha** (순):
+
+| English | Reference (kha) | AR | Diffusion |
+|---|---|---|---|
+| Prismatic core online | `Peradak kural` | `Peradak aghanizha` (첫 단어만) | `Peradak kry` (첫 단어만) |
+| Oblivion awaits | `Zerashk Gulida` | `Oblivionak tara` (영어 잔재) | `Oblivion n'` (붕괴) |
+
+**Khalani kha→en** (역):
+
+| Reference (en) | AR | Diffusion |
+|---|---|---|
+| Prismatic core online | Prismatic beams aligning | `Prismaticismatic beams` ⚠️반복 붕괴 |
+| Oblivion awaits | Duty is my shield | `Zero Pointk Unle` (붕괴) |
+| It shall be done | I feel your presence | Our minds are as one |
+
+Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습셋에서 본 다른 Protoss 대사를 끌어다 쓰거나
+(역방향 AR: 의미 무관한 유창한 영어) 토큰을 반복(Diffusion `Prismaticismatic`)한다 — 44개 암기의 전형.
 
 ---
 
@@ -224,13 +241,17 @@ PYTHONPATH=eval python3 eval_ft.py --model_type diffusion --model_path outputs/k
 
 ## 6. 링크
 
-**HF 모델 체크포인트** (공개, full-FT):
+**HF 모델 체크포인트** (전부 공개, full-FT):
 
-| 방향 | AR (Qwen2.5-7B) | Diffusion (Fast-dLLM v2 7B) |
-|---|---|---|
-| en→tlh | [klingon-en2tlh-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft) | [klingon-en2tlh-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-fastdllm-v2-7b-fullft) |
-| tlh→en | [klingon-tlh2en-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-qwen2.5-7b-fullft) | [klingon-tlh2en-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-fastdllm-v2-7b-fullft) |
+| 데이터셋 | 방향 | AR (Qwen2.5-7B) | Diffusion (Fast-dLLM v2 7B) |
+|---|---|---|---|
+| Klingon | en→tlh | [klingon-en2tlh-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft) | [klingon-en2tlh-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-fastdllm-v2-7b-fullft) |
+| Klingon | tlh→en | [klingon-tlh2en-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-qwen2.5-7b-fullft) | [klingon-tlh2en-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-fastdllm-v2-7b-fullft) |
+| Khalani | en→kha | [khalani-en2kha-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/khalani-en2kha-qwen2.5-7b-fullft) | [khalani-en2kha-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/khalani-en2kha-fastdllm-v2-7b-fullft) |
+| Khalani | kha→en | [khalani-kha2en-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/khalani-kha2en-qwen2.5-7b-fullft) | [khalani-kha2en-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/khalani-kha2en-fastdllm-v2-7b-fullft) |
 
-**HF 데이터셋**: [sungkwang2/klingon-en-tlh-translation](https://huggingface.co/datasets/sungkwang2/klingon-en-tlh-translation) (양방향 jsonl, Tatoeba 기반 CC-BY).
+**HF 데이터셋** (양방향 jsonl):
+- [sungkwang2/klingon-en-tlh-translation](https://huggingface.co/datasets/sungkwang2/klingon-en-tlh-translation) — Tatoeba 기반, CC-BY.
+- [sungkwang2/khalani-en-kha-translation](https://huggingface.co/datasets/sungkwang2/khalani-en-kha-translation) — 55쌍, 탐색적(과적합 주의).
 
-> Khalani 모델(탐색적·과적합)은 로컬 보관, HF 미업로드. Khalani 데이터는 자체 코퍼스라 비공개.
+> Khalani 모델은 탐색적(55쌍 과적합) — 결론용이 아니라 재현·참고용으로 공개.
