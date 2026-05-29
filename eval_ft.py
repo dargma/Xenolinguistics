@@ -19,10 +19,13 @@ def main():
     p.add_argument("--max_new_tokens", type=int, default=64)
     p.add_argument("--block_size", type=int, default=32)
     p.add_argument("--threshold", type=float, default=0.9)
+    p.add_argument("--mode", default="free", choices=["free", "gt_length"],
+                   help="free = symmetric free-length (cut at EOS); "
+                        "gt_length = cap generated tokens to reference token length (oracle).")
     p.add_argument("--out", default=None)
     args = p.parse_args()
 
-    out_path = args.out or f"outputs/{args.tgt_field}_ft_eval_{args.model_type}.json"
+    out_path = args.out or f"outputs/{args.tgt_field}_ft_eval_{args.model_type}_{args.mode}.json"
     os.makedirs(os.path.dirname(out_path) or ".", exist_ok=True)
 
     from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -42,21 +45,29 @@ def main():
     for i, ex in enumerate(rows):
         msgs = [{"role": "user", "content": ex["instruction"]}]
         prompt = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+        # gt_length oracle: cap generated tokens to reference token length (same budget either way).
+        gt_tok = len(tok.encode(ex[args.tgt_field], add_special_tokens=False)) if args.mode == "gt_length" else None
         if args.model_type == "ar":
             inputs = tok(prompt, return_tensors="pt").to(model.device)
             with torch.no_grad():
                 out = model.generate(**inputs, max_new_tokens=args.max_new_tokens,
                                      do_sample=False, pad_token_id=tok.eos_token_id)
-            raw = tok.decode(out[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
+            gen_ids = out[0][inputs["input_ids"].shape[1]:]
+            if gt_tok is not None:
+                gen_ids = gen_ids[:gt_tok]
+            raw = tok.decode(gen_ids, skip_special_tokens=True)
         else:
             input_ids = tok(prompt, return_tensors="pt").input_ids.to(model.device)
             seq_len = torch.tensor([input_ids.shape[1]], device=model.device)
             bs = args.block_size
-            mnt = max(((args.max_new_tokens + bs - 1) // bs) * bs, bs)  # FREE, symmetric
+            mnt = max(((args.max_new_tokens + bs - 1) // bs) * bs, bs)  # same denoise budget for both modes
             out = model.mdm_sample(input_ids, tokenizer=tok, block_size=bs, small_block_size=bs,
                                    max_new_tokens=mnt, mask_id=mask_id, min_len=input_ids.shape[1],
                                    seq_len=seq_len, use_block_cache=True, threshold=args.threshold)
-            raw = tok.decode(out[0][input_ids.shape[1]:], skip_special_tokens=True)
+            gen_ids = out[0][input_ids.shape[1]:]
+            if gt_tok is not None:
+                gen_ids = gen_ids[:gt_tok]
+            raw = tok.decode(gen_ids, skip_special_tokens=True)
         pred = clean_pred(raw, args.lang_name)
         preds.append(pred); refs.append(ex[args.tgt_field])
         if i < 10:
@@ -67,7 +78,8 @@ def main():
     em = 100.0 * sum(p == r for p, r in zip(preds, refs)) / len(preds)
     tau, tau_n = word_order_tau(preds, refs)
     result = {"model_type": args.model_type, "model_path": args.model_path,
-              "test_file": args.test_file, "n": len(preds), "mode": "free",
+              "test_file": args.test_file, "n": len(preds), "mode": args.mode,
+              "max_new_tokens": args.max_new_tokens,
               "chrF": round(chrf, 2), "BLEU": round(bleu, 2), "exact_match": round(em, 2),
               "word_order_tau": round(tau, 3) if tau is not None else None, "word_order_tau_n": tau_n,
               "examples": examples}
