@@ -14,13 +14,14 @@
 ## 1. 요약
 
 같은 7B 백본의 **AR LLM**(Qwen2.5-7B-Instruct)과 **Diffusion LLM**(Fast-dLLM v2 7B)이 인공어를
-얼마나 잘 배우는지를, **두 인공어**(Klingon 12.7k · Khalani 55쌍) × **두 방향**(순방향 en→인공어 *생성*,
-역방향 인공어→en *이해*) × **두 아키텍처**에서 **완전히 동일한 full-FT 설정**으로 비교했다.
+얼마나 잘 배우는지를, **두 인공어**(Klingon 12.7k · Khalani 55쌍) × **두 방향** × **두 아키텍처**에서
+**완전히 동일한 full-FT 설정**으로 비교했다. 방향 정의(이후 이 용어로 통일): **순방향** = en→인공어
+(인공어를 *생성*) · **역방향** = 인공어→en (인공어를 *이해*).
 
 **핵심 발견 — 승자는 방향에 따라 뒤집힌다.**
-- **순방향(en→tlh, 인공어 생성)**: 유창성은 **AR 우세**(chrF 38.4 vs 35.7, BLEU 10.4 vs 2.6),
+- **순방향**: 유창성은 **AR 우세**(chrF 38.4 vs 35.7, BLEU 10.4 vs 2.6),
   *어순*은 **Diffusion 우세**(τ 0.936 vs 0.909). 혼합.
-- **역방향(tlh→en, 인공어 이해)**: **Diffusion이 chrF를 역전**(41.4 vs 37.2). 출력이 모델이 이미 아는
+- **역방향**: **Diffusion이 chrF를 역전**(41.4 vs 37.2). 출력이 모델이 이미 아는
   영어라 양방향 모델이 영어 prior를 살려 더 유창. 역방향 Diffusion의 **train loss가 훨씬 높게 끝났음에도**
   (10.6 vs 순방향 3.8) 나타난 현상 — 입력 denoising 난이도와 출력 품질이 분리됨.
 - **종합**: "한 아키텍처가 인공어에 일관 우월"하다는 증거 없음. **우위는 방향·지표에 의존.**
@@ -44,14 +45,13 @@
 
 ### 2.1 데이터
 
-| 데이터셋 | 출처 / 라이선스 | 규모 (train/val/test) | 어순 |
+| 데이터셋 | 무엇인가 | 규모 (train/val/test) | 어순 |
 |---|---|---|---|
-| **Klingon** (tlh) | OPUS **Tatoeba en-tlh** v2023-04-12 / CC-BY (중복제거 13,717쌍) | 12,717 / 500 / 500 | **OVS** |
-| **Khalani** (kha) | 자체 수집·번역 (무명 인공어, 게임/창작) | 55쌍 → 5-fold CV (fold0: 44 / 11) | (소량, 분석 불가) |
+| **Klingon** (tlh) | 〈스타트랙〉 외계 종족 '클링온'의 언어. Marc Okrand가 문법까지 설계한 실제 작동 인공어. | 12,717 / 500 / 500 | **OVS** (목적어–동사–주어; 영어 SVO와 정반대, 세계적으로 희귀) |
+| **Khalani** (kha) | 게임 〈스타크래프트〉 외계 종족 '프로토스'의 언어. 단편적 대사·구호 위주. | 55쌍 → 학습 44 / 평가 11 (단일 split) | (소량, 분석 불가) |
 
-"미지 언어" 전제를 **두 극단**으로 잡았다: **Klingon**은 코퍼스가 충분(12.7k)해 FT 결론이 가능하나
-온라인 자료가 많아 Qwen 사전학습에 일부 포함됐을 수 있다(전제 오염, §4). **Khalani**는 무명이라
-오염은 거의 없지만 55쌍뿐이라 암기만 관측된다(§3.1). → 상보적.
+출처·라이선스: Klingon = OPUS **Tatoeba en-tlh** v2023-04-12 (CC-BY, 중복제거 13,717쌍) ·
+Khalani = 자체 수집·번역(게임/소설/만화).
 
 **스키마**(각 줄): `{"instruction","output","en","klingon"}`. 역방향은 instruction/output을 스왑
 (`*_tlh2en.jsonl`, `"Translate to English: <tlh>"`) — 동일 문장쌍이라 순↔역 **완전 대칭**.
@@ -59,7 +59,7 @@
 
 ### 2.2 학습
 
-전 런 **동일 설정**으로 아키텍처만 변수로 분리. LoRA는 배제 — 선행 en→fi에서 Fast-dLLM이 LoRA로는
+**8개 런 모두 같은 하이퍼파라미터**로 학습해 아키텍처만 변수로 두었다. LoRA는 배제 — 선행 en→fi에서 Fast-dLLM이 LoRA로는
 거의 학습되지 않아 Diffusion에 불리한 핸디캡이 되기 때문(full-FT가 유일한 공정 공통 기반).
 
 | 방식 | LR | Epochs | Eff. batch | max_len |
@@ -80,8 +80,8 @@ Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figure
 | Khalani 양방향 AR | → **~0.18** (44개 암기) | (val 없음) |
 | Khalani 양방향 Diff | → 0.19 (순) / 6.8 (역, 평균) | (val 없음) |
 
-읽을 점: Klingon Diffusion 패널에서 순방향(→3.81)은 잘 내려가나 **역방향은 ~10.6에서 정체** — 그럼에도
-평가 chrF는 역방향 Diffusion이 더 높다(§3.1). Khalani는 양쪽 다 train loss가 0 근처로 추락 = 암기.
+읽을 점: 순방향 Diffusion은 3.81까지 내려가나 역방향은 ~10.6에서 정체(이 괴리의 해석은 §4).
+Khalani는 양쪽 다 0 근처로 추락 = 44개 암기.
 
 ### 2.3 평가 방법
 
@@ -128,16 +128,16 @@ Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figure
 
 | 방향 | 모드 | chrF (AR/Diff) | BLEU (AR/Diff) | EM (AR/Diff) | 어순 τ (AR/Diff) |
 |---|---|:---:|:---:|:---:|:---:|
-| en→tlh (순) | free | **38.43**/35.67 | **10.40**/2.55 | 8.33/**8.67** | 0.909/**0.936** |
+| en→tlh | free | **38.43**/35.67 | **10.40**/2.55 | 8.33/**8.67** | 0.909/**0.936** |
 | | gt_length | **36.96**/33.95 | **10.15**/5.06 | **8.67**/8.33 | 0.904/**0.921** |
-| tlh→en (역) | free | 37.19/**41.40** | **20.40**/17.91 | 7.33/**9.00** | **0.934**/0.922 |
+| tlh→en | free | 37.19/**41.40** | **20.40**/17.91 | 7.33/**9.00** | **0.934**/0.922 |
 | | gt_length | 36.34/**39.13** | 19.51/**20.26** | 7.33/**9.00** | **0.924**/0.898 |
 
 - 순방향: chrF·BLEU는 AR, 어순 τ는 Diffusion (양 모드 일관).
 - 역방향: chrF는 Diffusion 역전. BLEU는 free에선 AR, gt_length에선 Diffusion(20.26)이 따라붙음.
 - ICL 대비 순방향 chrF ~10→38(≈4배) → 12.7k FT로 인공어가 실제 학습됨.
 
-**Khalani** (fold0, train 44 / test 11, epochs 20). `outputs/khalani[_kha2en]_ft_eval_*.json`.
+**Khalani** (학습 44 / 평가 11, epochs 20). `outputs/khalani[_kha2en]_ft_eval_*.json`.
 
 | 방향 | chrF (AR/Diff) | BLEU (AR/Diff) | EM | (참고) AR train |
 |---|:---:|:---:|:---:|:---:|
@@ -149,7 +149,7 @@ Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figure
 
 ### 3.2 정성 평가
 
-**Klingon en→tlh** (순):
+**Klingon en→tlh**:
 
 | English | Reference | AR | Diffusion |
 |---|---|---|---|
@@ -160,7 +160,7 @@ Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figure
 AR은 형태론(접사 `-pu'`,`vI-`,`-'a'`)을 살림. Diffusion은 일부 입력에서 `, we have 1,2,3,…` 반복
 붕괴 → 순방향 BLEU 2.55의 주원인.
 
-**Klingon tlh→en** (역):
+**Klingon tlh→en**:
 
 | Reference (en) | AR | Diffusion |
 |---|---|---|
@@ -170,14 +170,14 @@ AR은 형태론(접사 `-pu'`,`vI-`,`-'a'`)을 살림. Diffusion은 일부 입�
 양쪽 다 **문법적으로 자연스러운 영어**를 만들지만 의미는 자주 빗나감. Diffusion이 핵심어(store, come
 with me)를 더 자주 보존 → 역방향 chrF 우세와 일치.
 
-**Khalani en→kha** (순):
+**Khalani en→kha**:
 
 | English | Reference (kha) | AR | Diffusion |
 |---|---|---|---|
 | Prismatic core online | `Peradak kural` | `Peradak aghanizha` (첫 단어만) | `Peradak kry` (첫 단어만) |
 | Oblivion awaits | `Zerashk Gulida` | `Oblivionak tara` (영어 잔재) | `Oblivion n'` (붕괴) |
 
-**Khalani kha→en** (역):
+**Khalani kha→en**:
 
 | Reference (en) | AR | Diffusion |
 |---|---|---|
@@ -192,10 +192,10 @@ Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습�
 
 ## 4. 논의
 
-신뢰할 만한 비교는 **Klingon 양방향**에서 나오며, 결론은 *방향 의존적*이다 — 순방향(생성)은 어순=Diffusion·
-유창성=AR, 역방향(이해)은 영어 chrF가 Diffusion으로 역전. 양방향 디코딩의 이점은 **어순 배치**와
-**출력측 영어 유창성**에서, AR의 이점은 **인공어 n-gram 정밀도**에서 관찰된다. Khalani는 규모 한계로
-암기만 확인. 흥미로운 분리: 역방향 Diffusion은 train loss가 높아도(10.6) 출력 영어 품질은 우수.
+단일 승자는 없고 **우위가 방향·지표에 따라 갈린다**는 것이 핵심이다. 양방향 디코딩(Diffusion)은
+*어순*(순방향)과 *영어 출력 유창성*(역방향)에서, AR은 *인공어 표면형 정밀도*(순방향 BLEU)에서 강하다.
+특히 역방향에서 Diffusion이 train loss가 높은데도 chrF가 앞선 점은, **인공어 입력을 푸는 난이도와 영어
+출력의 품질이 별개**임을 시사한다 — 익숙한 언어로 출력할 때 양방향 문맥이 이점이 된다는 해석.
 
 **주의 (caveat).**
 1. Klingon은 온라인 자료가 많아 Qwen 사전학습 포함 가능성 → 부분적 *회상*(미지 언어 전제 오염). 더
@@ -210,8 +210,7 @@ Khalani는 양방향 모두 정답 어휘를 거의 못 맞히고(EM 0), 학습�
 ## 5. 재현성
 
 베이스 모델: AR `Qwen/Qwen2.5-7B-Instruct` · Diffusion `Efficient-Large-Model/Fast_dLLM_v2_7B`.
-환경: `transformers 4.57.6` · `trl 1.4.0` · `torchao 0.17.0` · `peft 0.19.1` (5.x는 Fast-dLLM 생성이
-깨짐). 모델·데이터는 `/content/local_fast`에서만 읽음(Drive는 백업).
+환경: `transformers 4.57.6` · `trl 1.4.0` · `torchao 0.17.0` · `peft 0.19.1` (5.x는 Fast-dLLM 생성이 깨짐).
 
 ```bash
 # 1) 데이터 (역방향은 instruction/output 스왑 → *_tlh2en.jsonl)
@@ -248,4 +247,3 @@ PYTHONPATH=eval python3 eval_ft.py --model_type diffusion --model_path outputs/k
 - [sungkwang2/klingon-en-tlh-translation](https://huggingface.co/datasets/sungkwang2/klingon-en-tlh-translation) — Tatoeba 기반, CC-BY.
 - [sungkwang2/khalani-en-kha-translation](https://huggingface.co/datasets/sungkwang2/khalani-en-kha-translation) — 55쌍, 탐색적(과적합 주의).
 
-> Khalani 모델은 탐색적(55쌍 과적합) — 결론용이 아니라 재현·참고용으로 공개.
