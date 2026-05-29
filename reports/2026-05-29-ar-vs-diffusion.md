@@ -30,10 +30,10 @@
 
 ### 2.1 데이터
 
-| 데이터셋 | 무엇인가 | 규모 (train/val/test) | 어순 |
+| 언어 | 설명 | 데이터셋 | 어순 |
 |---|---|---|---|
-| **Klingon** (tlh) | 〈스타트랙〉 외계 종족 '클링온'의 언어. Marc Okrand가 문법까지 설계한 실제 작동 인공어. | 12,717 / 500 / 500 | **OVS** (목적어–동사–주어; 영어 SVO와 정반대) |
-| **Khalani** (kha) | 게임 〈스타크래프트〉 외계 종족 '프로토스'의 언어. 단편적 대사·구호 위주. | 55쌍 → 학습 44 / 평가 11 (단일 split) | (소량, 분석 불가) |
+| **Klingon** (tlh) | 〈스타트랙〉 외계 종족 '클링온'의 언어. Marc Okrand가 문법까지 설계한 실제 작동 인공어. | train 12,717 / val 500 / test 500 | **OVS** (목적어–동사–주어; 영어 SVO와 정반대) |
+| **Khalani** (kha) | 게임 〈스타크래프트〉 외계 종족 '프로토스'의 언어. 단편적 대사·구호 위주. | train 44 / test 11 (총 55, val 없음) | (소량, 분석 불가) |
 
 각 데이터는 (영어 문장 ↔ 인공어 문장) 한 쌍이다. 순방향은 이 쌍을 'en→인공어'로, 역방향은 같은 쌍을
 뒤집어 '인공어→en'으로 쓴다 — **두 방향이 똑같은 문장쌍**이라 데이터 차이 없이 방향만 공정하게 비교된다.
@@ -48,7 +48,7 @@
 |---|---|---|---|---|
 | full fine-tune (`lora_rank=0`) | 2e-5 | 1 (Khalani만 20) | 8 (AR bs8×acc1 / Diff bs1×acc8) | 512 |
 
-**Loss 곡선** (4-패널 = 아키텍처 × 데이터셋; Klingon은 순·역 겹쳐 그림, AR은 eval loss 점선도 포함.
+**Loss 곡선** (4-패널 = 아키텍처 × 언어; Klingon은 순·역 겹쳐 그림, AR은 eval loss 점선도 포함.
 Diffusion 트레이너엔 val 셋이 없어 train만). 생성기 `reports/figures/2026-05-29-loss.py`.
 
 ![loss](figures/2026-05-29-loss.png)
@@ -70,7 +70,7 @@ Khalani는 양쪽 다 0 근처로 추락 = 44개 암기.
 `eval_ft.py`로 **0-shot 번역**(예시 없이 instruction만 주고 생성). 각 방향의 instruction 원문(데이터의
 `instruction` 필드, 모델의 chat template에 user 메시지로 투입):
 
-| 데이터셋 · 방향 | instruction |
+| 언어 · 방향 | instruction |
 |---|---|
 | Klingon en→tlh | `Translate to Klingon: <영어 문장>` |
 | Klingon tlh→en | `Translate to English: <클링온 문장>` |
@@ -225,7 +225,7 @@ PYTHONPATH=eval python3 eval_ft.py --model_type diffusion --model_path outputs/k
 
 **HF 모델 체크포인트** (전부 공개, full-FT):
 
-| 데이터셋 | 방향 | AR (Qwen2.5-7B) | Diffusion (Fast-dLLM v2 7B) |
+| 언어 | 방향 | AR (Qwen2.5-7B) | Diffusion (Fast-dLLM v2 7B) |
 |---|---|---|---|
 | Klingon | en→tlh | [klingon-en2tlh-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft) | [klingon-en2tlh-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-fastdllm-v2-7b-fullft) |
 | Klingon | tlh→en | [klingon-tlh2en-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-qwen2.5-7b-fullft) | [klingon-tlh2en-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-fastdllm-v2-7b-fullft) |
