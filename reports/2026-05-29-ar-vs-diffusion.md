@@ -11,7 +11,8 @@
 
 > 2026-05-28 보고서(`reports/2026-05-28-klingon-ar-vs-diffusion.md`)를 **다축 구조로 재구성·확장**한 supersede 판.
 > 이전 보고서는 Klingon 순방향 + Khalani 탐색만 다뤘다. 본 보고서는 **역방향(X→en)** 축을 추가하고
-> 전 실험을 단일 매트릭스로 통합한다.
+> 전 실험을 단일 매트릭스로 통합한다. (방향의 의미: 순방향=인공어 *생성*, 역방향=인공어 *이해* —
+> 역방향은 출력이 영어라 어순 τ 해석에 주의.)
 
 ---
 
@@ -21,29 +22,29 @@
 |---|---|---|---|---|:---:|:---:|
 | 1 | Klingon (12.7k) | en→tlh (순) | AR | `outputs/klingon_qwen_fullft` | ✅ | ✅ |
 | 2 | Klingon (12.7k) | en→tlh (순) | Diffusion | `outputs/klingon_fastdllm_fullft` | ✅ | ✅ |
-| 3 | Klingon (12.7k) | tlh→en (역) | AR | `outputs/klingon_qwen_tlh2en_fullft` | ✅ | ⏳ TBD |
-| 4 | Klingon (12.7k) | tlh→en (역) | Diffusion | `outputs/klingon_fastdllm_tlh2en_fullft` | 🟡 학습중 | ⏳ TBD |
+| 3 | Klingon (12.7k) | tlh→en (역) | AR | `outputs/klingon_qwen_tlh2en_fullft` | ✅ | 🟡 진행중 |
+| 4 | Klingon (12.7k) | tlh→en (역) | Diffusion | `outputs/klingon_fastdllm_tlh2en_fullft` | ✅ | 🟡 진행중 |
 | 5 | Khalani (55) | en→kha (순) | AR | `outputs/khalani_qwen_fullft` | ✅ | ✅ |
 | 6 | Khalani (55) | en→kha (순) | Diffusion | `outputs/khalani_fastdllm_fullft` | ✅ | ✅ |
 | 7 | Khalani (55) | kha→en (역) | AR | — | ⬜ TBD | ⬜ TBD |
 | 8 | Khalani (55) | kha→en (역) | Diffusion | — | ⬜ TBD | ⬜ TBD |
 
-범례: ✅완료 · 🟡진행중 · ⏳학습완료-평가대기 · ⬜미착수.
+범례: ✅완료 · 🟡진행중 · ⬜미착수.
 
 ### 1.1 마스터 결과 매트릭스 (한눈에)
 
 같은 방향끼리만 비교(`free`-length 대칭). 숫자 = `outputs/*_ft_eval_*.json` (n은 셀별 표기).
 
-| 데이터셋 · 방향 | 메트릭 | AR (Qwen) | Diffusion (Fast-dLLM) | H1 관련 우세 |
+| 데이터셋 · 방향 | 메트릭 | AR (Qwen) | Diffusion (Fast-dLLM) | 우세 |
 |---|---|:---:|:---:|:---:|
 | **Klingon en→tlh** (n=300) | chrF | **38.43** | 35.67 | AR(근소) |
 | | BLEU | **10.40** | 2.55 | AR |
 | | EM | 8.33 | **8.67** | ≈ |
 | | **어순 τ** | 0.909 | **0.936** | **Diffusion** |
-| **Klingon tlh→en** (n=TBD) | chrF | ⏳ TBD | ⏳ TBD | TBD |
-| | BLEU | ⏳ TBD | ⏳ TBD | TBD |
-| | EM | ⏳ TBD | ⏳ TBD | TBD |
-| | 어순 τ | ⏳ TBD | ⏳ TBD | TBD |
+| **Klingon tlh→en** (n=300) | chrF | 🟡 TBD | 🟡 TBD | TBD |
+| | BLEU | 🟡 TBD | 🟡 TBD | TBD |
+| | EM | 🟡 TBD | 🟡 TBD | TBD |
+| | 어순 τ | 🟡 TBD | 🟡 TBD | TBD |
 | **Khalani en→kha** (test n=11) | chrF | 13.20 | **14.94** | (노이즈, n=11) |
 | | BLEU | **7.68** | 0.00 | (노이즈) |
 | | EM | 0.0 | 0.0 | = |
@@ -51,33 +52,20 @@
 
 ---
 
-## 2. 가설 (H1)
+## 2. 공통 설정
 
-인공어는 어휘뿐 아니라 **어순**도 영어와 다르고 LLM 사전학습에 (대체로) 포함되지 않는다.
-양방향 denoising으로 디코딩하는 **Diffusion LLM**이 좌→우 단방향 **AR LLM**보다 인공어를 —
-특히 어순을 — 더 잘 학습할 것이다.
-
-**방향 축의 의미**: 순방향(en→인공어)은 *인공어 생성* — 어순·형태론을 모델이 직접 만들어야 하므로
-H1이 가장 직접적으로 검증되는 방향이다. 역방향(인공어→en)은 *인공어 이해* — 출력은 모델이 이미 잘 아는
-영어라, 양방향 인코딩이 **입력 이해**에 주는 이점만 분리해서 본다. 두 방향을 같이 보면 H1의 효과가
-"생성"에서 오는지 "이해"에서 오는지 구분할 수 있다.
-
----
-
-## 3. 공통 설정
-
-### 3.1 데이터
+### 2.1 데이터
 
 | 데이터셋 | 출처 / 라이선스 | 규모 (train/val/test) | 어순 | 분할 스크립트 |
 |---|---|---|---|---|
 | **Klingon** (tlh) | OPUS **Tatoeba en-tlh** v2023-04-12 / CC-BY | 12,717 / 500 / 500 (중복제거 13,717쌍) | **OVS** (목적어-동사-주어) | `prepare_klingon.py` |
 | **Khalani** (kha) | 자체 수집·번역 (무명 인공어, 게임/창작 코퍼스) | 55쌍 → 5-fold CV (fold0: 44 / 11) | (소량이라 어순 분석 불가) | `prepare_khalani.py` |
 
-**왜 이 두 언어인가** — H1의 "미지 언어" 전제를 **두 극단**으로 잡았다:
+**왜 이 두 언어인가** — "미지 언어" 전제를 **두 극단**으로 잡았다:
 - **Klingon**: 실제 사용자·코퍼스가 있는 인공어. 문장 수가 충분(12.7k)해 FT 결론이 가능하지만,
-  온라인 자료가 많아 Qwen 사전학습에 **일부 포함됐을 가능성**(전제 오염, §9 caveat 1).
+  온라인 자료가 많아 Qwen 사전학습에 **일부 포함됐을 가능성**(전제 오염, §8 caveat 1).
 - **Khalani**: 사실상 무명이라 사전학습 오염이 거의 없어 "미지 언어" 전제엔 가장 깨끗하지만,
-  **55쌍**뿐이라 FT로는 암기/과적합만 관측됨(§4.3). → 두 축은 **상보적**.
+  **55쌍**뿐이라 FT로는 암기/과적합만 관측됨(§3.3). → 두 축은 **상보적**.
 
 **스키마** (각 줄, 양 방향 공통):
 ```json
@@ -86,7 +74,7 @@ H1이 가장 직접적으로 검증되는 방향이다. 역방향(인공어→en
 - **역방향 데이터**: 순방향 jsonl의 instruction/output을 스왑 (`data/klingon/{train,val,test}_tlh2en.jsonl`,
   instruction = `"Translate to English: <tlh>"`, output = `<en>`). 동일 문장쌍이라 순↔역은 **완전 대칭**.
 
-**토큰 길이 분포** (Qwen2.5 토크나이저 기준, §3.5 절단 검증의 근거):
+**토큰 길이 분포** (Qwen2.5 토크나이저 기준, §2.5 절단 검증의 근거):
 
 | 데이터 | 출력 토큰 max / p50 | 전체(프롬프트+응답) max |
 |---|---|---|
@@ -95,9 +83,9 @@ H1이 가장 직접적으로 검증되는 방향이다. 역방향(인공어→en
 | Khalani (out=kha) | 10 / 5 | — |
 
 - Khalani 구성: Phrases 34 · Single Words/Terms 20 · Affirmations 1 (예: `Oblivion awaits` → `Zerashk Gulida`).
-- 모든 출력이 짧음(test 기준 ≤42 tok) → 학습 cap 512·평가 cap 64에 한참 못 미침(§3.5).
+- 모든 출력이 짧음(test 기준 ≤42 tok) → 학습 cap 512·평가 cap 64에 한참 못 미침(§2.5).
 
-### 3.2 학습 (전 런 동일)
+### 2.2 학습 (전 런 동일)
 | | 값 |
 |---|---|
 | 방식 | **full fine-tune** (`lora_rank=0`) |
@@ -110,11 +98,10 @@ LR·epoch·effective batch를 **동일**하게 맞춰 아키텍처만 변수로 
 실험에서 Fast-dLLM은 LoRA로 거의 학습되지 않아(rank를 키워도) LoRA 비교는 Diffusion에 불리한
 핸디캡이 되기 때문. full-FT가 유일한 공정 공통 기반.
 
-### 3.3 평가 — 생성/길이 처리 (AR vs Diffusion)
+### 2.3 평가 — 생성/길이 처리 (AR vs Diffusion)
 
-스크립트 `eval_ft.py`, **0-shot**(instruction만), **양쪽 free-length 대칭**. 핵심 공정성 원칙은
-선행 en→fi(핀란드어) 실험에서 합의한 것과 동일: **두 아키텍처에 동일한 생성 예산을 줘서
-Diffusion의 denoise-budget 비대칭을 제거**한다.
+스크립트 `eval_ft.py`, **0-shot**(instruction만). 핵심 공정성 원칙은 선행 en→fi(핀란드어) 실험에서
+합의한 것과 동일: **두 아키텍처에 동일한 생성 예산을 줘서 Diffusion의 denoise-budget 비대칭을 제거**한다.
 
 | | **AR (Qwen)** | **Diffusion (Fast-dLLM v2)** |
 |---|---|---|
@@ -126,25 +113,31 @@ Diffusion의 denoise-budget 비대칭을 제거**한다.
 - **양쪽 모두 길이를 모델이 자율 결정** — Diffusion은 캔버스를 강제로 다 채우지 않고 EOS 위치까지만
   생성 후 패딩(`fastdllm_generation.py` L125–166). max_new_tokens는 강제 길이가 아니라 **천장**.
   차이는 granularity뿐: AR=토큰 단위 정지, Diffusion=EOS가 나온 블록(32토큰)까지 생성 후 정지.
-- **동일 예산(64)** → 어느 쪽도 길이 이점이 없음. test 출력 최대가 42토큰(§3.5)이라 64는 충분.
-- **GT-length(오라클) 모드 — 본 평가에선 제거됨**: 선행 핀란드어 실험에선 `free`(첫 EOS 컷)와
-  `gt_length`(EOS 스트립 후 정답 토큰 길이로 캡) **두 모드 모두** 측정했다. 인공어 평가(`eval_ft.py`)는
-  *methodology audit* 결과 **`free`만** 사용 — gt_length는 정답 길이를 모델에 흘리는 오라클이라
-  "둘 다 정답 길이 모름" 대칭을 깬다고 판단했기 때문. (⚠️ 단 CLAUDE.md 하드룰 #2는 학습 모델에
-  free·gt_length **둘 다** 요구 → §9 caveat 5에서 재논의, 추가 측정 여부 결정 대기.)
-- 핀란드어와의 차이 요약: ① 예산 256→64(짧은 문장이라 무해), ② gt_length 모드 미측정, ③ 지표에
-  exact-match·어순 τ 추가.
+- **Diffusion 생성의 step 수(denoising iteration)** — AR은 토큰당 정확히 1 forward(64토큰이면 ≤64 step)로
+  고정이지만, Diffusion은 step 수가 **동적**이다. 블록(32토큰)마다 `while` 루프가 돌며 매 step에서
+  **confidence > threshold(0.9)인 마스크 토큰을 한꺼번에** 확정(unmask)하고, 임계 초과가 없으면 argmax로
+  최소 1개를 확정한다(`fastdllm_generation.py` L96–128). 따라서 한 블록의 step 수는 1~32 사이에서
+  토큰 확신도에 따라 가변 — 쉬운(확신 높은) 블록은 몇 step만에, 어려운 블록은 더 많은 step을 쓴다.
+  생성 캔버스는 `max_new_tokens=64 → 2블록`. 고정 파라미터: `block_size=small_block_size=32`,
+  `threshold=0.9`. **실측 평균 denoising step/문장: 🟡 측정 예정**(forward·reverse 각각).
+- **동일 예산(64)** → 어느 쪽도 길이 이점이 없음. test 출력 최대가 42토큰(§2.5)이라 64는 충분.
+- **두 모드 측정** (`eval_ft.py --mode`): 동일 64 예산으로 생성한 뒤 후처리만 다르게.
+  - `free` (주력): 모델 자율 길이(EOS/첫 줄). 양쪽 다 정답 길이를 모름 → 가장 공정한 자연길이 비교.
+  - `gt_length` (오라클): 생성 토큰을 **정답 토큰 길이로 그냥 슬라이스**(`gen_ids[:gt_tok]`, 핀란드어
+    `eval_qwen.py`와 동일 로직). 예산이 정답보다 넉넉(64≥42)해 "예산이 먼저 걸려 잘리는" 게 아니라
+    gt_length가 잘라주는 형태. CLAUDE.md 하드룰 #2(학습 모델 free·gt_length 둘 다) 충족.
+- 핀란드어와의 차이: 예산 256→64(짧은 문장이라 무해), 지표에 exact-match·어순 τ 추가.
 
-### 3.4 메트릭 정의
+### 2.4 메트릭 정의
 
 | 메트릭 | 정의 | 인공어에서의 의미 |
 |---|---|---|
 | **chrF** | 문자 n-gram F-score (`sacrebleu.corpus_chrf`, 기본 char 6-gram, β=2) | 접사·교착어 형태론에 강건 — Klingon 접사(`-pu'`,`vI-`,`-'a'`) 부분일치를 포착. 주력 지표. |
 | **BLEU** | 단어 n-gram precision(≤4-gram) + brevity penalty (`corpus_bleu`) | 정확 일치에 엄격. 짧거나 degenerate(반복) 출력에 가혹 → Diffusion 붕괴를 강하게 페널티. |
 | **Exact match (EM)** | 후처리 후 예측==정답 문자열인 비율(%) | 가장 엄격. 인공어에선 대체로 낮음(완전 일치는 드묾). |
-| **어순 τ** (word-order Kendall τ) | 예측·정답 **둘 다에 등장한 단어들**만 추려, 그 단어들이 정답 순서대로 놓였는지 Kendall rank 상관. ≥2개 일치 단어가 있는 쌍에서만 계산. | **어휘와 분리된 순수 어순 신호** — H1(양방향 디코딩이 어순에 유리)의 핵심 지표. 1.0=완벽 순서, 0=무상관, 음수=역순. |
+| **어순 τ** (word-order Kendall τ) | 예측·정답 **둘 다에 등장한 단어들**만 추려, 그 단어들이 정답 순서대로 놓였는지 Kendall rank 상관. ≥2개 일치 단어가 있는 쌍에서만 계산. | **어휘와 분리된 순수 어순 신호** — 양방향 디코딩이 어순에 유리한지 보는 핵심 지표. 1.0=완벽 순서, 0=무상관, 음수=역순. |
 
-### 3.5 절단(truncation) 검증
+### 2.5 절단(truncation) 검증
 
 max_len/max_new_tokens에 의해 학습·평가 데이터가 잘렸는지 실측 (Qwen2.5 토크나이저, `data/klingon`).
 
@@ -159,11 +152,11 @@ max_len/max_new_tokens에 의해 학습·평가 데이터가 잘렸는지 실측
 
 ---
 
-## 4. 결과 — 축별 상세
+## 3. 결과 — 축별 상세
 
-### 4.1 Klingon en→tlh (순방향) — ✅ 완료
+### 3.1 Klingon en→tlh (순방향) — ✅ 완료
 
-숫자: `outputs/klingon_ft_eval_ar.json` / `outputs/klingon_ft_eval_diffusion.json` (n=300).
+숫자: `outputs/klingon_ft_eval_ar_free.json` / `outputs/klingon_ft_eval_diffusion_free.json` (n=300, free).
 
 | 메트릭 | AR (Qwen) | Diffusion (Fast-dLLM) | 우세 |
 |---|:---:|:---:|:---:|
@@ -176,24 +169,26 @@ max_len/max_new_tokens에 의해 학습·평가 데이터가 잘렸는지 실측
   Diffusion [klingon-en2tlh-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-en2tlh-fastdllm-v2-7b-fullft)
 - 무학습 few-shot ICL에선 양쪽 chrF ~10–11 → **full-FT로 ~4배 상승**(AR 10.6→38.4), 인공어가
   12.7k쌍으로 학습됨을 확인.
-- **H1 약한 지지**: 어순 τ에서 Diffusion(0.936) > AR(0.909). 전체 유창성(chrF/BLEU)은 AR 우세.
+- **어순 τ에서 Diffusion(0.936) > AR(0.909)** — 맞은 단어를 정답 순서대로 놓는 능력은 Diffusion 미세
+  우위(양방향 디코딩이 어순에 유리). 전체 유창성(chrF/BLEU)은 AR 우세. **혼합 결과.**
 
-### 4.2 Klingon tlh→en (역방향) — ⏳ 학습 완료, 평가 대기
+### 3.2 Klingon tlh→en (역방향) — 🟡 평가 진행 중
 
 | 메트릭 | AR (Qwen) | Diffusion (Fast-dLLM) |
 |---|:---:|:---:|
-| chrF | ⏳ TBD | ⏳ TBD |
-| BLEU | ⏳ TBD | ⏳ TBD |
-| Exact match | ⏳ TBD | ⏳ TBD |
-| 어순 τ | ⏳ TBD | ⏳ TBD |
+| chrF | 🟡 TBD | 🟡 TBD |
+| BLEU | 🟡 TBD | 🟡 TBD |
+| Exact match | 🟡 TBD | 🟡 TBD |
+| 어순 τ | 🟡 TBD | 🟡 TBD |
 
 - AR 학습 완료(`klingon_qwen_tlh2en_fullft`): final train loss **1.148**, eval loss **1.234** (순방향 AR 1.044/1.129보다 약간 높음 — tlh 이해가 tlh 생성보다 어려운 신호일 수 있음, 평가로 확인 예정).
-- Diffusion 학습 중(`klingon_fastdllm_tlh2en_fullft`, 1,590 스텝) → 완료 즉시 양쪽 `eval_ft.py --tgt_field en --lang_name English --test_file data/klingon/test_tlh2en.jsonl` 실행.
-- HF 업로드: ⬜ TBD (평가 통과 후).
+- Diffusion 학습 완료(`klingon_fastdllm_tlh2en_fullft`, 1,590 스텝): final train loss **16.35** (순방향 diffusion 3.81 대비 크게 높음 → 역방향 fit이 더 나쁠 가능성, 평가로 확인).
+- HF 체크포인트: AR [klingon-tlh2en-qwen2.5-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-qwen2.5-7b-fullft) ·
+  Diffusion [klingon-tlh2en-fastdllm-v2-7b-fullft](https://huggingface.co/sungkwang2/klingon-tlh2en-fastdllm-v2-7b-fullft)
 
-### 4.3 Khalani en→kha (순방향) — ✅ 완료 (탐색적, 과적합 실측)
+### 3.3 Khalani en→kha (순방향) — ✅ 완료 (탐색적, 과적합 실측)
 
-> Khalani는 무명 인공어라 H1의 "미지 언어" 전제엔 가장 깨끗하지만 **번역쌍이 55개뿐**이라
+> Khalani는 무명 인공어라 "미지 언어" 전제엔 가장 깨끗하지만 **번역쌍이 55개뿐**이라
 > FT 결론은 낼 수 없음. 과적합을 실측 확인하는 목적의 탐색적 런.
 
 fold0 = train 44 / test 11, 양쪽 full-FT, lr 2e-5, eff.batch 8, **epochs 20**.
@@ -209,35 +204,43 @@ fold0 = train 44 / test 11, 양쪽 full-FT, lr 2e-5, eff.batch 8, **epochs 20**.
   → train↔test 격차 100→13 = **교과서적 과적합**. 55쌍 FT는 결론 불가임을 실증.
 - held-out에선 양쪽 모두 실패(AR 13.2 vs DIFF 14.9 chrF), **n=11이라 차이는 노이즈**.
 
-### 4.4 Khalani kha→en (역방향) — ⬜ 미착수
+### 3.4 Khalani kha→en (역방향) — ⬜ 미착수
 
 | 메트릭 | AR (Qwen) | Diffusion (Fast-dLLM) |
 |---|:---:|:---:|
 | 전체 | ⬜ TBD | ⬜ TBD |
 
 - 역방향 Khalani 데이터(`data/khalani/*_en.jsonl`) 생성 ⬜ TBD.
-- 단, 4.3에서 보듯 55쌍 규모로는 어느 방향도 결론 불가 — 우선순위 낮음 (Klingon 역방향 완료 후 결정).
+- 단, 3.3에서 보듯 55쌍 규모로는 어느 방향도 결론 불가 — 우선순위 낮음 (Klingon 역방향 완료 후 결정).
 
 ---
 
-## 5. Loss 곡선
+## 4. Loss 곡선
 
-![loss](figures/2026-05-28-klingon-loss.png)
+4-패널 = 아키텍처(AR/Diffusion) × 데이터셋(Klingon/Khalani). Klingon 패널은 순방향·역방향을 겹쳐
+그리고, AR은 eval loss도 함께(점선). Diffusion 트레이너엔 val 셋이 없어 train만. 생성기:
+`reports/figures/2026-05-29-loss.py`.
 
-| 런 | train loss | eval loss |
+![loss](figures/2026-05-29-loss.png)
+
+| 런 | train loss (시작→끝) | eval loss |
 |---|---|---|
 | Klingon en→tlh AR | 6.05 → **1.044** | 1.677 → **1.129** (단조 하강, 과적합 없음) |
-| Klingon en→tlh Diffusion | 12.67 → **3.81** (블록 디퓨전 손실, 스케일 다름) | (디퓨저 트레이너엔 val 없음) |
-| Klingon tlh→en AR | → **1.148** | → **1.234** |
-| Klingon tlh→en Diffusion | ⏳ TBD (학습중) | (val 없음) |
+| Klingon en→tlh Diffusion | 12.67 → **3.81** (블록 디퓨전 손실, 스케일 다름) | (val 없음) |
+| Klingon tlh→en AR | 6.x → **1.148** | → **1.234** |
+| Klingon tlh→en Diffusion | 28 → **~10.6** (마지막 로그값; 전 구간 평균 16.35) | (val 없음) |
+| Khalani en→kha AR | → **0.17** (44개 암기) | (val 없음) |
+| Khalani en→kha Diffusion | → **0.19** (44개 암기) | (val 없음) |
 
-- 그림은 현재 순방향 Klingon만 포함. **역방향 2개 추가한 통합 figure는 ⏳ TBD** (생성기 `reports/figures/2026-05-28-klingon-loss.py` 확장 예정).
+- **핵심**: Klingon Diffusion 패널에서 순방향(→3.81)은 잘 내려가지만 **역방향은 ~10.6에서 정체** —
+  역방향 diffusion fit 열위가 곡선에서 바로 보임(평가 §3.2와 연결).
+- Khalani 양쪽 모두 train loss가 ~0.17–0.19로 0 근처 추락 = 44개 완전 암기 → 과적합 시각화(§3.3).
 
 ---
 
-## 6. 실제 예제
+## 5. 실제 예제
 
-### 6.1 Klingon en→tlh (`outputs/klingon_ft_eval_*.json`의 `examples`)
+### 5.1 Klingon en→tlh (`outputs/klingon_ft_eval_*.json`의 `examples`)
 
 | English | Reference (tlh) | AR | Diffusion |
 |---|---|---|---|
@@ -249,24 +252,24 @@ fold0 = train 44 / test 11, 양쪽 full-FT, lr 2e-5, eff.batch 8, **epochs 20**.
 - AR은 Klingon 형태론(접사 `-pu'`, `vI-`, `-'a'`)을 살린 문장 생성. Diffusion은 일부 입력에서
   `, we have 1,2,3,…` 반복 붕괴 → BLEU를 크게 깎음.
 
-### 6.2 Klingon tlh→en (역방향) — ⏳ TBD
+### 5.2 Klingon tlh→en (역방향) — 🟡 평가 진행 중
 평가 완료 후 `outputs/klingon_tlh2en_ft_eval_*.json`의 `examples`에서 인용 예정.
 
-### 6.3 Khalani en→kha (`outputs/khalani_ft_eval_ar_test.json`)
+### 5.3 Khalani en→kha (`outputs/khalani_ft_eval_ar_test.json`)
 - `Prismatic core online` → ref `Peradak kural`, AR `Peradak aghanizha` (첫 단어만 맞고 뒤는 다른 암기 어휘).
 
 ---
 
-## 7. 추론 스크립트
+## 6. 추론 스크립트
 
 방향은 instruction 접두사만 다르다 (`Translate to Klingon:` ↔ `Translate to English:`).
 
-### 7.1 AR (Qwen2.5-7B) — 표준 generate
+### 6.1 AR (Qwen2.5-7B) — 표준 generate
 ```python
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-mid = "sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft"   # 역방향 모델은 TBD 업로드
+mid = "sungkwang2/klingon-en2tlh-qwen2.5-7b-fullft"   # 역방향: klingon-tlh2en-qwen2.5-7b-fullft
 tok = AutoTokenizer.from_pretrained(mid)
 model = AutoModelForCausalLM.from_pretrained(mid, torch_dtype=torch.bfloat16, device_map="auto").eval()
 
@@ -280,7 +283,7 @@ def translate(text, instr="Translate to Klingon:"):
 print(translate("I hate lawyers."))   # -> chut qeSwI'pu' vImuS.
 ```
 
-### 7.2 Diffusion (Fast-dLLM v2 7B) — 블록 디퓨전 샘플링
+### 6.2 Diffusion (Fast-dLLM v2 7B) — 블록 디퓨전 샘플링
 `fastdllm_generation.py`(이 repo, `eval/`)와 **transformers 4.x**(5.x는 생성이 깨짐)가 필요.
 가장 간단한 재현은 repo의 `eval_ft.py`:
 ```bash
@@ -313,34 +316,33 @@ print(tok.decode(out[0][ids.shape[1]:], skip_special_tokens=True).strip())
 
 ---
 
-## 8. 종합 해석
+## 7. 종합 해석
 
-- **순방향 Klingon (유일하게 결론 가능한 축)**: 혼합·메트릭 의존적. **H1 약한 지지** — 어순 τ에서
-  Diffusion(0.936) > AR(0.909)로 양방향 디코딩이 어순에 미세 우위. 단 전체 유창성(chrF/BLEU)은 AR 우세
+- **순방향 Klingon (유일하게 결론 가능한 축)**: 혼합·메트릭 의존적. 어순 τ에서 Diffusion(0.936) >
+  AR(0.909)로 양방향 디코딩이 어순에 미세 우위. 단 전체 유창성(chrF/BLEU)은 AR 우세
   (Diffusion의 degenerate 반복 모드가 일부 입력에서 n-gram 정밀도를 무너뜨림). **깨끗한 승부는 아님.**
-- **역방향 Klingon**: ⏳ 평가 대기. 출력이 영어(모델이 이미 아는 언어)라 어순 τ의 의미가 약해지고,
-  H1 효과가 "생성"이 아니라 "이해"에서도 나타나는지 보는 보조 축.
+- **역방향 Klingon**: 🟡 평가 진행 중. 출력이 영어(모델이 이미 아는 언어)라 어순 τ의 의미가 약해지고,
+  아키텍처 효과가 "생성"이 아니라 "이해"에서도 나타나는지 보는 보조 축. diffusion train loss가 순방향보다
+  크게 높게 끝나(16.35 vs 3.81) 결과를 주시.
 - **Khalani (양 방향)**: 55쌍 규모가 근본 한계. 순방향에서 AR이 train 100% / test 13%로 **교과서적
   과적합** 실측 → AR/Diffusion 우열을 가릴 수 없음. "소량 인공어 FT = 암기" 사례로만 기록.
 
-**결론**: 신뢰할 만한 AR-vs-Diffusion 결론은 현재 **Klingon 순방향** 한 축에서만 가능하며 H1을 약하게
-지지한다. 역방향 Klingon 결과가 채워지면 "이해 vs 생성" 분해가 가능해진다.
+**결론**: 신뢰할 만한 AR-vs-Diffusion 결론은 현재 **Klingon 순방향** 한 축에서만 가능하다. 역방향 Klingon
+결과가 채워지면 "이해 vs 생성" 분해가 가능해진다.
 
 ---
 
-## 9. 주의 (caveat)
+## 8. 주의 (caveat)
 
 1. Klingon은 온라인 자료가 많아 **Qwen 사전학습에 포함됐을 가능성** → 부분적으로 *회상*이지 순수
-   *학습*이 아님(H1의 "미지 언어" 전제 오염). 더 깨끗한 미지 축은 Khalani(단, 55쌍이라 FT엔 부적합).
+   *학습*이 아님("미지 언어" 전제 오염). 더 깨끗한 미지 축은 Khalani(단, 55쌍이라 FT엔 부적합).
 2. single seed, Diffusion은 샘플링 비결정적 → 작은 τ 격차 신뢰엔 ≥3 seed 필요.
 3. 1 epoch, Diffusion 디코딩 하이퍼파라미터(block_size/threshold) 미튜닝.
 4. 어순 τ는 ≥2개 단어가 일치한 test 쌍에서만 계산 → 검정력 보통. 역방향(영어 출력)에선 어순 τ 해석 주의.
-5. **gt_length 모드 미측정**: 본 평가는 `free`만(§3.3). CLAUDE.md 하드룰 #2는 학습 모델에 free·gt_length
-   둘 다 요구하므로, 엄밀 비교를 위해 양 모드 측정이 필요할 수 있음 → 추가 여부 사용자 결정 대기.
 
 ---
 
-## 10. 재현
+## 9. 재현
 
 환경: `transformers 4.57.6`, `trl 1.4.0`, `torchao 0.17.0`, `peft 0.19.1`. 모델·데이터는 `/content/local_fast`에서만 읽음 (Drive는 백업 전용).
 
@@ -357,9 +359,11 @@ python3 train/train_qwen_v4.py --train_file data/klingon/train.jsonl --val_file 
 python3 train/train_fastdllm.py --train_file data/klingon/train.jsonl --output_dir outputs/klingon_fastdllm_fullft \
   --lora_rank 0 --lr 2e-5 --epochs 1 --batch_size 1 --grad_accum 8 --max_len 512
 
-# --- 평가 (방향별 --tgt_field / --lang_name / --test_file 만 교체) ---
+# --- 평가 (방향별 --tgt_field / --lang_name / --test_file 만 교체; --mode free|gt_length) ---
 PYTHONPATH=eval python3 eval_ft.py --model_type ar \
-  --model_path outputs/klingon_qwen_fullft/final --n_eval 300 --out outputs/klingon_ft_eval_ar.json
+  --model_path outputs/klingon_qwen_fullft/final --n_eval 300 --mode free \
+  --out outputs/klingon_ft_eval_ar_free.json
 PYTHONPATH=eval python3 eval_ft.py --model_type diffusion \
-  --model_path outputs/klingon_fastdllm_fullft/final --n_eval 300 --out outputs/klingon_ft_eval_diffusion.json
+  --model_path outputs/klingon_fastdllm_fullft/final --n_eval 300 --mode free \
+  --out outputs/klingon_ft_eval_diffusion_free.json
 ```
